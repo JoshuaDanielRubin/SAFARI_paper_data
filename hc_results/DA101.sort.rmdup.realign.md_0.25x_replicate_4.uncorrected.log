@@ -1,0 +1,20 @@
+╦ ╦┌─┐┌─┐┬  ┌─┐╔═╗┌─┐┬─┐┌┬┐
+╠═╣├─┤├─┘│  │ │║  ├─┤├┬┘ │
+╩ ╩┴ ┴┴  ┴─┘└─┘╚═╝┴ ┴┴└─ ┴
+
+
+Predicting sample: stdin
+Using 35 threads
+Processing sample 1 of 1
+Mapping reads...
+Reading GAM file YoNhab1
+Reads mapped
+Done reading GAM file /tmp/YoNhab1
+Found 47 reads.
+Removing PCR duplicates ...
+PCR duplicates removed.
+Computing haplogroup likelihoods from 47 reads.
+
+
+#sample	predicted haplogroup	reads
+stdin	U5a1b1e	47

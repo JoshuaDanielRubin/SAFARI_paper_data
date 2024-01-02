@@ -1,0 +1,20 @@
+╦ ╦┌─┐┌─┐┬  ┌─┐╔═╗┌─┐┬─┐┌┬┐
+╠═╣├─┤├─┘│  │ │║  ├─┤├┬┘ │
+╩ ╩┴ ┴┴  ┴─┘└─┘╚═╝┴ ┴┴└─ ┴
+
+
+Predicting sample: stdin
+Using 35 threads
+Processing sample 1 of 1
+Mapping reads...
+Reading GAM file D2GeZHL
+Reads mapped
+Done reading GAM file /tmp/D2GeZHL
+Found 157 reads.
+Removing PCR duplicates ...
+PCR duplicates removed.
+Computing haplogroup likelihoods from 156 reads.
+
+
+#sample	predicted haplogroup	reads
+stdin	J2a1a1	156

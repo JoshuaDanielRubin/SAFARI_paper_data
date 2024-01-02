@@ -1,0 +1,20 @@
+╦ ╦┌─┐┌─┐┬  ┌─┐╔═╗┌─┐┬─┐┌┬┐
+╠═╣├─┤├─┘│  │ │║  ├─┤├┬┘ │
+╩ ╩┴ ┴┴  ┴─┘└─┘╚═╝┴ ┴┴└─ ┴
+
+
+Predicting sample: stdin
+Using 35 threads
+Processing sample 1 of 1
+Mapping reads...
+Reading GAM file JBj9AFF
+Reads mapped
+Done reading GAM file /tmp/JBj9AFF
+Found 344 reads.
+Removing PCR duplicates ...
+PCR duplicates removed.
+Computing haplogroup likelihoods from 341 reads.
+
+
+#sample	predicted haplogroup	reads
+stdin	C4d	341

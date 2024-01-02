@@ -1,0 +1,20 @@
+╦ ╦┌─┐┌─┐┬  ┌─┐╔═╗┌─┐┬─┐┌┬┐
+╠═╣├─┤├─┘│  │ │║  ├─┤├┬┘ │
+╩ ╩┴ ┴┴  ┴─┘└─┘╚═╝┴ ┴┴└─ ┴
+
+
+Predicting sample: stdin
+Using 35 threads
+Processing sample 1 of 1
+Mapping reads...
+Reading GAM file HKmHng7
+Reads mapped
+Done reading GAM file /tmp/HKmHng7
+Found 66 reads.
+Removing PCR duplicates ...
+PCR duplicates removed.
+Computing haplogroup likelihoods from 65 reads.
+
+
+#sample	predicted haplogroup	reads
+stdin	H1aq	65
