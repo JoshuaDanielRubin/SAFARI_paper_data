@@ -46,7 +46,7 @@ def main(file_path):
     plt.legend(loc='best')
     plt.grid(True)
 
-    # Save the plot with the same scale for axes
+    # Save the plot
     output_file_path = file_path.replace('.csv', '_specificity_sensitivity_plot.png')
     plt.savefig(output_file_path, dpi=300)
     plt.close()
