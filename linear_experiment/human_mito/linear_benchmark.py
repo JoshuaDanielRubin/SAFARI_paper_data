@@ -46,10 +46,6 @@ def main(file_path):
     plt.legend(loc='best')
     plt.grid(True)
 
-    # Set the same scale for both axes
-    plt.xlim(0.4, 0.6)
-    plt.ylim(0.95, 1.05)
-
     # Save the plot with the same scale for axes
     output_file_path = file_path.replace('.csv', '_specificity_sensitivity_plot.png')
     plt.savefig(output_file_path, dpi=300)
