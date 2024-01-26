@@ -35,6 +35,10 @@ def main(file_path):
         giraffe_specificity, giraffe_sensitivity = calculate_specificity_sensitivity(giraffe_dt_data)
         safari_specificity, safari_sensitivity = calculate_specificity_sensitivity(safari_dt_data)
 
+        # Print the values
+        print(f"{damage_type} - giraffe: Specificity={giraffe_specificity:.12f}, Sensitivity={giraffe_sensitivity:.12f}")
+        print(f"{damage_type} - SAFARI: Specificity={safari_specificity:.12f}, Sensitivity={safari_sensitivity:.12f}")
+
         # Plot points for giraffe and SAFARI data with different colors
         plt.scatter(giraffe_sensitivity, giraffe_specificity, color=colors[i], marker=markers['giraffe'], label=f'giraffe - {damage_type}')
         plt.scatter(safari_sensitivity, safari_specificity, color=colors[i], marker=markers['SAFARI'], label=f'SAFARI - {damage_type}')
