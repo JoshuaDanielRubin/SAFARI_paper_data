@@ -1,26 +1,31 @@
 #!/bin/bash
 
-# Directory containing the BAM files
 BAM_DIR="alignments/with_md"
-
-# Directory to save the output .prof files
 OUTPUT_DIR="alignments/profs"
-
-# Create the output directory if it doesn't exist
 mkdir -p "$OUTPUT_DIR"
 
-# Iterate through each BAM file in the BAM directory
-for bam_file in "$BAM_DIR"/*.bam; do
-    # Get the base name of the BAM file (without path and extension)
-    base_name=$(basename "$bam_file" .bam)
+# Check if there are BAM files in the directory
+shopt -s nullglob
+bam_files=("$BAM_DIR"/*.bam)
+if [ ${#bam_files[@]} -eq 0 ]; then
+    echo "No BAM files found in $BAM_DIR directory."
+    exit 1
+fi
 
-    # Check if the base_name contains the word "single"
+for bam_file in "${bam_files[@]}"; do
+    echo "$bam_file"
+    base_name=$(basename "$bam_file" .bam)
+    output_file="$OUTPUT_DIR/$base_name.prof"
+    
+    if [ -f "$output_file" ]; then
+        echo "Output file for $base_name already exists, skipping..."
+        continue
+    fi
+    
     if [[ "$base_name" == *"single"* ]]; then
-        # Use the -single flag
-        ./bam2prof/src/bam2prof -q -minl 20 -single "$bam_file" > "$OUTPUT_DIR/$base_name.prof"
+        ./bam2prof/src/bam2prof -q -minl 20 -minq 10 -both "$bam_file" > "$output_file"
     else
-        # Use the -double flag
-        ./bam2prof/src/bam2prof -q -minl 20 -both "$bam_file" > "$OUTPUT_DIR/$base_name.prof"
+        ./bam2prof/src/bam2prof -q -minl 20 -minq 10 -both "$bam_file" > "$output_file"
     fi
 done
 

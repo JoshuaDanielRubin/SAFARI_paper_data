@@ -1,46 +1,44 @@
 #!/bin/bash
 
-# Define the directories and reference FASTA files
+# Define directories and reference FASTA files
 source_dir="alignments"
 target_dir="alignments/with_md"
 reference_fasta1="simulations/gen_0.fa"
-reference_fasta2="rCRS.fa"
+reference_fasta2="H2a2a1.fa"
 
-# Ensure samtools is available
-if ! command -v samtools &> /dev/null
-then
+# Check for samtools and parallel
+if ! command -v samtools &> /dev/null; then
     echo "samtools could not be found. Please install samtools."
-    exit
+    exit 1
+fi
+
+if ! command -v parallel &> /dev/null; then
+    echo "GNU Parallel could not be found. Please install GNU Parallel."
+    exit 1
 fi
 
 # Create the target directory if it doesn't exist
 mkdir -p "$target_dir"
 
-# Iterate through all BAM files in the source directory
-for bam_file in "$source_dir"/*.bam; do
-    # Extract the filename without the directory
+# Function to process BAM files
+process_bam() {
+    bam_file="$1"
     filename=$(basename "$bam_file")
-
-    # Construct the new file path in the target directory
     new_file="$target_dir/$filename"
 
-    # Check if the processed file already exists
     if [ -f "$new_file" ]; then
         echo "$new_file already exists, skipping."
-        continue
+        return 0
     fi
 
-    # Determine the correct reference file by inspecting the header of the BAM file
     if samtools view -H "$bam_file" | grep -q "SN:generation_0"; then
         reference_fasta="$reference_fasta1"
     else
         reference_fasta="$reference_fasta2"
     fi
 
-    # Create a temporary filtered BAM file
     filtered_bam=$(mktemp)
-
-    # Filter out reads where CIGAR indicates an indel at the start or end
+    
     samtools view -h "$bam_file" | \
     awk -F'\t' 'BEGIN {OFS = FS}
     {
@@ -53,20 +51,23 @@ for bam_file in "$source_dir"/*.bam; do
     }' | \
     samtools view -Sb - > "$filtered_bam"
 
-    # Recalculate the MD tags using the filtered BAM and save the new BAM file
-    if ! samtools calmd -b "$filtered_bam" "$reference_fasta" > "$new_file"
-    then
-        # Output an error message if the command fails
-        echo "Error processing $bam_file with reference file."
-        rm "$filtered_bam"  # Remove the temporary file
-        continue  # Skip to the next iteration
+    if samtools calmd -b "$filtered_bam" "$reference_fasta" > "$new_file"; then
+        echo "Processed $bam_file --> $new_file"
+        rm "$filtered_bam"
+        if ! samtools quickcheck "$new_file"; then
+            echo "Warning: $new_file might be corrupted or incomplete."
+        fi
+    else
+        echo "Error processing $bam_file with reference file $reference_fasta."
+        rm "$filtered_bam"
     fi
+}
 
-    rm "$filtered_bam"  # Remove the temporary file after use
+export -f process_bam
+export source_dir target_dir reference_fasta1 reference_fasta2
 
-    # Output progress
-    echo "Processed $bam_file --> $new_file"
-done
+# Process BAM files in parallel
+find "$source_dir" -name '*.bam' | parallel -j 20 process_bam {}
 
 echo "Processing complete."
 
