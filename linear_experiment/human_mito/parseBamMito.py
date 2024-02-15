@@ -7,7 +7,7 @@ def intersects(start1, end1, start2, end2):
 
 def main(bam_file_path):
     # Suppress SAM-format errors
-    pysam.set_verbosity(0)
+    #pysam.set_verbosity(0)
 
     # Open the BAM file for reading
     bamInputFile = pysam.Samfile(bam_file_path, "rb")
@@ -41,6 +41,7 @@ def main(bam_file_path):
             if read.mapping_quality > 30:
                 TP_MQ30 += 1
         elif not is_from_mt and is_mapped_to_mt:
+            #print(read.query_name)
             FP += 1
             if read.mapping_quality > 30:
                 FP_MQ30 += 1
@@ -65,6 +66,7 @@ def main(bam_file_path):
     print(f"False Negatives (FN_MQ30): {FN_MQ30}")
 
 if __name__ == "__main__":
+
     if len(sys.argv) < 2:
         print("Usage: python script.py <bam_file_path>")
     else:

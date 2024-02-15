@@ -1,6 +1,6 @@
 #!/bin/bash
 
-BAM_DIR="alignments/with_md"
+BAM_DIR="alignments/with_md/"
 OUTPUT_DIR="alignments/profs"
 mkdir -p "$OUTPUT_DIR"
 
@@ -23,9 +23,9 @@ for bam_file in "${bam_files[@]}"; do
     fi
     
     if [[ "$base_name" == *"single"* ]]; then
-        ./bam2prof/src/bam2prof -q -minl 20 -minq 10 -both "$bam_file" > "$output_file"
+        ./bam2prof/src/bam2prof -q -minl 20 -minq 10 -single "$bam_file" > "$output_file"
     else
-        ./bam2prof/src/bam2prof -q -minl 20 -minq 10 -both "$bam_file" > "$output_file"
+        ./bam2prof/src/bam2prof -q -minl 20 -minq 10 -double "$bam_file" > "$output_file"
     fi
 done
 

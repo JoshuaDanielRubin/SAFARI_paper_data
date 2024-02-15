@@ -1,16 +1,18 @@
-
 sys.setrecursionlimit(10000)
 
 MAXVAL=0
 STEPS10=[0]
 STEPSMSA=["0"]
 LENGTHS=["30", "35", "40", "50", "55", "60", "65"]
+#LENGTHS=["30", "35", "40"]
+#RATES=["0.1", "0.15", "0.2", "0.25", "0.3", "0.35", "0.4", "0.45", "0.5", "0.55", "0.6", "0.65", "0.7", "0.75", "0.8", "0.85", "0.9", "0.95"]
 RATES=["0.1", "0.15", "0.2", "0.25", "0.3", "0.35", "0.4", "0.45", "0.5", "0.55", "0.6", "0.65", "0.7", "0.75", "0.8", "0.85", "0.9", "0.95"]
 DAMAGE=["dhigh", "dmid", "none", "single"]
 ALIGNERS=["bowtie2", "mem", "aln_anc", "aln", "shrimp", "bb", "giraffe", "safari"]
+#ALIGNERS=["safari", "giraffe", "mem"]
 ALIGNERSC=[]
-NUMFRAGS=5000
-FRAGNUM=500
+NUMFRAGS=10000
+FRAGNUM=1000
 
 ruleorder: fragsim > deamsim
 ruleorder: fragsim_numtS > deamsim_numtS
@@ -37,9 +39,9 @@ rule all:
         expand("simulations/numtS_n{fragn}_d{dam}_l{length}_o_s{rate}.fq.gz",fragn=FRAGNUM,dam=DAMAGE,rate=RATES, length=LENGTHS),
         expand("simulations/numtS_n{fragn}_d{dam}_l{length}_o_r1_s{rate}.fq.gz",fragn=FRAGNUM,dam=DAMAGE,rate=RATES, length=LENGTHS),
         expand("simulations/numtS_n{fragn}_d{dam}_l{length}_o_r2_s{rate}.fq.gz",fragn=FRAGNUM,dam=DAMAGE,rate=RATES, length=LENGTHS),
-        expand("simulations/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_o_s{rate}.fq.gz",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES, length=LENGTHS),
-        expand("simulations/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_o_r1_s{rate}.fq.gz",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES, length=LENGTHS),
-        expand("simulations/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_o_r2_s{rate}.fq.gz",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES, length=LENGTHS),
+        expand("simulations/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_o_s{rate}.fq.gz",step=STEPSMSA,nfrags=FRAGNUM,dam=DAMAGE,rate=RATES, length=LENGTHS),
+        expand("simulations/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_o_r1_s{rate}.fq.gz",step=STEPSMSA,nfrags=FRAGNUM,dam=DAMAGE,rate=RATES, length=LENGTHS),
+        expand("simulations/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_o_r2_s{rate}.fq.gz",step=STEPSMSA,nfrags=FRAGNUM,dam=DAMAGE,rate=RATES, length=LENGTHS),
         #expand("alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_mem.bam",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES),
         #expand("alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_aln.bam",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES),
         #expand("alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_aln_anc.bam",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES),
@@ -48,7 +50,7 @@ rule all:
         #expand("alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_vg.bam",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES),
         #expand("alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_safari.bam",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES),
         #expand("alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_bb.bam",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES),
-        expand("alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_s{rate}_{align}.stat",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES,align=ALIGNERS, length=LENGTHS),
+        expand("alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_s{rate}_{align}.stat",step=STEPSMSA,nfrags=FRAGNUM,dam=DAMAGE,rate=RATES,align=ALIGNERS, length=LENGTHS),
 
         #expand("alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_{align}.bam.bai",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES,align=ALIGNERS),
         #expand("consensus/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_{align}_{cons}.fa.gz",step=STEPSMSA,nfrags=NUMFRAGS,dam=DAMAGE,rate=RATES,align=ALIGNERSC,cons=CONSENSUS),
@@ -430,9 +432,6 @@ rule SHRiMP:
             simulations/gen_0.fa | /home/ctools/samtools-1.13/samtools view -S /dev/stdin) | /home/ctools/samtools-1.13/samtools sort /dev/stdin > {output}"
 
 
-##safari
-#nice -19 /home/projects/MAAG/Magpie/Magpie/vgan_corrected/dep/vg/bin/vg filter -m 3 - | \
-
 rule safari:
     input:
         input_1="simulations/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_o_s{rate}.fq.gz",
@@ -445,16 +444,20 @@ rule safari:
            --deam-3p /home/projects/MAAG/Magpie/Magpie/dhigh3p.prof --deam-5p /home/projects/MAAG/Magpie/Magpie/dhigh5p.prof \
            -t 3 \
            -f /dev/stdin \
-           -j 0.9 \
-           -D 50 \
-           -m  /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.min \
-           -d /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.dist \
-           -q /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.ry \
-           -Z /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.giraffe.gbz | \
-           nice -19 /home/projects/MAAG/Magpie/Magpie/vgan_corrected/dep/vg/bin/vg surject -l -P -A \
-                    -x /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.xg \
-           -t 3 -p H2a2a1 -b - \
-           > {output}"
+           -j 0.0 \
+           --ref-paths PATHS \
+           -o bam \
+           -O \
+           -m   rCRS_graph/graph.min \
+           -d   rCRS_graph/graph.dist \
+           -q   rCRS_graph/graph.ry \
+           -Z   rCRS_graph/graph.giraffe.gbz > {output}"
+
+
+           #nice -19 /home/projects/MAAG/Magpie/Magpie/vgan_corrected/dep/vg/bin/vg surject -l -A \
+           #         -x  /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.xg \
+           #-t 3 -p H2a2a1 -b - | \
+           #samtools sort -o {output} - && samtools index {output}"
 
 
 ##giraffe
@@ -469,13 +472,22 @@ rule giraffe:
             /home/projects/MAAG/Magpie/Magpie/vg_uncorrected/bin/vg giraffe \
            -t 3 \
            -f /dev/stdin \
-           -m  /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.min \
-           -d /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.dist \
-           -Z /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.giraffe.gbz | \
-           nice -19 /home/projects/MAAG/Magpie/Magpie/vgan_corrected/dep/vg/bin/vg surject -l -P -A \
-                    -x /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.xg \
-           -t 3 -p H2a2a1 -b - \
-           > {output}"
+            --ref-paths PATHS \
+             -o bam \
+           -O \
+           -m  rCRS_graph/graph.min \
+           -d rCRS_graph/graph.dist \
+           -Z rCRS_graph/graph.giraffe.gbz > {output}"
+
+           #nice -19 /home/projects/MAAG/Magpie/Magpie/vgan_corrected/dep/vg/bin/vg surject -l -A \
+           #         -x /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.xg \
+           #-t 3 -p H2a2a1 -b - | \
+           # samtools sort -o {output} - && samtools index {output}"
+
+
+#          -m  /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.min \
+#           -d /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.dist \
+#           -Z /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.giraffe.gbz | \
 
 #vg mapping
 rule vgmapping:
@@ -499,9 +511,10 @@ rule bbmap:
              | /home/ctools/samtools-1.13/samtools view -S /dev/stdin) | /home/ctools/samtools-1.13/samtools sort /dev/stdin > {output}"
 
 rule stat:
-    input: "alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_s{rate}_{align}.bam"
+    input: "alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_s{rate}_{align}.bam",
+           "alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_s{rate}_{align}.bam.bai"
     output: "alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_s{rate}_{align}.stat"
-    shell: "python parseBamMito.py  alignments/numtS_and_gen_0_n{wildcards.nfrags}_d{wildcards.dam}_l{wildcards.length}_s{wildcards.rate}_{wildcards.align}.bam > alignments/numtS_and_gen_{wildcards.step}_n{wildcards.nfrags}_d{wildcards.dam}_l{wildcards.length}_s{wildcards.rate}_{wildcards.align}.stat"
+    shell: "python -u parseBamMito.py  alignments/numtS_and_gen_0_n{wildcards.nfrags}_d{wildcards.dam}_l{wildcards.length}_s{wildcards.rate}_{wildcards.align}.bam > alignments/numtS_and_gen_{wildcards.step}_n{wildcards.nfrags}_d{wildcards.dam}_l{wildcards.length}_s{wildcards.rate}_{wildcards.align}.stat"
 
 rule mpileup:
     input: "alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_{align}.bam"
@@ -514,5 +527,9 @@ rule mpileup:
 rule bamindex:
     input: "alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_{align}.bam"
     output: "alignments/numtS_and_gen_{step}_n{nfrags}_d{dam}_s{rate}_{align}.bam.bai"
-    shell: "/home/ctools/samtools-1.13/samtools index {input}  {output}"
+    shell:
+        """
+        /home/ctools/samtools-1.13/samtools sort {input} | \
+        /home/ctools/samtools-1.13/samtools index - {output}
+        """
 

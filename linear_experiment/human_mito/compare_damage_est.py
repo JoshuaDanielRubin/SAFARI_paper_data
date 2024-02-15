@@ -180,7 +180,7 @@ def check_data(damage_data_dict, prof_data_dict):
 
 if __name__ == "__main__":
     damage_data_path = '.'  # Your path to damage data files
-    prof_data_path = 'alignments/profs'  # Your path to prof data files
+    prof_data_path = 'alignments/profs/test'  # Your path to prof data files
 
     assert os.path.exists(damage_data_path), "Damage data path does not exist."
     assert os.path.exists(prof_data_path), "Prof data path does not exist."

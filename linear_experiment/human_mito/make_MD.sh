@@ -3,8 +3,8 @@
 # Define directories and reference FASTA files
 source_dir="alignments"
 target_dir="alignments/with_md"
-reference_fasta1="simulations/gen_0.fa"
-reference_fasta2="H2a2a1.fa"
+reference_fasta1="H2a2a1.fa"
+reference_fasta2="rCRS.fa"
 
 # Check for samtools and parallel
 if ! command -v samtools &> /dev/null; then
@@ -31,14 +31,17 @@ process_bam() {
         return 0
     fi
 
-    if samtools view -H "$bam_file" | grep -q "SN:generation_0"; then
+    # Select reference based on filename keywords
+    if [[ "$filename" == *"safari"* ]] || [[ "$filename" == *"giraffe"* ]]; then
         reference_fasta="$reference_fasta1"
     else
         reference_fasta="$reference_fasta2"
     fi
 
+    # Temporary file for filtered BAM
     filtered_bam=$(mktemp)
-    
+
+    # Filter and process BAM file
     samtools view -h "$bam_file" | \
     awk -F'\t' 'BEGIN {OFS = FS}
     {
@@ -51,14 +54,15 @@ process_bam() {
     }' | \
     samtools view -Sb - > "$filtered_bam"
 
+    # Attempt to recalibrate MD tag
     if samtools calmd -b "$filtered_bam" "$reference_fasta" > "$new_file"; then
-        echo "Processed $bam_file --> $new_file"
+        echo "Processed $bam_file --> $new_file using $reference_fasta"
         rm "$filtered_bam"
         if ! samtools quickcheck "$new_file"; then
             echo "Warning: $new_file might be corrupted or incomplete."
         fi
     else
-        echo "Error processing $bam_file with reference file $reference_fasta."
+        echo "Failed processing $bam_file with reference file $reference_fasta."
         rm "$filtered_bam"
     fi
 }
