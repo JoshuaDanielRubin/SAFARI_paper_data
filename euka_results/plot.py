@@ -2,65 +2,58 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-# Directory containing your files (adjust as needed)
-directory = '.'
-
-# Initialize a dictionary to accumulate data
-data = {}
-
-# List all files matching the pattern
-files = [f for f in os.listdir(directory) if f.endswith('_detected.tsv')]
-
-# Process each file
-for file in files:
-    if "uncorrected" in file:
-        continue
-    # Extract the threshold value from the filename
-    threshold = float(file.split('_j_')[1].split('_detected')[0])
+def read_and_parse_files(directory_path):
+    """
+    Reads and parses files in the specified directory that match the pattern.
     
-    # Construct full file path
-    path = os.path.join(directory, file)
+    Parameters:
+    - directory_path: str, path to the directory containing the files.
     
-    # Read the TSV file
-    df = pd.read_csv(path, sep='\t', usecols=['#Taxa', 'Number_of_reads'])
+    Returns:
+    - DataFrame with all the parsed data.
+    """
+    all_data = []
+
+    # Loop through each file in the directory
+    for file_name in os.listdir(directory_path):
+        if file_name.endswith(".tsv") and "_corrected" in file_name and "detected" in file_name:
+            threshold = float(file_name.split("_")[-2])
+            file_path = os.path.join(directory_path, file_name)
+            
+            # Read the file, skipping the header line that starts with #
+            with open(file_path, 'r') as file:
+                lines = file.readlines()
+                data = [line.strip().split('\t') for line in lines if not line.startswith('#')]
+                for row in data:
+                    taxa, detected, number_of_reads = row[0], row[1], int(row[2])
+                    all_data.append({"Taxa": taxa, "Threshold": threshold, "Number_of_reads": number_of_reads})
+
+    # Convert the list of dictionaries to a DataFrame
+    return pd.DataFrame(all_data)
+
+def plot_data(df):
+    """
+    Generates a stacked bar plot from the DataFrame.
     
-    # Iterate through the DataFrame rows
-    for index, row in df.iterrows():
-        taxon = row['#Taxa']
-        reads = row['Number_of_reads']
-        if taxon not in data:
-            data[taxon] = {}
-        data[taxon][threshold] = reads
+    Parameters:
+    - df: DataFrame, with columns ['Taxa', 'Threshold', 'Number_of_reads']
+    """
+    df_pivot = df.pivot(index="Taxa", columns="Threshold", values="Number_of_reads")
+    df_pivot.plot(kind='bar', stacked=True, figsize=(14, 8))
+    plt.title('Number of Detected Reads per Taxon Across Thresholds')
+    plt.xlabel('Taxa')
+    plt.ylabel('Number of Reads')
+    plt.xticks(rotation=45)
+    plt.legend(title='Threshold', bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.tight_layout()
+    plt.savefig("threshold_plot.png")
 
-# Convert the accumulated data into a DataFrame for plotting
-thresholds = sorted(list(set(threshold for d in data.values() for threshold in d)))
-taxa = sorted(data.keys())
-df_plot = pd.DataFrame(index=taxa, columns=thresholds).fillna(0)
+# Specify the directory path containing your files
+directory_path = '.'
 
-# Populate the DataFrame with the accumulated data
-for taxon, thresholds_data in data.items():
-    for threshold, reads in thresholds_data.items():
-        df_plot.at[taxon, threshold] = reads
+# Read and parse the data
+df = read_and_parse_files(directory_path)
 
-# Sort taxa by their total reads at the most lenient threshold
-df_plot['Total'] = df_plot.sum(axis=1)
-df_plot = df_plot.sort_values('Total', ascending=False)
-del df_plot['Total']
-
-# Plot
-fig, ax = plt.subplots(figsize=(10, 8))
-df_plot.plot(kind='bar', stacked=True, ax=ax, colormap='viridis')
-plt.title('Read Counts by Taxon across Thresholds')
-plt.xlabel('Taxon')
-plt.ylabel('Number of Reads')
-plt.xticks(rotation=45, ha='right')
-plt.legend(title='Threshold', bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.tight_layout()
-
-# Save the figure
-plot_path = 'threshold_plot.png'
-plt.savefig(plot_path)
-plt.close()
-
-print(f"Plot saved as {plot_path}")
+# Plot the data
+plot_data(df)
 
