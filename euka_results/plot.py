@@ -5,11 +5,11 @@ import os
 # Directory containing your files (adjust as needed)
 directory = '.'
 
-# List all files matching the pattern
-files = [f for f in os.listdir(directory) if f.endswith('_detected.tsv')]
-
 # Initialize a dictionary to accumulate data
 data = {}
+
+# List all files matching the pattern
+files = [f for f in os.listdir(directory) if f.endswith('_detected.tsv')]
 
 # Process each file
 for file in files:
@@ -17,17 +17,16 @@ for file in files:
         continue
     # Extract the threshold value from the filename
     threshold = float(file.split('_j_')[1].split('_detected')[0])
+    
     # Construct full file path
     path = os.path.join(directory, file)
-    # Read the TSV file, specifying column names to avoid issues with special characters
-    # and correctly handling the comment character
-    df = pd.read_csv(path, sep='\t', comment=None, names=['Taxa', 'Detected', 'Number_of_reads', 
-                                                          'Proportion_estimate', '85_CI_lower', 
-                                                          '85_CI_upper', '95_CI_lower', '95_CI_upper'], 
-                     header=0, skiprows=1)
+    
+    # Read the TSV file
+    df = pd.read_csv(path, sep='\t', usecols=['#Taxa', 'Number_of_reads'])
+    
     # Iterate through the DataFrame rows
     for index, row in df.iterrows():
-        taxon = row['Taxa']
+        taxon = row['#Taxa']
         reads = row['Number_of_reads']
         if taxon not in data:
             data[taxon] = {}
@@ -43,7 +42,7 @@ for taxon, thresholds_data in data.items():
     for threshold, reads in thresholds_data.items():
         df_plot.at[taxon, threshold] = reads
 
-# Add a total reads column for sorting
+# Sort taxa by their total reads at the most lenient threshold
 df_plot['Total'] = df_plot.sum(axis=1)
 df_plot = df_plot.sort_values('Total', ascending=False)
 del df_plot['Total']
@@ -51,7 +50,7 @@ del df_plot['Total']
 # Plot
 fig, ax = plt.subplots(figsize=(10, 8))
 df_plot.plot(kind='bar', stacked=True, ax=ax, colormap='viridis')
-plt.title('Read Counts by Taxon across Thresholds!')
+plt.title('Read Counts by Taxon across Thresholds')
 plt.xlabel('Taxon')
 plt.ylabel('Number of Reads')
 plt.xticks(rotation=45, ha='right')
@@ -59,7 +58,7 @@ plt.legend(title='Threshold', bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 
 # Save the figure
-plot_path = os.path.join(directory, 'threshold_plot.png')
+plot_path = 'threshold_plot.png'
 plt.savefig(plot_path)
 plt.close()
 
