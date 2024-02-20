@@ -32,13 +32,19 @@ def read_and_parse_files(directory_path):
     return pd.DataFrame(all_data)
 
 def plot_data(df):
-    """
-    Generates a stacked bar plot from the DataFrame.
-    
-    Parameters:
-    - df: DataFrame, with columns ['Taxa', 'Threshold', 'Number_of_reads']
-    """
+    # Calculate total reads per taxa
+    df_total_reads = df.groupby('Taxa').sum().reset_index()
+
+    # Sort taxa by total read count in descending order
+    sorted_taxa = df_total_reads.sort_values(by='Number_of_reads', ascending=False)['Taxa']
+
+    # Pivot the original dataframe for plotting
     df_pivot = df.pivot(index="Taxa", columns="Threshold", values="Number_of_reads")
+
+    # Reorder the DataFrame based on the sorted taxa
+    df_pivot = df_pivot.reindex(sorted_taxa)
+
+    # Proceed with plotting as before
     df_pivot.plot(kind='bar', stacked=True, figsize=(14, 8))
     plt.title('Number of Detected Reads per Taxon Across Thresholds')
     plt.xlabel('Taxa')
@@ -47,6 +53,7 @@ def plot_data(df):
     plt.legend(title='Threshold', bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
     plt.savefig("threshold_plot.png")
+
 
 # Specify the directory path containing your files
 directory_path = '.'
