@@ -51,7 +51,7 @@ del df_plot['Total']
 # Plot
 fig, ax = plt.subplots(figsize=(10, 8))
 df_plot.plot(kind='bar', stacked=True, ax=ax, colormap='viridis')
-plt.title('Read Counts by Taxon across Thresholds')
+plt.title('Read Counts by Taxon across Thresholds!')
 plt.xlabel('Taxon')
 plt.ylabel('Number of Reads')
 plt.xticks(rotation=45, ha='right')
