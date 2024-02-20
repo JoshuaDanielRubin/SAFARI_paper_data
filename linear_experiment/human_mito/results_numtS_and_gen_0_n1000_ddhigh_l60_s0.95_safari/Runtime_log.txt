@@ -1,4 +1,0 @@
-2024-02-15 20:40:00,215	INFO	main: Started with the command: ./mapdamage/mapDamage-2.2.2/bin/mapDamage -i alignments/numtS_and_gen_0_n1000_ddhigh_l60_s0.95_safari.bam -r H2a2a1.fa
-2024-02-15 20:40:00,758	DEBUG	main: BAM read in 4.327305 seconds
-2024-02-15 20:40:02,735	INFO	main: Successful run
-2024-02-15 20:40:02,736	DEBUG	main: Run completed in 6.305253 seconds
