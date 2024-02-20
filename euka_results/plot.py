@@ -49,7 +49,7 @@ def plot_data(df):
 
     # Proceed with plotting as before
     df_pivot.plot(kind='bar', stacked=True, figsize=(14, 8), colormap=cm.viridis)
-    plt.title('Number of Detected Reads per Taxon Across Thresholds')
+    plt.title('Detected Reads per Taxon Across Thresholds')
     plt.xlabel('Taxa')
     plt.ylabel('Number of Reads')
     plt.xticks(rotation=45)
