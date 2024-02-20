@@ -3,27 +3,28 @@ import matplotlib.pyplot as plt
 import os
 
 # Directory containing your files (adjust as needed)
-directory = '/home/projects/MAAG/Magpie/Magpie/euka_results'
+directory = '.'
+
 # List all files matching the pattern
 files = [f for f in os.listdir(directory) if f.endswith('_detected.tsv')]
-
-# Manually specify column names to avoid issues with special characters
-columns = ['Taxa', 'Detected', 'Number_of_reads', 'Proportion_estimate',
-           '85_CI_lower', '85_CI_upper', '95_CI_lower', '95_CI_upper']
 
 # Initialize a dictionary to accumulate data
 data = {}
 
 # Process each file
 for file in files:
-    if 'uncorrected' in file:
+    if "uncorrected" in file:
         continue
     # Extract the threshold value from the filename
     threshold = float(file.split('_j_')[1].split('_detected')[0])
     # Construct full file path
     path = os.path.join(directory, file)
     # Read the TSV file, specifying column names to avoid issues with special characters
-    df = pd.read_csv(path, sep='\t', comment='#', names=columns, header=0)
+    # and correctly handling the comment character
+    df = pd.read_csv(path, sep='\t', comment=None, names=['Taxa', 'Detected', 'Number_of_reads', 
+                                                          'Proportion_estimate', '85_CI_lower', 
+                                                          '85_CI_upper', '95_CI_lower', '95_CI_upper'], 
+                     header=0, skiprows=1)
     # Iterate through the DataFrame rows
     for index, row in df.iterrows():
         taxon = row['Taxa']
@@ -42,7 +43,7 @@ for taxon, thresholds_data in data.items():
     for threshold, reads in thresholds_data.items():
         df_plot.at[taxon, threshold] = reads
 
-# Sort taxa by their total reads at the smallest threshold
+# Add a total reads column for sorting
 df_plot['Total'] = df_plot.sum(axis=1)
 df_plot = df_plot.sort_values('Total', ascending=False)
 del df_plot['Total']
@@ -58,7 +59,7 @@ plt.legend(title='Threshold', bbox_to_anchor=(1.05, 1), loc='upper left')
 plt.tight_layout()
 
 # Save the figure
-plot_path = 'threshold_plot.png'
+plot_path = os.path.join(directory, 'threshold_plot.png')
 plt.savefig(plot_path)
 plt.close()
 
