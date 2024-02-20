@@ -1,6 +1,8 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+import matplotlib.cm as cm
+from matplotlib.colors import LinearSegmentedColormap
 
 def read_and_parse_files(directory_path):
     """
@@ -39,13 +41,14 @@ def plot_data(df):
     sorted_taxa = df_total_reads.sort_values(by='Number_of_reads', ascending=False)['Taxa']
 
     # Pivot the original dataframe for plotting
-    df_pivot = df.pivot(index="Taxa", columns="Threshold", values="Number_of_reads")
+    df_pivot = df.pivot(index="Taxa", columns="Threshold", values="Number_of_reads").fillna(0)
 
     # Reorder the DataFrame based on the sorted taxa
     df_pivot = df_pivot.reindex(sorted_taxa)
+    print(df_pivot)
 
     # Proceed with plotting as before
-    df_pivot.plot(kind='bar', stacked=True, figsize=(14, 8))
+    df_pivot.plot(kind='bar', stacked=True, figsize=(14, 8), colormap=cm.viridis)
     plt.title('Number of Detected Reads per Taxon Across Thresholds')
     plt.xlabel('Taxa')
     plt.ylabel('Number of Reads')
