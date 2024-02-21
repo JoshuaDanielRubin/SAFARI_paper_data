@@ -1,69 +1,66 @@
-import pandas as pd
+import re
 import matplotlib.pyplot as plt
-import os
-import matplotlib.cm as cm
-from matplotlib.colors import LinearSegmentedColormap
+import numpy as np
 
-def read_and_parse_files(directory_path):
-    """
-    Reads and parses files in the specified directory that match the pattern.
-    
-    Parameters:
-    - directory_path: str, path to the directory containing the files.
-    
-    Returns:
-    - DataFrame with all the parsed data.
-    """
-    all_data = []
+def parse_threshold(header):
+    match = re.search(r'_j_(\d+\.\d+)_detected', header)
+    return float(match.group(1)) if match else None
 
-    # Loop through each file in the directory
-    for file_name in os.listdir(directory_path):
-        if file_name.endswith(".tsv") and "_corrected" in file_name and "detected" in file_name:
-            threshold = float(file_name.split("_")[-2])
-            file_path = os.path.join(directory_path, file_name)
-            
-            # Read the file, skipping the header line that starts with #
-            with open(file_path, 'r') as file:
-                lines = file.readlines()
-                data = [line.strip().split('\t') for line in lines if not line.startswith('#')]
-                for row in data:
-                    taxa, detected, number_of_reads = row[0], row[1], int(row[2])
-                    all_data.append({"Taxa": taxa, "Threshold": threshold, "Number_of_reads": number_of_reads})
+def load_data(file_path):
+    data_by_taxon = {}
+    with open(file_path, 'r') as file:
+        current_threshold = None
+        for line in file:
+            if line.startswith('euka_corrected_full_j_'):
+                current_threshold = parse_threshold(line.strip())
+            elif not line.startswith('#') and line.strip():
+                parts = line.split('\t')
+                taxon = parts[0]
+                number_of_reads = int(parts[2])
+                if taxon not in data_by_taxon:
+                    data_by_taxon[taxon] = {}
+                data_by_taxon[taxon][current_threshold] = number_of_reads
+    return data_by_taxon
 
-    # Convert the list of dictionaries to a DataFrame
-    return pd.DataFrame(all_data)
+def calculate_incremental_reads(data_by_taxon):
+    incremental_data_by_taxon = {}
+    for taxon, thresholds_reads in data_by_taxon.items():
+        sorted_thresholds = sorted(thresholds_reads.keys(), reverse=True)
+        incremental_reads = []
+        previous_reads = 0
+        for threshold in sorted_thresholds:
+            current_reads = thresholds_reads[threshold]
+            incremental_reads.append((threshold, current_reads - previous_reads))
+            previous_reads = current_reads
+        incremental_data_by_taxon[taxon] = incremental_reads
+    return incremental_data_by_taxon
 
-def plot_data(df):
-    # Calculate total reads per taxa
-    df_total_reads = df.groupby('Taxa').sum().reset_index()
+def plot_data(incremental_data_by_taxon, data_by_taxon):
+    sorted_taxa = sorted(incremental_data_by_taxon.keys(), key=lambda x: data_by_taxon[x][0.0], reverse=True)
+    cmap = plt.get_cmap("coolwarm")
+    thresholds = sorted(list(next(iter(incremental_data_by_taxon.values()))), key=lambda x: x[0])
+    colors = {t[0]: cmap(i / len(thresholds)) for i, t in enumerate(thresholds)}
 
-    # Sort taxa by total read count in descending order
-    sorted_taxa = df_total_reads.sort_values(by='Number_of_reads', ascending=False)['Taxa']
+    fig, ax = plt.subplots(figsize=(12, 8))
+    bar_width = 0.8
 
-    # Pivot the original dataframe for plotting
-    df_pivot = df.pivot(index="Taxa", columns="Threshold", values="Number_of_reads").fillna(0)
+    for i, taxon in enumerate(sorted_taxa):
+        heights = np.array([val[1] for val in incremental_data_by_taxon[taxon]])
+        bottoms = np.cumsum(heights) - heights
+        for j, (threshold, _) in enumerate(incremental_data_by_taxon[taxon]):
+            ax.bar(i, heights[j], bar_width, bottom=bottoms[j], color=colors[threshold], edgecolor='white')
 
-    # Reorder the DataFrame based on the sorted taxa
-    df_pivot = df_pivot.reindex(sorted_taxa)
-    print(df_pivot)
+    ax.set_xticks(range(len(sorted_taxa)))
+    ax.set_xticklabels(sorted_taxa, rotation=90, fontstyle='italic')
+    ax.set_ylabel('Number of Detected Reads')
+    ax.set_title('Detected Reads per Taxon by Posterior Odds Threshold', pad=20)
+    ax.legend([plt.Rectangle((0,0),1,1, color=colors[threshold[0]]) for threshold in thresholds], [f"Threshold {threshold[0]}" for threshold in thresholds], loc='upper left', bbox_to_anchor=(1,1))
 
-    # Proceed with plotting as before
-    df_pivot.plot(kind='bar', stacked=True, figsize=(14, 8), colormap=cm.viridis)
-    plt.title('Detected Reads per Taxon Across Thresholds')
-    plt.xlabel('Taxa')
-    plt.ylabel('Number of Reads')
-    plt.xticks(rotation=45)
-    plt.legend(title='Threshold', bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.tight_layout()
     plt.savefig("threshold_plot.png")
 
-
-# Specify the directory path containing your files
-directory_path = '.'
-
-# Read and parse the data
-df = read_and_parse_files(directory_path)
-
-# Plot the data
-plot_data(df)
+file_path = 'threshold_data.txt'  # Update with the path to your file
+data_by_taxon = load_data(file_path)
+incremental_data_by_taxon = calculate_incremental_reads(data_by_taxon)
+plot_data(incremental_data_by_taxon, data_by_taxon)
 
