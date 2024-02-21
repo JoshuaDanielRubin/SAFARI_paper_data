@@ -1,80 +1,62 @@
-import csv
-import numpy as np
 import matplotlib.pyplot as plt
+import re
 
-def calculate_metrics(TP, FP, TN, FN):
-    sensitivity = TP / (TP + FN) if TP + FN != 0 else 0
-    specificity = TN / (TN + FP) if TN + FP != 0 else 0
-    precision = TP / (TP + FP) if TP + FP != 0 else 0
-    accuracy = (TP + TN) / (TP + FP + TN + FN) if TP + FP + TN + FN != 0 else 0
-    f1_score = 2 * (precision * sensitivity) / (precision + sensitivity) if precision + sensitivity != 0 else 0
-    return f1_score, sensitivity, specificity, precision, accuracy
+def parse_f1_scores(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
 
-def rename_damage_level(level):
-    mapping = {
-        "none": "None",
-        "dmid": "Mid",
-        "dhigh": "High",
-        "single": "Single-stranded"
-    }
-    return mapping.get(level, level)
+    data = {}
+    current_damage = ''
+    for line in lines:
+        if 'Damage:' in line:
+            current_damage = line.split(':')[1].strip()
+            data[current_damage] = {}
+        elif 'Tool:' in line:
+            current_tool = line.split(':')[1].strip().lower()
+            data[current_damage][current_tool] = {'all': 0, 'mitochondrial': 0}
+        elif 'F1 Score:' in line:
+            score = float(line.split(':')[1].strip())
+            if '[Mitochondrial Reads]' in prev_line:
+                data[current_damage][current_tool]['mitochondrial'] = score
+            elif '[All Reads]' in prev_line:
+                data[current_damage][current_tool]['all'] = score
+        prev_line = line
+    return data
 
-def rename_aligner(aligner):
-    mapping = {
-        "safari": "SAFARI",
-        "bb": "BBMap",
-        "aln_anc": "BWA-aln (anc)",
-        "aln": "BWA-aln",
-        "mem": "BWA-MEM",
-        "Bowtie2": "Bowtie2",
-        "shrimp": "SHRiMP"
-    }
-    return mapping.get(aligner, aligner)
+def calculate_percent_changes(data):
+    percent_changes = {'all': {}, 'mitochondrial': {}}
+    for damage in data:
+        for read_type in ['all', 'mitochondrial']:
+            safari_score = data[damage]['safari'][read_type]
+            giraffe_score = data[damage]['giraffe'][read_type]
+            if giraffe_score != 0:  # Check to avoid division by zero
+                percent_change = ((safari_score - giraffe_score) / giraffe_score) * 100
+            else:
+                percent_change = None  # Or set to a default value or skip
+            percent_changes[read_type][damage] = percent_change
+    return percent_changes
 
-with open('alignment_stats.csv', 'r') as file:
-    csv_reader = csv.DictReader(file)
-    
-    summary = {}
-    
-    for row in csv_reader:
-        damage_type = rename_damage_level(row["Damage_Type"])
-        aligner = rename_aligner(row["Aligner_Name"])
-        
-        if damage_type not in summary:
-            summary[damage_type] = {}
-        
-        if aligner not in summary[damage_type]:
-            summary[damage_type][aligner] = {
-                "TP": 0, "FP": 0, "TN": 0, "FN": 0,
-                "TP_MQ30": 0, "FP_MQ30": 0, "TN_MQ30": 0, "FN_MQ30": 0, "Support": 0
-            }
+def plot_percent_changes(percent_changes):
+    fig, axs = plt.subplots(2, 1, figsize=(10, 8))
+    damage_levels = ['none', 'single', 'dmid', 'dhigh']
+    damage_labels = ['None', 'Single-stranded', 'Mid', 'High']
 
-        for key in ["TP", "FP", "TN", "FN", "TP_MQ30", "FP_MQ30", "TN_MQ30", "FN_MQ30"]:
-            summary[damage_type][aligner][key] += int(row[key])
+    for i, read_type in enumerate(['all', 'mitochondrial']):
+        changes = [percent_changes[read_type].get(damage, 0) for damage in damage_levels]  # Ensure valid number, using 0 as default
+        # Filter out None values to avoid TypeError, can also decide to skip plotting if None values are critical
+        changes = [change for change in changes if change is not None]
+        if changes:  # Check if there are valid changes to plot
+            axs[i].bar(damage_labels[:len(changes)], changes, color=['skyblue', 'lightgreen'][i])
+            axs[i].set_title(f'F1 Score Change ({read_type.capitalize()} Reads)')
+            axs[i].set_ylabel('Percent Change')
+            axs[i].set_xlabel('Damage Level')
 
-        # Add this line to calculate the support for each aligner and damage type:
-        summary[damage_type][aligner]["Support"] = summary[damage_type][aligner]["TP"] + summary[damage_type][aligner]["FP"] + summary[damage_type][aligner]["TN"] + summary[damage_type][aligner]["FN"]
+    plt.tight_layout()
+    plt.savefig("linear.png")
 
+# Adjust the file path as necessary
+file_path = 'linear_stats.txt'
+f1_scores = parse_f1_scores(file_path)
+percent_changes = calculate_percent_changes(f1_scores)
+plot_percent_changes(percent_changes)
 
-    aligner_order = ['SAFARI', 'giraffe'] + [aligner for aligner in summary[next(iter(summary))].keys() if aligner not in ['SAFARI', 'giraffe']]
-    metrics = ["F1 Score", "Sensitivity", "Specificity", "Precision", "Accuracy"]
-    
-    for damage_type in summary:
-        for metric_type, suffix in [("Overall", ""), ("MQ > 30", "_MQ30")]:
-            data_to_plot = {metric: [] for metric in metrics}
-            
-            # Check which aligners have data for this damage type
-            available_aligners = [aligner for aligner in aligner_order if aligner in summary[damage_type]]
-            
-            for aligner in available_aligners:
-                results = calculate_metrics(summary[damage_type][aligner]["TP" + suffix], summary[damage_type][aligner]["FP" + suffix], \
-                                            summary[damage_type][aligner]["TN" + suffix], summary[damage_type][aligner]["FN" + suffix])
-                
-                # Print metrics to terminal
-                print(f"Metrics for Damage Type: {damage_type}, Aligner: {aligner}, Metric Type: {metric_type}")
-                for metric, value in zip(metrics, results):
-                    print(f"{metric}: {value:.4f}")
-                print(f"Support: {summary[damage_type][aligner]['Support']}")
-                print("-" * 50)
-
-                
