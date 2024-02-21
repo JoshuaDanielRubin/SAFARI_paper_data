@@ -37,9 +37,10 @@ def calculate_incremental_reads(data_by_taxon):
 
 def plot_data(incremental_data_by_taxon, data_by_taxon):
     sorted_taxa = sorted(incremental_data_by_taxon.keys(), key=lambda x: data_by_taxon[x][0.0], reverse=True)
-    cmap = plt.get_cmap("coolwarm")
+    cmap = plt.get_cmap("jet")
     thresholds = sorted(list(next(iter(incremental_data_by_taxon.values()))), key=lambda x: x[0])
     colors = {t[0]: cmap(i / len(thresholds)) for i, t in enumerate(thresholds)}
+    print(colors)
 
     fig, ax = plt.subplots(figsize=(12, 8))
     bar_width = 0.8
