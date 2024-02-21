@@ -43,7 +43,7 @@ def plot_data(incremental_data_by_taxon, data_by_taxon):
     print(colors)
 
     fig, ax = plt.subplots(figsize=(12, 8))
-    bar_width = 0.8
+    bar_width = 1.0
 
     for i, taxon in enumerate(sorted_taxa):
         heights = np.array([val[1] for val in incremental_data_by_taxon[taxon]])
