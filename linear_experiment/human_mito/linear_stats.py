@@ -62,6 +62,7 @@ def plot_data(percent_increases):
     axs[1].set_yticks(y_positions_ordered)
     axs[1].set_yticklabels(damage_names, rotation=45)
     axs[1].set_xlabel('% Increase from Giraffe to SAFARI')
+    axs[1].set_ylabel('Damage Matrix')
     axs[1].set_title('Increase of F1 Score for All Reads')
     
     plt.tight_layout()
