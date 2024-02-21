@@ -40,13 +40,13 @@ def plot_data(incremental_data_by_taxon, data_by_taxon):
     cmap = plt.get_cmap("jet")
     thresholds = sorted(list(next(iter(incremental_data_by_taxon.values()))), key=lambda x: x[0])
     colors = {t[0]: cmap(i / len(thresholds)) for i, t in enumerate(thresholds)}
-    print(colors)
 
     fig, ax = plt.subplots(figsize=(12, 8), dpi=300)
     bar_width = 1.0
 
     for i, taxon in enumerate(sorted_taxa):
-        heights = np.array([val[1] for val in incremental_data_by_taxon[taxon]])
+        heights = np.array([max(0, val[1]) for val in incremental_data_by_taxon[taxon]])
+        print(taxon, heights)
         bottoms = np.cumsum(heights) - heights
         for j, (threshold, _) in enumerate(incremental_data_by_taxon[taxon]):
             ax.bar(i, heights[j], bar_width, bottom=bottoms[j], color=colors[threshold], edgecolor='white')
@@ -57,11 +57,11 @@ def plot_data(incremental_data_by_taxon, data_by_taxon):
     ax.set_xticks(range(len(sorted_taxa)))
     ax.set_xticklabels(sorted_taxa, rotation=90, fontstyle='italic')
     ax.set_ylabel('Number of Detected Reads')
-    ax.set_title('Detected Reads Per Taxon by Posterior Odds Threshold', pad=20)
+    ax.set_title('Detected Reads per Taxon by Posterior Odds Threshold', pad=20)
     ax.legend([plt.Rectangle((0,0),1,1, color=colors[threshold[0]]) for threshold in thresholds], [f"Threshold {threshold[0]}" for threshold in thresholds], loc='upper left', bbox_to_anchor=(1,1))
 
     plt.tight_layout()
-    plt.savefig("threshold_plot.png")
+    plt.savefig("threshold_plot1.png")
 
 file_path = 'threshold_data.txt'  # Update with the path to your file
 data_by_taxon = load_data(file_path)
