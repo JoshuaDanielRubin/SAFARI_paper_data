@@ -42,7 +42,7 @@ def plot_data(incremental_data_by_taxon, data_by_taxon):
     colors = {t[0]: cmap(i / len(thresholds)) for i, t in enumerate(thresholds)}
     print(colors)
 
-    fig, ax = plt.subplots(figsize=(12, 8))
+    fig, ax = plt.subplots(figsize=(12, 8), dpi=300)
     bar_width = 1.0
 
     for i, taxon in enumerate(sorted_taxa):
@@ -57,7 +57,7 @@ def plot_data(incremental_data_by_taxon, data_by_taxon):
     ax.set_xticks(range(len(sorted_taxa)))
     ax.set_xticklabels(sorted_taxa, rotation=90, fontstyle='italic')
     ax.set_ylabel('Number of Detected Reads')
-    ax.set_title('Detected Reads per Taxon by Posterior Odds Threshold', pad=20)
+    ax.set_title('Detected Reads Per Taxon by Posterior Odds Threshold', pad=20)
     ax.legend([plt.Rectangle((0,0),1,1, color=colors[threshold[0]]) for threshold in thresholds], [f"Threshold {threshold[0]}" for threshold in thresholds], loc='upper left', bbox_to_anchor=(1,1))
 
     plt.tight_layout()
