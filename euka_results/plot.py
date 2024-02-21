@@ -51,6 +51,9 @@ def plot_data(incremental_data_by_taxon, data_by_taxon):
         for j, (threshold, _) in enumerate(incremental_data_by_taxon[taxon]):
             ax.bar(i, heights[j], bar_width, bottom=bottoms[j], color=colors[threshold], edgecolor='white')
 
+      # Add a horizontal dashed line at y=50
+    ax.axhline(y=50, color='green', linestyle='--')
+
     ax.set_xticks(range(len(sorted_taxa)))
     ax.set_xticklabels(sorted_taxa, rotation=90, fontstyle='italic')
     ax.set_ylabel('Number of Detected Reads')
