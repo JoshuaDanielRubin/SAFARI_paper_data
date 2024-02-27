@@ -1,232 +1,172 @@
 Damage: dhigh
-Tool: mem
+Tool: aln
+  [Mitochondrial Reads]
+    Precision: 0.99906
+    Recall: 0.88166
+    F1 Score: 0.93670
+
+Tool: aln_anc
+  [Mitochondrial Reads]
+    Precision: 0.99909
+    Recall: 0.94651
+    F1 Score: 0.97209
+
+Tool: bb
   [Mitochondrial Reads]
     Precision: 0.99806
-    Recall: 0.91397
-    F1 Score: 0.95417
-  [Raw Counts]
-    Correct Mito Mappings: 1777574
-    Incorrect Mito Mappings: 3457
-    Mito Reads Mapped: 1777574
-    Mito Reads Unmapped: 167314
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7588520
-    Numt Reads Mapped: 3064
-    Numt Reads Unmapped: 25991
-  [All Reads]
-    Precision: 0.99828
-    Recall: 0.18589
-    F1 Score: 0.31342
+    Recall: 0.99401
+    F1 Score: 0.99603
+
+Tool: bowtie2
+  [Mitochondrial Reads]
+    Precision: 0.99898
+    Recall: 0.80312
+    F1 Score: 0.89041
 
 Tool: giraffe
   [Mitochondrial Reads]
-    Precision: 0.99773
-    Recall: 0.72173
-    F1 Score: 0.83758
-  [Raw Counts]
-    Correct Mito Mappings: 1403746
-    Incorrect Mito Mappings: 3191
-    Mito Reads Mapped: 1403746
-    Mito Reads Unmapped: 541221
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7588520
-    Numt Reads Mapped: 2671
-    Numt Reads Unmapped: 26384
-  [All Reads]
-    Precision: 0.99810
-    Recall: 0.14680
-    F1 Score: 0.25595
+    Precision: 0.99800
+    Recall: 0.78942
+    F1 Score: 0.88154
+
+Tool: mem
+  [Mitochondrial Reads]
+    Precision: 0.99828
+    Recall: 0.91883
+    F1 Score: 0.95691
 
 Tool: safari
   [Mitochondrial Reads]
-    Precision: 0.99775
-    Recall: 0.91055
-    F1 Score: 0.95216
-  [Raw Counts]
-    Correct Mito Mappings: 1770258
-    Incorrect Mito Mappings: 3994
-    Mito Reads Mapped: 1770258
-    Mito Reads Unmapped: 173906
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7588520
-    Numt Reads Mapped: 4907
-    Numt Reads Unmapped: 24148
-  [All Reads]
-    Precision: 0.99724
-    Recall: 0.18514
-    F1 Score: 0.31230
+    Precision: 0.99812
+    Recall: 0.93316
+    F1 Score: 0.96455
+
+Tool: shrimp
+  [Mitochondrial Reads]
+    Precision: 0.99857
+    Recall: 0.99695
+    F1 Score: 0.99776
 
 Damage: dmid
+Tool: aln
+  [Mitochondrial Reads]
+    Precision: 0.99917
+    Recall: 0.99636
+    F1 Score: 0.99776
+
+Tool: aln_anc
+  [Mitochondrial Reads]
+    Precision: 0.99916
+    Recall: 0.99685
+    F1 Score: 0.99801
+
+Tool: bb
+  [Mitochondrial Reads]
+    Precision: 0.99807
+    Recall: 0.99980
+    F1 Score: 0.99893
+
+Tool: bowtie2
+  [Mitochondrial Reads]
+    Precision: 0.99899
+    Recall: 0.99163
+    F1 Score: 0.99529
+
 Tool: mem
   [Mitochondrial Reads]
-    Precision: 0.99772
-    Recall: 0.99624
-    F1 Score: 0.99698
-  [Raw Counts]
-    Correct Mito Mappings: 1936650
-    Incorrect Mito Mappings: 4425
-    Mito Reads Mapped: 1936650
-    Mito Reads Unmapped: 7303
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7587504
-    Numt Reads Mapped: 4332
-    Numt Reads Unmapped: 24727
-  [All Reads]
-    Precision: 0.99777
-    Recall: 0.20257
-    F1 Score: 0.33676
+    Precision: 0.99824
+    Recall: 0.99724
+    F1 Score: 0.99774
 
-Tool: safari
+Tool: shrimp
   [Mitochondrial Reads]
-    Precision: 0.99772
-    Recall: 0.98441
-    F1 Score: 0.99102
-  [Raw Counts]
-    Correct Mito Mappings: 1913409
-    Incorrect Mito Mappings: 4367
-    Mito Reads Mapped: 1913409
-    Mito Reads Unmapped: 30298
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7587504
-    Numt Reads Mapped: 6503
-    Numt Reads Unmapped: 22556
-  [All Reads]
-    Precision: 0.99661
-    Recall: 0.20014
-    F1 Score: 0.33334
-
-Tool: giraffe
-  [Mitochondrial Reads]
-    Precision: 0.99773
-    Recall: 0.96113
-    F1 Score: 0.97909
-  [Raw Counts]
-    Correct Mito Mappings: 1868265
-    Incorrect Mito Mappings: 4247
-    Mito Reads Mapped: 1868265
-    Mito Reads Unmapped: 75562
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7587504
-    Numt Reads Mapped: 4011
-    Numt Reads Unmapped: 25048
-  [All Reads]
-    Precision: 0.99786
-    Recall: 0.19542
-    F1 Score: 0.32683
+    Precision: 0.99851
+    Recall: 0.99880
+    F1 Score: 0.99866
 
 Damage: none
-Tool: mem
+Tool: aln
   [Mitochondrial Reads]
-    Precision: 0.99767
-    Recall: 0.99829
-    F1 Score: 0.99798
-  [Raw Counts]
-    Correct Mito Mappings: 1940596
-    Incorrect Mito Mappings: 4540
-    Mito Reads Mapped: 1940596
-    Mito Reads Unmapped: 3333
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7588296
-    Numt Reads Mapped: 4707
-    Numt Reads Unmapped: 24460
-  [All Reads]
-    Precision: 0.99758
-    Recall: 0.20296
-    F1 Score: 0.33730
+    Precision: 0.99919
+    Recall: 0.99696
+    F1 Score: 0.99807
+
+Tool: aln_anc
+  [Mitochondrial Reads]
+    Precision: 0.99917
+    Recall: 0.99698
+    F1 Score: 0.99808
+
+Tool: bb
+  [Mitochondrial Reads]
+    Precision: 0.99811
+    Recall: 0.99979
+    F1 Score: 0.99895
+
+Tool: bowtie2
+  [Mitochondrial Reads]
+    Precision: 0.99899
+    Recall: 0.99691
+    F1 Score: 0.99795
 
 Tool: giraffe
   [Mitochondrial Reads]
-    Precision: 0.99770
-    Recall: 0.98944
-    F1 Score: 0.99356
-  [Raw Counts]
-    Correct Mito Mappings: 1923179
-    Incorrect Mito Mappings: 4426
-    Mito Reads Mapped: 1923179
-    Mito Reads Unmapped: 20522
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7588296
-    Numt Reads Mapped: 4181
-    Numt Reads Unmapped: 24986
-  [All Reads]
-    Precision: 0.99783
-    Recall: 0.20114
-    F1 Score: 0.33480
+    Precision: 0.99818
+    Recall: 0.99250
+    F1 Score: 0.99533
+
+Tool: mem
+  [Mitochondrial Reads]
+    Precision: 0.99819
+    Recall: 0.99885
+    F1 Score: 0.99852
 
 Tool: safari
   [Mitochondrial Reads]
-    Precision: 0.99771
-    Recall: 0.99042
-    F1 Score: 0.99405
-  [Raw Counts]
-    Correct Mito Mappings: 1925074
-    Incorrect Mito Mappings: 4428
-    Mito Reads Mapped: 1925074
-    Mito Reads Unmapped: 18625
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7588296
-    Numt Reads Mapped: 6520
-    Numt Reads Unmapped: 22647
-  [All Reads]
-    Precision: 0.99662
-    Recall: 0.20134
-    F1 Score: 0.33501
+    Precision: 0.99818
+    Recall: 0.99301
+    F1 Score: 0.99559
+
+Tool: shrimp
+  [Mitochondrial Reads]
+    Precision: 0.99847
+    Recall: 0.99893
+    F1 Score: 0.99870
 
 Damage: single
+Tool: aln
+  [Mitochondrial Reads]
+    Precision: 0.99920
+    Recall: 0.99677
+    F1 Score: 0.99798
+
+Tool: aln_anc
+  [Mitochondrial Reads]
+    Precision: 0.99919
+    Recall: 0.99681
+    F1 Score: 0.99800
+
+Tool: bb
+  [Mitochondrial Reads]
+    Precision: 0.99811
+    Recall: 0.99978
+    F1 Score: 0.99894
+
+Tool: bowtie2
+  [Mitochondrial Reads]
+    Precision: 0.99899
+    Recall: 0.99624
+    F1 Score: 0.99761
+
 Tool: mem
   [Mitochondrial Reads]
-    Precision: 0.99774
-    Recall: 0.99820
-    F1 Score: 0.99797
-  [Raw Counts]
-    Correct Mito Mappings: 1835278
-    Incorrect Mito Mappings: 4152
-    Mito Reads Mapped: 1835278
-    Mito Reads Unmapped: 3307
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 7091510
-    Numt Reads Mapped: 4423
-    Numt Reads Unmapped: 22759
-  [All Reads]
-    Precision: 0.99760
-    Recall: 0.20489
-    F1 Score: 0.33996
+    Precision: 0.99825
+    Recall: 0.99843
+    F1 Score: 0.99834
 
-Tool: safari
+Tool: shrimp
   [Mitochondrial Reads]
-    Precision: 0.99775
-    Recall: 0.98891
-    F1 Score: 0.99331
-  [Raw Counts]
-    Correct Mito Mappings: 1791588
-    Incorrect Mito Mappings: 4033
-    Mito Reads Mapped: 1791588
-    Mito Reads Unmapped: 20100
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 6965688
-    Numt Reads Mapped: 5911
-    Numt Reads Unmapped: 20805
-  [All Reads]
-    Precision: 0.99671
-    Recall: 0.20349
-    F1 Score: 0.33798
-
-Tool: giraffe
-  [Mitochondrial Reads]
-    Precision: 0.99774
-    Recall: 0.98371
-    F1 Score: 0.99068
-  [Raw Counts]
-    Correct Mito Mappings: 1782181
-    Incorrect Mito Mappings: 4033
-    Mito Reads Mapped: 1782181
-    Mito Reads Unmapped: 29507
-    Bacteria Reads Mapped: 0
-    Bacteria Reads Unmapped: 6965688
-    Numt Reads Mapped: 3773
-    Numt Reads Unmapped: 22943
-  [All Reads]
-    Precision: 0.99789
-    Recall: 0.20243
-    F1 Score: 0.33658
+    Precision: 0.99850
+    Recall: 0.99880
+    F1 Score: 0.99865
 
