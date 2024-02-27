@@ -66,7 +66,7 @@ def plot_data(percent_increases):
     axs[1].set_title('Increase of F1 Score for All Reads')
     
     plt.tight_layout()
-    plt.savefig("linear2.png")
+    plt.savefig("linear3.png")
 
 if __name__ == "__main__":
     file_path = 'linear_stats.txt'  # Update this path to your data file
