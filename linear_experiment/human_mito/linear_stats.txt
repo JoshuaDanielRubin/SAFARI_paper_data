@@ -1,172 +1,536 @@
 Damage: dhigh
 Tool: aln
   [Mitochondrial Reads]
-    Precision: 0.99906
-    Recall: 0.88166
-    F1 Score: 0.93670
+    Precision: 0.99894
+    Recall: 0.00809
+    F1 Score: 0.01605
+  [Raw Counts]
+    Correct mitochondrial mappings: 1880
+    Incorrect mitochondrial mappings: 2
+    Mito reads mapped: 1717019
+    Mito reads unmapped: 230461
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588520
+    NuMT reads mapped: 348
+    NuMT reads unmapped: 29342
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.54931
+    F1 Score: 0.70910
 
 Tool: aln_anc
   [Mitochondrial Reads]
-    Precision: 0.99909
-    Recall: 0.94651
-    F1 Score: 0.97209
+    Precision: 1.00000
+    Recall: 0.01866
+    F1 Score: 0.03664
+  [Raw Counts]
+    Correct mitochondrial mappings: 1981
+    Incorrect mitochondrial mappings: 0
+    Mito reads mapped: 1843243
+    Mito reads unmapped: 104163
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588520
+    NuMT reads mapped: 548
+    NuMT reads unmapped: 29142
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55333
+    F1 Score: 0.71244
 
 Tool: bb
   [Mitochondrial Reads]
-    Precision: 0.99806
-    Recall: 0.99401
-    F1 Score: 0.99603
+    Precision: 0.99859
+    Recall: 0.15442
+    F1 Score: 0.26747
+  [Raw Counts]
+    Correct mitochondrial mappings: 2128
+    Incorrect mitochondrial mappings: 3
+    Mito reads mapped: 1933671
+    Mito reads unmapped: 11653
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588520
+    NuMT reads mapped: 2480
+    NuMT reads unmapped: 27210
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55631
+    F1 Score: 0.71491
 
 Tool: bowtie2
   [Mitochondrial Reads]
-    Precision: 0.99898
-    Recall: 0.80312
-    F1 Score: 0.89041
+    Precision: 0.99841
+    Recall: 0.00652
+    F1 Score: 0.01296
+  [Raw Counts]
+    Correct mitochondrial mappings: 2517
+    Incorrect mitochondrial mappings: 4
+    Mito reads mapped: 1564077
+    Mito reads unmapped: 383424
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588453
+    NuMT reads mapped: 238
+    NuMT reads unmapped: 29452
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.54452
+    F1 Score: 0.70510
 
 Tool: giraffe
   [Mitochondrial Reads]
-    Precision: 0.99800
-    Recall: 0.78942
-    F1 Score: 0.88154
-
-Tool: mem
-  [Mitochondrial Reads]
-    Precision: 0.99828
-    Recall: 0.91883
-    F1 Score: 0.95691
-
-Tool: safari
-  [Mitochondrial Reads]
-    Precision: 0.99812
-    Recall: 0.93316
-    F1 Score: 0.96455
-
-Tool: shrimp
-  [Mitochondrial Reads]
-    Precision: 0.99857
-    Recall: 0.99695
-    F1 Score: 0.99776
-
-Damage: dmid
-Tool: aln
-  [Mitochondrial Reads]
-    Precision: 0.99917
-    Recall: 0.99636
-    F1 Score: 0.99776
-
-Tool: aln_anc
-  [Mitochondrial Reads]
-    Precision: 0.99916
-    Recall: 0.99685
-    F1 Score: 0.99801
-
-Tool: bb
-  [Mitochondrial Reads]
-    Precision: 0.99807
-    Recall: 0.99980
-    F1 Score: 0.99893
-
-Tool: bowtie2
-  [Mitochondrial Reads]
-    Precision: 0.99899
-    Recall: 0.99163
-    F1 Score: 0.99529
-
-Tool: mem
-  [Mitochondrial Reads]
-    Precision: 0.99824
-    Recall: 0.99724
-    F1 Score: 0.99774
-
-Tool: shrimp
-  [Mitochondrial Reads]
-    Precision: 0.99851
-    Recall: 0.99880
-    F1 Score: 0.99866
-
-Damage: none
-Tool: aln
-  [Mitochondrial Reads]
-    Precision: 0.99919
-    Recall: 0.99696
-    F1 Score: 0.99807
-
-Tool: aln_anc
-  [Mitochondrial Reads]
-    Precision: 0.99917
-    Recall: 0.99698
-    F1 Score: 0.99808
-
-Tool: bb
-  [Mitochondrial Reads]
-    Precision: 0.99811
-    Recall: 0.99979
-    F1 Score: 0.99895
-
-Tool: bowtie2
-  [Mitochondrial Reads]
-    Precision: 0.99899
-    Recall: 0.99691
-    F1 Score: 0.99795
-
-Tool: giraffe
-  [Mitochondrial Reads]
-    Precision: 0.99818
-    Recall: 0.99250
-    F1 Score: 0.99533
-
-Tool: mem
-  [Mitochondrial Reads]
-    Precision: 0.99819
-    Recall: 0.99885
-    F1 Score: 0.99852
-
-Tool: safari
-  [Mitochondrial Reads]
-    Precision: 0.99818
-    Recall: 0.99301
-    F1 Score: 0.99559
-
-Tool: shrimp
-  [Mitochondrial Reads]
-    Precision: 0.99847
-    Recall: 0.99893
-    F1 Score: 0.99870
-
-Damage: single
-Tool: aln
-  [Mitochondrial Reads]
-    Precision: 0.99920
-    Recall: 0.99677
-    F1 Score: 0.99798
-
-Tool: aln_anc
-  [Mitochondrial Reads]
-    Precision: 0.99919
-    Recall: 0.99681
-    F1 Score: 0.99800
-
-Tool: bb
-  [Mitochondrial Reads]
-    Precision: 0.99811
-    Recall: 0.99978
-    F1 Score: 0.99894
-
-Tool: bowtie2
-  [Mitochondrial Reads]
-    Precision: 0.99899
-    Recall: 0.99624
-    F1 Score: 0.99761
+    Precision: 0.99816
+    Recall: 0.03568
+    F1 Score: 0.06890
+  [Raw Counts]
+    Correct mitochondrial mappings: 15163
+    Incorrect mitochondrial mappings: 28
+    Mito reads mapped: 1536216
+    Mito reads unmapped: 409793
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588520
+    NuMT reads mapped: 1515
+    NuMT reads unmapped: 28175
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.54371
+    F1 Score: 0.70442
 
 Tool: mem
   [Mitochondrial Reads]
     Precision: 0.99825
-    Recall: 0.99843
-    F1 Score: 0.99834
+    Recall: 0.11781
+    F1 Score: 0.21075
+  [Raw Counts]
+    Correct mitochondrial mappings: 21094
+    Incorrect mitochondrial mappings: 37
+    Mito reads mapped: 1788175
+    Mito reads unmapped: 157958
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588520
+    NuMT reads mapped: 965
+    NuMT reads unmapped: 28725
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55159
+    F1 Score: 0.71100
+
+Tool: safari
+  [Mitochondrial Reads]
+    Precision: 0.99799
+    Recall: 0.12954
+    F1 Score: 0.22932
+  [Raw Counts]
+    Correct mitochondrial mappings: 19353
+    Incorrect mitochondrial mappings: 39
+    Mito reads mapped: 1815640
+    Mito reads unmapped: 130040
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588520
+    NuMT reads mapped: 2031
+    NuMT reads unmapped: 27659
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55250
+    F1 Score: 0.71176
 
 Tool: shrimp
   [Mitochondrial Reads]
-    Precision: 0.99850
-    Recall: 0.99880
-    F1 Score: 0.99865
+    Precision: 0.99880
+    Recall: 0.77764
+    F1 Score: 0.87445
+  [Raw Counts]
+    Correct mitochondrial mappings: 20735
+    Incorrect mitochondrial mappings: 25
+    Mito reads mapped: 1940381
+    Mito reads unmapped: 5929
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588520
+    NuMT reads mapped: 4210
+    NuMT reads unmapped: 25480
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55658
+    F1 Score: 0.71513
+
+Damage: dmid
+Tool: aln
+  [Mitochondrial Reads]
+    Precision: 0.99958
+    Recall: 0.25332
+    F1 Score: 0.40420
+  [Raw Counts]
+    Correct mitochondrial mappings: 2404
+    Incorrect mitochondrial mappings: 1
+    Mito reads mapped: 1940348
+    Mito reads unmapped: 7086
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7587504
+    NuMT reads mapped: 885
+    NuMT reads unmapped: 29157
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55647
+    F1 Score: 0.71504
+
+Tool: aln_anc
+  [Mitochondrial Reads]
+    Precision: 0.99909
+    Recall: 0.34860
+    F1 Score: 0.51686
+  [Raw Counts]
+    Correct mitochondrial mappings: 3281
+    Incorrect mitochondrial mappings: 3
+    Mito reads mapped: 1941294
+    Mito reads unmapped: 6131
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7587504
+    NuMT reads mapped: 1183
+    NuMT reads unmapped: 28859
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55651
+    F1 Score: 0.71507
+
+Tool: bb
+  [Mitochondrial Reads]
+    Precision: 0.99955
+    Recall: 0.84888
+    F1 Score: 0.91807
+  [Raw Counts]
+    Correct mitochondrial mappings: 2202
+    Incorrect mitochondrial mappings: 1
+    Mito reads mapped: 1944902
+    Mito reads unmapped: 392
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7587504
+    NuMT reads mapped: 4660
+    NuMT reads unmapped: 25382
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55675
+    F1 Score: 0.71527
+
+Tool: bowtie2
+  [Mitochondrial Reads]
+    Precision: 0.99941
+    Recall: 0.17321
+    F1 Score: 0.29525
+  [Raw Counts]
+    Correct mitochondrial mappings: 3415
+    Incorrect mitochondrial mappings: 2
+    Mito reads mapped: 1930795
+    Mito reads unmapped: 16301
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7587441
+    NuMT reads mapped: 619
+    NuMT reads unmapped: 29423
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55615
+    F1 Score: 0.71478
+
+Tool: mem
+  [Mitochondrial Reads]
+    Precision: 0.99864
+    Recall: 0.85505
+    F1 Score: 0.92129
+  [Raw Counts]
+    Correct mitochondrial mappings: 31689
+    Incorrect mitochondrial mappings: 43
+    Mito reads mapped: 1940509
+    Mito reads unmapped: 5372
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7587504
+    NuMT reads mapped: 2374
+    NuMT reads unmapped: 27668
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55653
+    F1 Score: 0.71509
+
+Tool: shrimp
+  [Mitochondrial Reads]
+    Precision: 0.99842
+    Recall: 0.92406
+    F1 Score: 0.95980
+  [Raw Counts]
+    Correct mitochondrial mappings: 28353
+    Incorrect mitochondrial mappings: 45
+    Mito reads mapped: 1943827
+    Mito reads unmapped: 2330
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7587504
+    NuMT reads mapped: 6455
+    NuMT reads unmapped: 23587
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55677
+    F1 Score: 0.71529
+
+Damage: none
+Tool: aln
+  [Mitochondrial Reads]
+    Precision: 0.99867
+    Recall: 0.27569
+    F1 Score: 0.43210
+  [Raw Counts]
+    Correct mitochondrial mappings: 2256
+    Incorrect mitochondrial mappings: 3
+    Mito reads mapped: 1941509
+    Mito reads unmapped: 5927
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588296
+    NuMT reads mapped: 773
+    NuMT reads unmapped: 28991
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55650
+    F1 Score: 0.71506
+
+Tool: aln_anc
+  [Mitochondrial Reads]
+    Precision: 1.00000
+    Recall: 0.27211
+    F1 Score: 0.42781
+  [Raw Counts]
+    Correct mitochondrial mappings: 2197
+    Incorrect mitochondrial mappings: 0
+    Mito reads mapped: 1941527
+    Mito reads unmapped: 5877
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588296
+    NuMT reads mapped: 1093
+    NuMT reads unmapped: 28671
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55651
+    F1 Score: 0.71507
+
+Tool: bb
+  [Mitochondrial Reads]
+    Precision: 0.99864
+    Recall: 0.84453
+    F1 Score: 0.91514
+  [Raw Counts]
+    Correct mitochondrial mappings: 2200
+    Incorrect mitochondrial mappings: 3
+    Mito reads mapped: 1944926
+    Mito reads unmapped: 405
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588296
+    NuMT reads mapped: 4553
+    NuMT reads unmapped: 25211
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55675
+    F1 Score: 0.71527
+
+Tool: bowtie2
+  [Mitochondrial Reads]
+    Precision: 0.99942
+    Recall: 0.36413
+    F1 Score: 0.53378
+  [Raw Counts]
+    Correct mitochondrial mappings: 3449
+    Incorrect mitochondrial mappings: 2
+    Mito reads mapped: 1941034
+    Mito reads unmapped: 6023
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588223
+    NuMT reads mapped: 559
+    NuMT reads unmapped: 29205
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55648
+    F1 Score: 0.71505
+
+Tool: giraffe
+  [Mitochondrial Reads]
+    Precision: 0.99829
+    Recall: 0.55385
+    F1 Score: 0.71244
+  [Raw Counts]
+    Correct mitochondrial mappings: 18117
+    Incorrect mitochondrial mappings: 31
+    Mito reads mapped: 1930905
+    Mito reads unmapped: 14594
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588296
+    NuMT reads mapped: 2767
+    NuMT reads unmapped: 26997
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55623
+    F1 Score: 0.71484
+
+Tool: mem
+  [Mitochondrial Reads]
+    Precision: 0.99834
+    Recall: 0.92685
+    F1 Score: 0.96127
+  [Raw Counts]
+    Correct mitochondrial mappings: 28344
+    Incorrect mitochondrial mappings: 47
+    Mito reads mapped: 1943575
+    Mito reads unmapped: 2237
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588296
+    NuMT reads mapped: 2310
+    NuMT reads unmapped: 27454
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55662
+    F1 Score: 0.71517
+
+Tool: safari
+  [Mitochondrial Reads]
+    Precision: 0.99836
+    Recall: 0.55689
+    F1 Score: 0.71497
+  [Raw Counts]
+    Correct mitochondrial mappings: 17087
+    Incorrect mitochondrial mappings: 28
+    Mito reads mapped: 1931903
+    Mito reads unmapped: 13596
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588296
+    NuMT reads mapped: 3362
+    NuMT reads unmapped: 26402
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55628
+    F1 Score: 0.71489
+
+Tool: shrimp
+  [Mitochondrial Reads]
+    Precision: 0.99824
+    Recall: 0.93868
+    F1 Score: 0.96755
+  [Raw Counts]
+    Correct mitochondrial mappings: 31843
+    Incorrect mitochondrial mappings: 56
+    Mito reads mapped: 1943962
+    Mito reads unmapped: 2080
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588296
+    NuMT reads mapped: 6264
+    NuMT reads unmapped: 23500
+  [All Reads]
+    Precision: 0.99999
+    Recall: 0.55676
+    F1 Score: 0.71528
+
+Damage: single
+Tool: aln
+  [Mitochondrial Reads]
+    Precision: 1.00000
+    Recall: 0.25324
+    F1 Score: 0.40413
+  [Raw Counts]
+    Correct mitochondrial mappings: 2132
+    Incorrect mitochondrial mappings: 0
+    Mito reads mapped: 1941260
+    Mito reads unmapped: 6287
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588464
+    NuMT reads mapped: 753
+    NuMT reads unmapped: 29445
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55649
+    F1 Score: 0.71505
+
+Tool: aln_anc
+  [Mitochondrial Reads]
+    Precision: 1.00000
+    Recall: 0.25545
+    F1 Score: 0.40695
+  [Raw Counts]
+    Correct mitochondrial mappings: 2132
+    Incorrect mitochondrial mappings: 0
+    Mito reads mapped: 1941311
+    Mito reads unmapped: 6214
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588464
+    NuMT reads mapped: 1084
+    NuMT reads unmapped: 29114
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55650
+    F1 Score: 0.71506
+
+Tool: bb
+  [Mitochondrial Reads]
+    Precision: 0.99907
+    Recall: 0.83555
+    F1 Score: 0.91002
+  [Raw Counts]
+    Correct mitochondrial mappings: 2139
+    Incorrect mitochondrial mappings: 2
+    Mito reads mapped: 1944993
+    Mito reads unmapped: 421
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588464
+    NuMT reads mapped: 4634
+    NuMT reads unmapped: 25564
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55675
+    F1 Score: 0.71527
+
+Tool: bowtie2
+  [Mitochondrial Reads]
+    Precision: 0.99881
+    Recall: 0.77495
+    F1 Score: 0.87276
+  [Raw Counts]
+    Correct mitochondrial mappings: 25224
+    Incorrect mitochondrial mappings: 30
+    Mito reads mapped: 1939822
+    Mito reads unmapped: 7325
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588397
+    NuMT reads mapped: 539
+    NuMT reads unmapped: 29659
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55643
+    F1 Score: 0.71501
+
+Tool: mem
+  [Mitochondrial Reads]
+    Precision: 0.99795
+    Recall: 0.87533
+    F1 Score: 0.93263
+  [Raw Counts]
+    Correct mitochondrial mappings: 21464
+    Incorrect mitochondrial mappings: 44
+    Mito reads mapped: 1942951
+    Mito reads unmapped: 3057
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588464
+    NuMT reads mapped: 2309
+    NuMT reads unmapped: 27889
+  [All Reads]
+    Precision: 1.00000
+    Recall: 0.55660
+    F1 Score: 0.71515
+
+Tool: shrimp
+  [Mitochondrial Reads]
+    Precision: 0.99824
+    Recall: 0.93157
+    F1 Score: 0.96376
+  [Raw Counts]
+    Correct mitochondrial mappings: 31843
+    Incorrect mitochondrial mappings: 56
+    Mito reads mapped: 1943856
+    Mito reads unmapped: 2339
+    Bacteria reads mapped: 0
+    Bacteria reads unmapped: 7588464
+    NuMT reads mapped: 6403
+    NuMT reads unmapped: 23795
+  [All Reads]
+    Precision: 0.99999
+    Recall: 0.55676
+    F1 Score: 0.71528
 
