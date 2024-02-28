@@ -1,0 +1,2669 @@
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+MinimizerHeader::sanitize(): Adjusting k from 100 to 31
+MinimizerHeader::sanitize(): Adjusting k from 100 to 31
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building MinimizerIndex with k = 31, w = 100
+Total count: 111960341
+DUMPING MINIMIZER HASH
+1413142 keys (1336436 unique)
+Minimizer occurrences: 1567840
+Load factor: 0.673839
+Construction so far: 1093.87 seconds
+Hash table size: 2097152
+Time usage: 1094.34 seconds
+Memory usage: 2.5588 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.min ../euka_dir/euka_db.og -k 100 -w 100"
+	User time (seconds): 8625.28
+	System time (seconds): 32.25
+	Percent of CPU this job got: 790%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 18:15.32
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2683100
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1337752
+	Voluntary context switches: 776
+	Involuntary context switches: 918895
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 143128
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+ 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building MinimizerIndex with k = 10, w = 10
+Total count: 73888168
+DUMPING MINIMIZER HASH
+230592 keys (33840 unique)
+Minimizer occurrences: 8343622
+Load factor: 0.439819
+Construction so far: 135.548 seconds
+Hash table size: 524288
+Time usage: 136.977 seconds
+Memory usage: 2.71881 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.min ../euka_dir/euka_db.og -k 10 -w 10"
+	User time (seconds): 958.94
+	System time (seconds): 5.38
+	Percent of CPU this job got: 696%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:18.42
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2850876
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1096199
+	Voluntary context switches: 5181
+	Involuntary context switches: 56163
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 425376
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building MinimizerIndex with k = 15, w = 15
+Total count: 90049077
+DUMPING MINIMIZER HASH
+3708164 keys (2713034 unique)
+Minimizer occurrences: 7314570
+Load factor: 0.442048
+Construction so far: 562.381 seconds
+Hash table size: 8388608
+Time usage: 567.209 seconds
+Memory usage: 2.96108 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.min ../euka_dir/euka_db.og -k 15 -w 15"
+	User time (seconds): 1600.37
+	System time (seconds): 7.85
+	Percent of CPU this job got: 279%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:35.01
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3104916
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1731856
+	Voluntary context switches: 7883
+	Involuntary context switches: 226350
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 755544
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building MinimizerIndex with k = 20, w = 20
+Total count: 100334200
+DUMPING MINIMIZER HASH
+4754202 keys (4135817 unique)
+Minimizer occurrences: 6391764
+Load factor: 0.566745
+Construction so far: 564.381 seconds
+Hash table size: 8388608
+Time usage: 567.143 seconds
+Memory usage: 2.87769 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.min ../euka_dir/euka_db.og -k 20 -w 20"
+	User time (seconds): 2335.12
+	System time (seconds): 6.88
+	Percent of CPU this job got: 408%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:32.71
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3017476
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1714693
+	Voluntary context switches: 4884
+	Involuntary context switches: 240512
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 639712
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building MinimizerIndex with k = 25, w = 25
+Total count: 107212876
+DUMPING MINIMIZER HASH
+4697926 keys (4294616 unique)
+Minimizer occurrences: 5604804
+Load factor: 0.560036
+Construction so far: 694.074 seconds
+Hash table size: 8388608
+Time usage: 695.95 seconds
+Memory usage: 2.8456 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.min ../euka_dir/euka_db.og -k 25 -w 25"
+	User time (seconds): 3257.23
+	System time (seconds): 10.06
+	Percent of CPU this job got: 468%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 11:37.63
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2983832
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1819816
+	Voluntary context switches: 3459
+	Involuntary context switches: 285346
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 592016
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building MinimizerIndex with k = 30, w = 30
+Total count: 111793067
+DUMPING MINIMIZER HASH
+4455487 keys (4191451 unique)
+Minimizer occurrences: 4983659
+Load factor: 0.531135
+Construction so far: 902.316 seconds
+Hash table size: 8388608
+Time usage: 904.722 seconds
+Memory usage: 2.82637 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.min ../euka_dir/euka_db.og -k 30 -w 30"
+	User time (seconds): 3808.86
+	System time (seconds): 10.01
+	Percent of CPU this job got: 421%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 15:06.77
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2963660
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2105905
+	Voluntary context switches: 3954
+	Involuntary context switches: 410812
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 565560
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building MinimizerIndex with k = 3, w = 3
+Total count: 39345178
+DUMPING MINIMIZER HASH
+32 keys (0 unique)
+Minimizer occurrences: 10452843
+Load factor: 0.03125
+Construction so far: 154.642 seconds
+Hash table size: 1024
+Time usage: 156.143 seconds
+Memory usage: 2.66436 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.min ../euka_dir/euka_db.og -k 3 -w 3"
+	User time (seconds): 311.14
+	System time (seconds): 6.28
+	Percent of CPU this job got: 195%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:42.35
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2793788
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1046458
+	Voluntary context switches: 20927
+	Involuntary context switches: 37450
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 490056
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+MinimizerHeader::sanitize(): Adjusting k from 50 to 31
+MinimizerHeader::sanitize(): Adjusting k from 50 to 31
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building MinimizerIndex with k = 31, w = 50
+Total count: 112087909
+DUMPING MINIMIZER HASH
+2773632 keys (2622021 unique)
+Minimizer occurrences: 3074680
+Load factor: 0.661285
+Construction so far: 1027.23 seconds
+Hash table size: 4194304
+Time usage: 1027.99 seconds
+Memory usage: 2.68938 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.min ../euka_dir/euka_db.og -k 50 -w 50"
+	User time (seconds): 5613.23
+	System time (seconds): 22.08
+	Percent of CPU this job got: 547%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 17:09.18
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2820024
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1627354
+	Voluntary context switches: 2342
+	Involuntary context switches: 885670
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 285744
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building MinimizerIndex with k = 5, w = 5
+Total count: 50399952
+DUMPING MINIMIZER HASH
+510 keys (3 unique)
+Minimizer occurrences: 9563796
+Load factor: 0.498047
+Construction so far: 182.122 seconds
+Hash table size: 1024
+Time usage: 184.338 seconds
+Memory usage: 2.64862 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.min ../euka_dir/euka_db.og -k 5 -w 5"
+	User time (seconds): 411.19
+	System time (seconds): 4.55
+	Percent of CPU this job got: 220%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:08.43
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2777284
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1244789
+	Voluntary context switches: 12351
+	Involuntary context switches: 53569
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 448384
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 10, w = 100
+Total count: 75273872
+DUMPING RYMER HASH
+1024 keys (0 unique)
+RYmer occurrences: 991451
+Load factor: 0.5
+Construction so far: 1818.45 seconds
+Hash table size: 2048
+Time usage: 1818.74 seconds
+Memory usage: 2.45137 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 10 -w 100"
+	User time (seconds): 9230.54
+	System time (seconds): 7.26
+	Percent of CPU this job got: 507%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 30:20.30
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2570452
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1155999
+	Voluntary context switches: 1463
+	Involuntary context switches: 810125
+	Swaps: 0
+	File system inputs: 8
+	File system outputs: 46632
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 10, w = 10
+Total count: 73886480
+DUMPING RYMER HASH
+1024 keys (0 unique)
+RYmer occurrences: 7696521
+Load factor: 0.5
+Construction so far: 246.314 seconds
+Hash table size: 2048
+Time usage: 247.613 seconds
+Memory usage: 2.60831 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 10 -w 10"
+	User time (seconds): 968.03
+	System time (seconds): 4.96
+	Percent of CPU this job got: 387%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:10.81
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2735012
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1044844
+	Voluntary context switches: 11648
+	Involuntary context switches: 91534
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 360928
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 10, w = 15
+Total count: 73821437
+DUMPING RYMER HASH
+1024 keys (0 unique)
+RYmer occurrences: 5546369
+Load factor: 0.5
+Construction so far: 345.78 seconds
+Hash table size: 2048
+Time usage: 346.539 seconds
+Memory usage: 2.55405 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 10 -w 15"
+	User time (seconds): 1229.67
+	System time (seconds): 5.70
+	Percent of CPU this job got: 353%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:49.28
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2678120
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1194704
+	Voluntary context switches: 9723
+	Involuntary context switches: 134703
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 260144
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 10, w = 20
+Total count: 74045052
+DUMPING RYMER HASH
+1024 keys (0 unique)
+RYmer occurrences: 4351709
+Load factor: 0.5
+Construction so far: 404.45 seconds
+Hash table size: 2048
+Time usage: 405.035 seconds
+Memory usage: 2.52639 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 10 -w 20"
+	User time (seconds): 1683.04
+	System time (seconds): 5.68
+	Percent of CPU this job got: 413%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:48.17
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2649116
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1163442
+	Voluntary context switches: 7534
+	Involuntary context switches: 167087
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 204144
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 10, w = 25
+Total count: 74166206
+DUMPING RYMER HASH
+1024 keys (0 unique)
+RYmer occurrences: 3583169
+Load factor: 0.5
+Construction so far: 447.56 seconds
+Hash table size: 2048
+Time usage: 448.136 seconds
+Memory usage: 2.50771 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 10 -w 25"
+	User time (seconds): 2040.39
+	System time (seconds): 4.73
+	Percent of CPU this job got: 453%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:31.02
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2629528
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1133391
+	Voluntary context switches: 6229
+	Involuntary context switches: 196152
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 168120
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 10, w = 30
+Total count: 74276932
+DUMPING RYMER HASH
+1024 keys (0 unique)
+RYmer occurrences: 3048973
+Load factor: 0.5
+Construction so far: 513.549 seconds
+Hash table size: 2048
+Time usage: 514.164 seconds
+Memory usage: 2.49388 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 10 -w 30"
+	User time (seconds): 2295.66
+	System time (seconds): 4.14
+	Percent of CPU this job got: 445%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:36.46
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2615024
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1010680
+	Voluntary context switches: 5332
+	Involuntary context switches: 225678
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 143080
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 10, w = 3
+Total count: 77197230
+DUMPING RYMER HASH
+1024 keys (0 unique)
+RYmer occurrences: 17885593
+Load factor: 0.5
+Construction so far: 239.97 seconds
+Hash table size: 2048
+Time usage: 241.213 seconds
+Memory usage: 2.85579 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 10 -w 3"
+	User time (seconds): 629.49
+	System time (seconds): 6.74
+	Percent of CPU this job got: 260%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:04.60
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2994516
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1437357
+	Voluntary context switches: 25452
+	Involuntary context switches: 70228
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 838544
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 10, w = 50
+Total count: 74605220
+DUMPING RYMER HASH
+1024 keys (0 unique)
+RYmer occurrences: 1911679
+Load factor: 0.5
+Construction so far: 1301.56 seconds
+Hash table size: 2048
+Time usage: 1302.07 seconds
+Memory usage: 2.46952 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 10 -w 50"
+	User time (seconds): 3999.34
+	System time (seconds): 14.16
+	Percent of CPU this job got: 306%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 21:47.54
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2589480
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1035765
+	Voluntary context switches: 3200
+	Involuntary context switches: 1085377
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 89768
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 10, w = 5
+Total count: 75320515
+DUMPING RYMER HASH
+1024 keys (0 unique)
+RYmer occurrences: 12865673
+Load factor: 0.5
+Construction so far: 185.285 seconds
+Hash table size: 2048
+Time usage: 187.074 seconds
+Memory usage: 2.73226 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 10 -w 5"
+	User time (seconds): 698.27
+	System time (seconds): 5.30
+	Percent of CPU this job got: 370%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:09.68
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2864984
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1100086
+	Voluntary context switches: 17218
+	Involuntary context switches: 67677
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 603232
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 15, w = 100
+Total count: 89947707
+DUMPING RYMER HASH
+32767 keys (3 unique)
+RYmer occurrences: 1211187
+Load factor: 0.499985
+Construction so far: 2776.75 seconds
+Hash table size: 65536
+Time usage: 2778.18 seconds
+Memory usage: 2.47279 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 15 -w 100"
+	User time (seconds): 8839.07
+	System time (seconds): 9.12
+	Percent of CPU this job got: 317%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 46:23.54
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2592908
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1371499
+	Voluntary context switches: 1896
+	Involuntary context switches: 1227042
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 61392
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 15, w = 10
+Total count: 90824823
+DUMPING RYMER HASH
+32768 keys (0 unique)
+RYmer occurrences: 9457765
+Load factor: 0.5
+Construction so far: 277.181 seconds
+Hash table size: 65536
+Time usage: 278.465 seconds
+Memory usage: 2.73359 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 15 -w 10"
+	User time (seconds): 1328.29
+	System time (seconds): 6.73
+	Percent of CPU this job got: 476%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:40.28
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2866372
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1356366
+	Voluntary context switches: 13236
+	Involuntary context switches: 113580
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 447952
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 15, w = 15
+Total count: 90050458
+DUMPING RYMER HASH
+32768 keys (0 unique)
+RYmer occurrences: 6790872
+Load factor: 0.5
+Construction so far: 452.418 seconds
+Hash table size: 65536
+Time usage: 453.933 seconds
+Memory usage: 2.65589 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 15 -w 15"
+	User time (seconds): 1559.79
+	System time (seconds): 4.59
+	Percent of CPU this job got: 341%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:37.76
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2784900
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1195002
+	Voluntary context switches: 10510
+	Involuntary context switches: 185070
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 322944
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 15, w = 20
+Total count: 89783050
+DUMPING RYMER HASH
+32768 keys (0 unique)
+RYmer occurrences: 5314848
+Load factor: 0.5
+Construction so far: 431.248 seconds
+Hash table size: 65536
+Time usage: 432.024 seconds
+Memory usage: 2.61028 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 15 -w 20"
+	User time (seconds): 2040.11
+	System time (seconds): 6.43
+	Percent of CPU this job got: 468%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:16.48
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2737072
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1269745
+	Voluntary context switches: 7771
+	Involuntary context switches: 213065
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 253752
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 15, w = 25
+Total count: 89683317
+DUMPING RYMER HASH
+32768 keys (0 unique)
+RYmer occurrences: 4370724
+Load factor: 0.5
+Construction so far: 639.564 seconds
+Hash table size: 65536
+Time usage: 640.462 seconds
+Memory usage: 2.58175 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 15 -w 25"
+	User time (seconds): 2559.45
+	System time (seconds): 6.57
+	Percent of CPU this job got: 398%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 10:43.74
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2707160
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1376354
+	Voluntary context switches: 6395
+	Involuntary context switches: 267669
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 209496
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 15, w = 30
+Total count: 89664257
+DUMPING RYMER HASH
+32768 keys (0 unique)
+RYmer occurrences: 3717248
+Load factor: 0.5
+Construction so far: 686.567 seconds
+Hash table size: 65536
+Time usage: 687.41 seconds
+Memory usage: 2.55811 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 15 -w 30"
+	User time (seconds): 2692.03
+	System time (seconds): 6.60
+	Percent of CPU this job got: 390%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 11:30.74
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2682372
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1232844
+	Voluntary context switches: 5951
+	Involuntary context switches: 293696
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 178864
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 15, w = 3
+Total count: 97843573
+DUMPING RYMER HASH
+32768 keys (0 unique)
+RYmer occurrences: 22223297
+Load factor: 0.5
+Construction so far: 338.833 seconds
+Hash table size: 65536
+Time usage: 342.67 seconds
+Memory usage: 3.0789 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 15 -w 3"
+	User time (seconds): 971.23
+	System time (seconds): 7.27
+	Percent of CPU this job got: 279%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:49.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3228456
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1682319
+	Voluntary context switches: 26917
+	Involuntary context switches: 111642
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1046336
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 15, w = 50
+Total count: 89669339
+DUMPING RYMER HASH
+32768 keys (0 unique)
+RYmer occurrences: 2331030
+Load factor: 0.5
+Construction so far: 1542.42 seconds
+Hash table size: 65536
+Time usage: 1543.96 seconds
+Memory usage: 2.51331 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 15 -w 50"
+	User time (seconds): 4386.96
+	System time (seconds): 7.98
+	Percent of CPU this job got: 283%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 25:48.20
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2635400
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1315738
+	Voluntary context switches: 3456
+	Involuntary context switches: 686023
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 113888
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 15, w = 5
+Total count: 93841519
+DUMPING RYMER HASH
+32768 keys (0 unique)
+RYmer occurrences: 15906168
+Load factor: 0.5
+Construction so far: 363.185 seconds
+Hash table size: 65536
+Time usage: 365.498 seconds
+Memory usage: 2.90766 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 15 -w 5"
+	User time (seconds): 1070.72
+	System time (seconds): 7.50
+	Percent of CPU this job got: 291%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:09.98
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3048904
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1610698
+	Voluntary context switches: 20249
+	Involuntary context switches: 130140
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 750224
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 20, w = 100
+Total count: 99787796
+DUMPING RYMER HASH
+571547 keys (286669 unique)
+RYmer occurrences: 1351855
+Load factor: 0.54507
+Construction so far: 2582.33 seconds
+Hash table size: 1048576
+Time usage: 2583.6 seconds
+Memory usage: 2.52523 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 20 -w 100"
+	User time (seconds): 9194.76
+	System time (seconds): 9.46
+	Percent of CPU this job got: 355%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 43:06.55
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2647896
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1773200
+	Voluntary context switches: 2280
+	Involuntary context switches: 1120077
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 119928
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 20, w = 10
+Total count: 102327096
+DUMPING RYMER HASH
+1028456 keys (50953 unique)
+RYmer occurrences: 10748940
+Load factor: 0.490406
+Construction so far: 539.775 seconds
+Hash table size: 2097152
+Time usage: 544.877 seconds
+Memory usage: 2.92065 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 20 -w 10"
+	User time (seconds): 1586.53
+	System time (seconds): 6.33
+	Percent of CPU this job got: 289%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:10.75
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3062528
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1375050
+	Voluntary context switches: 14853
+	Involuntary context switches: 213022
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 647824
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 20, w = 15
+Total count: 100906502
+DUMPING RYMER HASH
+1001054 keys (95785 unique)
+RYmer occurrences: 7684129
+Load factor: 0.47734
+Construction so far: 661.863 seconds
+Hash table size: 2097152
+Time usage: 666.124 seconds
+Memory usage: 2.81201 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 20 -w 15"
+	User time (seconds): 1909.18
+	System time (seconds): 6.66
+	Percent of CPU this job got: 284%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 11:12.88
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2948604
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1686766
+	Voluntary context switches: 10937
+	Involuntary context switches: 264155
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 500936
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 20, w = 20
+Total count: 100335729
+DUMPING RYMER HASH
+968951 keys (136418 unique)
+RYmer occurrences: 6002524
+Load factor: 0.462032
+Construction so far: 414.971 seconds
+Hash table size: 2097152
+Time usage: 416.869 seconds
+Memory usage: 2.75039 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 20 -w 20"
+	User time (seconds): 2543.78
+	System time (seconds): 5.22
+	Percent of CPU this job got: 607%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:59.78
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2883988
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1028658
+	Voluntary context switches: 6402
+	Involuntary context switches: 193973
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 419064
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 20, w = 25
+Total count: 100071565
+DUMPING RYMER HASH
+935164 keys (170937 unique)
+RYmer occurrences: 4927814
+Load factor: 0.445921
+Construction so far: 768.08 seconds
+Hash table size: 2097152
+Time usage: 769.507 seconds
+Memory usage: 2.71299 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 20 -w 25"
+	User time (seconds): 2837.26
+	System time (seconds): 8.08
+	Percent of CPU this job got: 367%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 12:54.06
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2844780
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1458375
+	Voluntary context switches: 7045
+	Involuntary context switches: 324916
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 366000
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 20, w = 30
+Total count: 99899492
+DUMPING RYMER HASH
+901231 keys (198118 unique)
+RYmer occurrences: 4182110
+Load factor: 0.42974
+Construction so far: 577.714 seconds
+Hash table size: 2097152
+Time usage: 579.632 seconds
+Memory usage: 2.68627 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 20 -w 30"
+	User time (seconds): 3233.26
+	System time (seconds): 6.23
+	Percent of CPU this job got: 555%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:42.93
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2816756
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1434620
+	Voluntary context switches: 5514
+	Involuntary context switches: 257843
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 328816
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 20, w = 3
+Total count: 111737870
+DUMPING RYMER HASH
+1047939 keys (2928 unique)
+RYmer occurrences: 25581664
+Load factor: 0.499696
+Construction so far: 368.52 seconds
+Hash table size: 2097152
+Time usage: 374.255 seconds
+Memory usage: 3.47042 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 20 -w 3"
+	User time (seconds): 1150.26
+	System time (seconds): 7.21
+	Percent of CPU this job got: 304%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:19.79
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3639004
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1899344
+	Voluntary context switches: 26543
+	Involuntary context switches: 130596
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1346416
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 20, w = 50
+Total count: 99682767
+DUMPING RYMER HASH
+779494 keys (263471 unique)
+RYmer occurrences: 2613350
+Load factor: 0.743383
+Construction so far: 1424.03 seconds
+Hash table size: 1048576
+Time usage: 1426.37 seconds
+Memory usage: 2.56921 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 20 -w 50"
+	User time (seconds): 4689.87
+	System time (seconds): 7.16
+	Percent of CPU this job got: 328%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 23:51.94
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2694008
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1307715
+	Voluntary context switches: 3754
+	Involuntary context switches: 609346
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 183760
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 20, w = 5
+Total count: 106605746
+DUMPING RYMER HASH
+1045335 keys (11579 unique)
+RYmer occurrences: 18215361
+Load factor: 0.498455
+Construction so far: 436.748 seconds
+Hash table size: 2097152
+Time usage: 445.044 seconds
+Memory usage: 3.19427 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 20 -w 5"
+	User time (seconds): 1263.98
+	System time (seconds): 9.20
+	Percent of CPU this job got: 280%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:34.20
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3349432
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1878890
+	Voluntary context switches: 23058
+	Involuntary context switches: 157304
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1000536
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 25, w = 100
+Total count: 106459380
+DUMPING RYMER HASH
+1094585 keys (931279 unique)
+RYmer occurrences: 1453237
+Load factor: 0.521939
+Construction so far: 1817.24 seconds
+Hash table size: 2097152
+Time usage: 1817.98 seconds
+Memory usage: 2.56769 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 25 -w 100"
+	User time (seconds): 10433.14
+	System time (seconds): 12.17
+	Percent of CPU this job got: 574%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 30:19.38
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2692416
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1623345
+	Voluntary context switches: 2182
+	Involuntary context switches: 790496
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 158104
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 25, w = 10
+Total count: 110242758
+DUMPING RYMER HASH
+6427049 keys (4521497 unique)
+RYmer occurrences: 11704257
+Load factor: 0.766164
+Construction so far: 577.522 seconds
+Hash table size: 8388608
+Time usage: 585.152 seconds
+Memory usage: 3.0548 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 25 -w 10"
+	User time (seconds): 2098.01
+	System time (seconds): 7.49
+	Percent of CPU this job got: 353%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:54.96
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3203188
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1887731
+	Voluntary context switches: 11875
+	Involuntary context switches: 236965
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 890768
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 25, w = 15
+Total count: 108445950
+DUMPING RYMER HASH
+4925727 keys (3626177 unique)
+RYmer occurrences: 8332813
+Load factor: 0.587192
+Construction so far: 415.152 seconds
+Hash table size: 8388608
+Time usage: 420.208 seconds
+Memory usage: 2.96795 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 25 -w 15"
+	User time (seconds): 2337.61
+	System time (seconds): 8.12
+	Percent of CPU this job got: 554%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:02.95
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3112116
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1787057
+	Voluntary context switches: 7316
+	Involuntary context switches: 172517
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 765232
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 25, w = 20
+Total count: 107657727
+DUMPING RYMER HASH
+4025042 keys (3048865 unique)
+RYmer occurrences: 6488803
+Load factor: 0.479822
+Construction so far: 817.193 seconds
+Hash table size: 8388608
+Time usage: 823.707 seconds
+Memory usage: 2.92245 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 25 -w 20"
+	User time (seconds): 2688.70
+	System time (seconds): 7.67
+	Percent of CPU this job got: 325%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 13:49.35
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3064412
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1881470
+	Voluntary context switches: 7827
+	Involuntary context switches: 338490
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 700800
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 25, w = 25
+Total count: 107210111
+DUMPING RYMER HASH
+3417481 keys (2641710 unique)
+RYmer occurrences: 5321098
+Load factor: 0.407395
+Construction so far: 942.103 seconds
+Hash table size: 8388608
+Time usage: 946.866 seconds
+Memory usage: 2.89465 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 25 -w 25"
+	User time (seconds): 3011.63
+	System time (seconds): 8.91
+	Percent of CPU this job got: 317%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 15:51.91
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3035264
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1743890
+	Voluntary context switches: 6174
+	Involuntary context switches: 397449
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 662016
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 25, w = 30
+Total count: 106947517
+DUMPING RYMER HASH
+2975770 keys (2336222 unique)
+RYmer occurrences: 4510849
+Load factor: 0.709479
+Construction so far: 982.834 seconds
+Hash table size: 4194304
+Time usage: 985.664 seconds
+Memory usage: 2.75025 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 25 -w 30"
+	User time (seconds): 3783.88
+	System time (seconds): 8.28
+	Percent of CPU this job got: 383%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 16:29.07
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2883844
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1712109
+	Voluntary context switches: 5313
+	Involuntary context switches: 411541
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 374088
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 25, w = 3
+Total count: 121707371
+DUMPING RYMER HASH
+12165386 keys (7218679 unique)
+RYmer occurrences: 28218325
+Load factor: 0.725114
+Construction so far: 325.716 seconds
+Hash table size: 16777216
+Time usage: 331.532 seconds
+Memory usage: 3.79913 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 25 -w 3"
+	User time (seconds): 1538.85
+	System time (seconds): 11.62
+	Percent of CPU this job got: 462%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:35.59
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3983672
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2973972
+	Voluntary context switches: 21976
+	Involuntary context switches: 132427
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 2110240
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 25, w = 50
+Total count: 106607450
+DUMPING RYMER HASH
+1980096 keys (1615838 unique)
+RYmer occurrences: 2812180
+Load factor: 0.472092
+Construction so far: 1512.65 seconds
+Hash table size: 4194304
+Time usage: 1515.77 seconds
+Memory usage: 2.71677 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 25 -w 50"
+	User time (seconds): 5165.91
+	System time (seconds): 7.39
+	Percent of CPU this job got: 340%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 25:18.65
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2848740
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1712532
+	Voluntary context switches: 3636
+	Involuntary context switches: 652828
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 323928
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 25, w = 5
+Total count: 115661069
+DUMPING RYMER HASH
+9565875 keys (6140133 unique)
+RYmer occurrences: 19979539
+Load factor: 0.570171
+Construction so far: 496.364 seconds
+Hash table size: 16777216
+Time usage: 510.812 seconds
+Memory usage: 3.54404 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 25 -w 5"
+	User time (seconds): 1741.54
+	System time (seconds): 11.78
+	Percent of CPU this job got: 335%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:41.94
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3716196
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2947491
+	Voluntary context switches: 18274
+	Involuntary context switches: 192374
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1750840
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 30, w = 100
+Total count: 111215577
+DUMPING RYMER HASH
+1277508 keys (1151525 unique)
+RYmer occurrences: 1532140
+Load factor: 0.609163
+Construction so far: 954.356 seconds
+Hash table size: 2097152
+Time usage: 954.98 seconds
+Memory usage: 2.5629 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 30 -w 100"
+	User time (seconds): 9238.60
+	System time (seconds): 13.76
+	Percent of CPU this job got: 967%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 15:56.03
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2687396
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1397361
+	Voluntary context switches: 1416
+	Involuntary context switches: 497476
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 150896
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 30, w = 10
+Total count: 115769422
+DUMPING RYMER HASH
+8841295 keys (7451587 unique)
+RYmer occurrences: 12470113
+Load factor: 0.526982
+Construction so far: 372.653 seconds
+Hash table size: 16777216
+Time usage: 379.624 seconds
+Memory usage: 3.22895 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 30 -w 10"
+	User time (seconds): 2345.80
+	System time (seconds): 10.49
+	Percent of CPU this job got: 612%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:24.45
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3385800
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2579275
+	Voluntary context switches: 10186
+	Involuntary context switches: 156626
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1305544
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 30, w = 15
+Total count: 113671347
+DUMPING RYMER HASH
+6481292 keys (5521127 unique)
+RYmer occurrences: 8850187
+Load factor: 0.386315
+Construction so far: 800.718 seconds
+Hash table size: 16777216
+Time usage: 808.95 seconds
+Memory usage: 3.28839 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 30 -w 15"
+	User time (seconds): 2622.43
+	System time (seconds): 9.01
+	Percent of CPU this job got: 323%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 13:34.49
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3448132
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 2312466
+	Voluntary context switches: 10531
+	Involuntary context switches: 328625
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 1219640
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 30, w = 20
+Total count: 112655028
+DUMPING RYMER HASH
+5154205 keys (4425980 unique)
+RYmer occurrences: 6876741
+Load factor: 0.614429
+Construction so far: 472.69 seconds
+Hash table size: 8388608
+Time usage: 475.231 seconds
+Memory usage: 2.88647 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 30 -w 20"
+	User time (seconds): 3156.62
+	System time (seconds): 8.51
+	Percent of CPU this job got: 662%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:57.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3026688
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1513341
+	Voluntary context switches: 5701
+	Involuntary context switches: 198790
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 650560
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 30, w = 25
+Total count: 112107455
+DUMPING RYMER HASH
+4297582 keys (3715002 unique)
+RYmer occurrences: 5633644
+Load factor: 0.512312
+Construction so far: 515.012 seconds
+Hash table size: 8388608
+Time usage: 517.046 seconds
+Memory usage: 2.86762 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 30 -w 25"
+	User time (seconds): 3573.47
+	System time (seconds): 9.16
+	Percent of CPU this job got: 690%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:38.55
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 3006916
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1687709
+	Voluntary context switches: 4931
+	Involuntary context switches: 213226
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 623336
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 30, w = 30
+Total count: 111793910
+DUMPING RYMER HASH
+3692983 keys (3210064 unique)
+RYmer occurrences: 4774689
+Load factor: 0.440238
+Construction so far: 836.217 seconds
+Hash table size: 8388608
+Time usage: 838.4 seconds
+Memory usage: 2.85538 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 30 -w 30"
+	User time (seconds): 4192.73
+	System time (seconds): 9.68
+	Percent of CPU this job got: 500%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 14:00.18
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2994084
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1942207
+	Voluntary context switches: 4333
+	Involuntary context switches: 433486
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 605184
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 30, w = 3
+Total count: 128910121
+DUMPING RYMER HASH
+19818392 keys (16274142 unique)
+RYmer occurrences: 30410784
+Load factor: 0.590634
+Construction so far: 492.091 seconds
+Hash table size: 33554432
+Time usage: 520.003 seconds
+Memory usage: 4.05555 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 30 -w 3"
+	User time (seconds): 1956.24
+	System time (seconds): 15.90
+	Percent of CPU this job got: 372%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:49.43
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4252548
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 4728923
+	Voluntary context switches: 23285
+	Involuntary context switches: 198444
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 2815216
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 30, w = 50
+Total count: 111333338
+DUMPING RYMER HASH
+2380931 keys (2102553 unique)
+RYmer occurrences: 2969955
+Load factor: 0.567658
+Construction so far: 940.644 seconds
+Hash table size: 4194304
+Time usage: 941.505 seconds
+Memory usage: 2.70531 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 30 -w 50"
+	User time (seconds): 5596.63
+	System time (seconds): 9.79
+	Percent of CPU this job got: 594%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 15:43.06
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2836728
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1617542
+	Voluntary context switches: 2775
+	Involuntary context switches: 555222
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 307168
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 30, w = 5
+Total count: 121857229
+DUMPING RYMER HASH
+14421473 keys (11961860 unique)
+RYmer occurrences: 21425436
+Load factor: 0.429793
+Construction so far: 681.976 seconds
+Hash table size: 33554432
+Time usage: 696.042 seconds
+Memory usage: 4.11146 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 30 -w 5"
+	User time (seconds): 1914.43
+	System time (seconds): 11.89
+	Percent of CPU this job got: 271%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 11:48.58
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 4311176
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3667874
+	Voluntary context switches: 17658
+	Involuntary context switches: 264290
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 2579200
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 3, w = 100
+Total count: 88412626
+DUMPING RYMER HASH
+8 keys (0 unique)
+RYmer occurrences: 866384
+Load factor: 0.0078125
+Construction so far: 2208.9 seconds
+Hash table size: 1024
+Time usage: 2209.4 seconds
+Memory usage: 2.44268 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 3 -w 100"
+	User time (seconds): 7948.36
+	System time (seconds): 44.31
+	Percent of CPU this job got: 360%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 36:58.60
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2561332
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1193407
+	Voluntary context switches: 4648
+	Involuntary context switches: 1486635
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 40688
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 3, w = 10
+Total count: 44791314
+DUMPING RYMER HASH
+8 keys (0 unique)
+RYmer occurrences: 4287878
+Load factor: 0.0078125
+Construction so far: 159.655 seconds
+Hash table size: 1024
+Time usage: 160.373 seconds
+Memory usage: 2.51527 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 3 -w 10"
+	User time (seconds): 525.60
+	System time (seconds): 6.00
+	Percent of CPU this job got: 325%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:43.17
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2637448
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1084191
+	Voluntary context switches: 12120
+	Involuntary context switches: 56704
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 201072
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 3, w = 15
+Total count: 50518827
+DUMPING RYMER HASH
+8 keys (0 unique)
+RYmer occurrences: 3379882
+Load factor: 0.0078125
+Construction so far: 258.748 seconds
+Hash table size: 1024
+Time usage: 259.641 seconds
+Memory usage: 2.49991 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 3 -w 15"
+	User time (seconds): 885.98
+	System time (seconds): 5.24
+	Percent of CPU this job got: 337%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:24.29
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2621348
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1009954
+	Voluntary context switches: 13448
+	Involuntary context switches: 99301
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 158512
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 3, w = 20
+Total count: 55254361
+DUMPING RYMER HASH
+8 keys (0 unique)
+RYmer occurrences: 2861589
+Load factor: 0.0078125
+Construction so far: 275.648 seconds
+Hash table size: 1024
+Time usage: 276.097 seconds
+Memory usage: 2.49073 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 3 -w 20"
+	User time (seconds): 1167.94
+	System time (seconds): 5.69
+	Percent of CPU this job got: 421%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:38.40
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2611724
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1010439
+	Voluntary context switches: 10533
+	Involuntary context switches: 115258
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 134216
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 3, w = 25
+Total count: 59029590
+DUMPING RYMER HASH
+8 keys (0 unique)
+RYmer occurrences: 2497195
+Load factor: 0.0078125
+Construction so far: 443.865 seconds
+Hash table size: 1024
+Time usage: 444.4 seconds
+Memory usage: 2.47817 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 3 -w 25"
+	User time (seconds): 1613.31
+	System time (seconds): 6.52
+	Percent of CPU this job got: 361%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:28.19
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2598552
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1030426
+	Voluntary context switches: 10378
+	Involuntary context switches: 181429
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 117136
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 3, w = 30
+Total count: 61901518
+DUMPING RYMER HASH
+8 keys (0 unique)
+RYmer occurrences: 2225557
+Load factor: 0.0078125
+Construction so far: 423.965 seconds
+Hash table size: 1024
+Time usage: 424.132 seconds
+Memory usage: 2.47165 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 3 -w 30"
+	User time (seconds): 1817.18
+	System time (seconds): 6.65
+	Percent of CPU this job got: 427%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:06.89
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2591716
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1053967
+	Voluntary context switches: 8559
+	Involuntary context switches: 185625
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 104400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 3, w = 3
+Total count: 39344848
+DUMPING RYMER HASH
+8 keys (0 unique)
+RYmer occurrences: 9595469
+Load factor: 0.0078125
+Construction so far: 119.4 seconds
+Hash table size: 1024
+Time usage: 120.942 seconds
+Memory usage: 2.63562 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 3 -w 3"
+	User time (seconds): 310.42
+	System time (seconds): 6.41
+	Percent of CPU this job got: 253%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:05.12
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2763648
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1209599
+	Voluntary context switches: 24331
+	Involuntary context switches: 33049
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 449864
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 3, w = 50
+Total count: 69552538
+DUMPING RYMER HASH
+8 keys (0 unique)
+RYmer occurrences: 1537786
+Load factor: 0.0078125
+Construction so far: 733.462 seconds
+Hash table size: 1024
+Time usage: 733.881 seconds
+Memory usage: 2.45642 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 3 -w 50"
+	User time (seconds): 3399.11
+	System time (seconds): 7.39
+	Percent of CPU this job got: 461%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 12:17.69
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2575744
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1024702
+	Voluntary context switches: 5785
+	Involuntary context switches: 333694
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 72160
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 3, w = 5
+Total count: 40026146
+DUMPING RYMER HASH
+8 keys (0 unique)
+RYmer occurrences: 6890786
+Load factor: 0.0078125
+Construction so far: 116.584 seconds
+Hash table size: 1024
+Time usage: 117.499 seconds
+Memory usage: 2.58681 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 3 -w 5"
+	User time (seconds): 330.66
+	System time (seconds): 6.37
+	Percent of CPU this job got: 277%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:01.51
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2712464
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1096452
+	Voluntary context switches: 17488
+	Involuntary context switches: 34342
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 323080
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 5, w = 100
+Total count: 60495460
+DUMPING RYMER HASH
+32 keys (0 unique)
+RYmer occurrences: 759529
+Load factor: 0.03125
+Construction so far: 2108.51 seconds
+Hash table size: 1024
+Time usage: 2108.68 seconds
+Memory usage: 2.44016 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 5 -w 100"
+	User time (seconds): 8662.14
+	System time (seconds): 7.65
+	Percent of CPU this job got: 410%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 35:11.40
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2558688
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1345830
+	Voluntary context switches: 1454
+	Involuntary context switches: 920615
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 35680
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 5, w = 10
+Total count: 51655718
+DUMPING RYMER HASH
+32 keys (0 unique)
+RYmer occurrences: 5334063
+Load factor: 0.03125
+Construction so far: 247.556 seconds
+Hash table size: 1024
+Time usage: 248.373 seconds
+Memory usage: 2.54183 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 5 -w 10"
+	User time (seconds): 665.61
+	System time (seconds): 10.52
+	Percent of CPU this job got: 266%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 4:13.66
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2665300
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1188050
+	Voluntary context switches: 12059
+	Involuntary context switches: 112044
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 250112
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 5, w = 15
+Total count: 52763816
+DUMPING RYMER HASH
+32 keys (0 unique)
+RYmer occurrences: 3890430
+Load factor: 0.03125
+Construction so far: 313.986 seconds
+Hash table size: 1024
+Time usage: 314.804 seconds
+Memory usage: 2.50878 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 5 -w 15"
+	User time (seconds): 937.24
+	System time (seconds): 10.96
+	Percent of CPU this job got: 297%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 5:18.93
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2630644
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 988745
+	Voluntary context switches: 9885
+	Involuntary context switches: 150595
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 182440
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 5, w = 20
+Total count: 53851110
+DUMPING RYMER HASH
+32 keys (0 unique)
+RYmer occurrences: 3085442
+Load factor: 0.03125
+Construction so far: 383.09 seconds
+Hash table size: 1024
+Time usage: 383.242 seconds
+Memory usage: 2.49005 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 5 -w 20"
+	User time (seconds): 1276.12
+	System time (seconds): 12.60
+	Percent of CPU this job got: 332%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 6:27.75
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2611008
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1240249
+	Voluntary context switches: 7339
+	Involuntary context switches: 203811
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 144704
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 5, w = 25
+Total count: 54867460
+DUMPING RYMER HASH
+32 keys (0 unique)
+RYmer occurrences: 2567277
+Load factor: 0.03125
+Construction so far: 515.756 seconds
+Hash table size: 1024
+Time usage: 516.13 seconds
+Memory usage: 2.47948 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 5 -w 25"
+	User time (seconds): 1763.30
+	System time (seconds): 4.94
+	Percent of CPU this job got: 339%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:40.11
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2599920
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 998739
+	Voluntary context switches: 6460
+	Involuntary context switches: 208269
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 120416
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 5, w = 30
+Total count: 55683945
+DUMPING RYMER HASH
+32 keys (0 unique)
+RYmer occurrences: 2209955
+Load factor: 0.03125
+Construction so far: 473.335 seconds
+Hash table size: 1024
+Time usage: 473.762 seconds
+Memory usage: 2.47073 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 5 -w 30"
+	User time (seconds): 1964.75
+	System time (seconds): 5.69
+	Percent of CPU this job got: 413%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 7:56.52
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2590744
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1079467
+	Voluntary context switches: 4934
+	Involuntary context switches: 195834
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 103672
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 5, w = 3
+Total count: 50432733
+DUMPING RYMER HASH
+32 keys (0 unique)
+RYmer occurrences: 12102828
+Load factor: 0.03125
+Construction so far: 169.21 seconds
+Hash table size: 1024
+Time usage: 170.722 seconds
+Memory usage: 2.69864 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 5 -w 3"
+	User time (seconds): 380.35
+	System time (seconds): 5.31
+	Percent of CPU this job got: 219%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:55.60
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2829724
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1344132
+	Voluntary context switches: 17359
+	Involuntary context switches: 43345
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 567400
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 5, w = 50
+Total count: 57756276
+DUMPING RYMER HASH
+32 keys (0 unique)
+RYmer occurrences: 1433008
+Load factor: 0.03125
+Construction so far: 975.021 seconds
+Hash table size: 1024
+Time usage: 975.336 seconds
+Memory usage: 2.45369 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 5 -w 50"
+	User time (seconds): 3852.78
+	System time (seconds): 7.21
+	Percent of CPU this job got: 394%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 16:19.69
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2572884
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1138810
+	Voluntary context switches: 3099
+	Involuntary context switches: 414129
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 67248
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Loading input graph from ../euka_dir/euka_db.og
+Loading GBWT from ../euka_dir/euka_db.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from ../euka_dir/euka_db.dist
+Building RYmerIndex with k = 5, w = 5
+Total count: 50401810
+DUMPING RYMER HASH
+32 keys (0 unique)
+RYmer occurrences: 8745184
+Load factor: 0.03125
+Construction so far: 174.125 seconds
+Hash table size: 1024
+Time usage: 175.771 seconds
+Memory usage: 2.61768 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g ../euka_dir/euka_db.gbwt -d ../euka_dir/euka_db.dist -o ../euka_dir/euka_db.ry ../euka_dir/euka_db.og -k 5 -w 5"
+	User time (seconds): 453.62
+	System time (seconds): 4.96
+	Percent of CPU this job got: 253%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 3:00.76
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 2744840
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 1118192
+	Voluntary context switches: 15337
+	Involuntary context switches: 51573
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 410008
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
