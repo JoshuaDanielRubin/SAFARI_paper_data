@@ -47,8 +47,8 @@ def plot_data_custom_bold_large_corrected(data):
     
     axs[0].set_ylabel('Percent Change in F1 Score', fontsize=label_fontsize, fontweight='bold')
     axs[0].set_title('Percent Change in F1 Score for Mitochondrial Reads from vg giraffe', fontsize=title_fontsize, fontweight='bold')
-    axs[0].tick_params(axis='x', labelsize=tick_labelsize, labelrotation=45)
-    axs[0].tick_params(axis='y', labelsize=tick_labelsize)
+    #axs[0].tick_params(axis='x', labelsize=tick_labelsize, labelrotation=45)
+    #axs[0].tick_params(axis='y', labelsize=tick_labelsize)
     
     axs[1].set_ylabel('Percent Change in F1 Score', fontsize=label_fontsize, fontweight='bold')
     axs[1].set_title('Percent Change in F1 Score for All Reads from vg giraffe', fontsize=title_fontsize, fontweight='bold')
