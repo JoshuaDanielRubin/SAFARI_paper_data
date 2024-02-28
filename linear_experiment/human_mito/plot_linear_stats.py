@@ -47,8 +47,9 @@ def plot_data_custom_bold_large_corrected(data):
     
     axs[0].set_ylabel('Percent Change in F1 Score', fontsize=label_fontsize, fontweight='bold')
     axs[0].set_title('Percent Change in F1 Score for Mitochondrial Reads from vg giraffe', fontsize=title_fontsize, fontweight='bold')
-    #axs[0].tick_params(axis='x', labelsize=tick_labelsize, labelrotation=45)
-    #axs[0].tick_params(axis='y', labelsize=tick_labelsize)
+    axs[0].tick_params(axis='x', labelsize=0)  # Hiding x-axis labels for the first subplot
+    axs[0].tick_params(axis='y', labelsize=tick_labelsize)
+    axs[0].set_xticklabels([])  # Ensuring x-ticks are not shown
     
     axs[1].set_ylabel('Percent Change in F1 Score', fontsize=label_fontsize, fontweight='bold')
     axs[1].set_title('Percent Change in F1 Score for All Reads from vg giraffe', fontsize=title_fontsize, fontweight='bold')
@@ -62,7 +63,8 @@ def plot_data_custom_bold_large_corrected(data):
     axs[1].legend(title='Damage', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=legend_fontsize, title_fontsize='large')
     
     plt.tight_layout()
-    plt.savefig("linear.png")
+    plt.savefig('linear.png')  # Saving the plot as 'linear.png'
+    plt.show()
 
 def main():
     if len(sys.argv) != 2:
