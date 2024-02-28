@@ -17,7 +17,7 @@ def calculate_percent_change(data):
     data['% Change Mito Reads'] = data.apply(percent_change, args=('F1 Score (Mitochondrial Reads)',), axis=1)
     return data
 
-def plot_data_custom_bold_large_corrected(data):
+def plot_data_custom_bold_large_corrected_final(data):
     data_filtered = data[data['Tool'] != 'giraffe']
     color_palette = ['#6495ED', '#FF69B4', '#BA55D3', '#20B2AA', '#87CEFA', '#32CD32', '#FFD700']
     custom_order = {'safari': 'SAFARI', 'aln': 'BWA-ALN', 'aln_anc': 'BWA-ALN (anc)', 'mem': 'BWA-MEM', 'shrimp': 'SHRiMP', 'bowtie2': 'Bowtie2', 'bb': 'BBMAP'}
@@ -45,6 +45,7 @@ def plot_data_custom_bold_large_corrected(data):
     label_fontsize = 22
     tick_labelsize = 20
     legend_fontsize = 18
+    legend_title_fontsize = 20  # Setting the legend title fontsize
     
     axs[0].set_ylabel('Percent Change in F1 Score', fontsize=label_fontsize, fontweight='bold')
     axs[0].set_title('Percent Change in F1 Score for Mitochondrial Reads from vg giraffe', fontsize=title_fontsize, fontweight='bold')
@@ -57,9 +58,11 @@ def plot_data_custom_bold_large_corrected(data):
     axs[1].set_xticks(x)
     axs[1].set_xticklabels(tools_order, rotation=45, fontsize=tick_labelsize, fontweight='bold')
     
-    axs[0].legend(title='Damage', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=legend_fontsize, title_fontsize='large')
-    axs[1].legend(title='Damage', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=legend_fontsize, title_fontsize='large')
-    
+    for ax in axs:
+        legend = ax.legend(title='Damage', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=legend_fontsize)
+        legend.get_title().set_fontsize(legend_title_fontsize)  # Adjusting title size
+        legend.get_title().set_weight('bold')  # Making title bold
+
     plt.tight_layout()
     plt.savefig('linear.png')  # Saving the plot as 'linear.png'
     plt.show()
@@ -72,7 +75,7 @@ def main():
     file_path = sys.argv[1]
     data = load_data(file_path)
     data = calculate_percent_change(data)
-    plot_data_custom_bold_large_corrected(data)
+    plot_data_custom_bold_large_corrected_final(data)
 
 if __name__ == "__main__":
     main()
