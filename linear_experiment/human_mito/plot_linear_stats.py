@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -40,6 +39,8 @@ def plot_data_custom_bold_large_corrected(data):
         all_scores = data_filtered[data_filtered['Damage'] == dmg].groupby('Tool')['% Change All Reads'].mean().reindex(tools_order)
         axs[1].bar(x - width*1.5 + i*width, all_scores, width, label=damages_custom_labels[dmg], color=color_palette[i % len(color_palette)])
     
+    axs[0].set_xticks([])  # Removing x-ticks entirely for the first subplot
+    
     title_fontsize = 24
     label_fontsize = 22
     tick_labelsize = 20
@@ -47,9 +48,6 @@ def plot_data_custom_bold_large_corrected(data):
     
     axs[0].set_ylabel('Percent Change in F1 Score', fontsize=label_fontsize, fontweight='bold')
     axs[0].set_title('Percent Change in F1 Score for Mitochondrial Reads from vg giraffe', fontsize=title_fontsize, fontweight='bold')
-    axs[0].tick_params(axis='x', labelsize=0)  # Hiding x-axis labels for the first subplot
-    axs[0].tick_params(axis='y', labelsize=tick_labelsize)
-    axs[0].set_xticklabels([])  # Ensuring x-ticks are not shown
     
     axs[1].set_ylabel('Percent Change in F1 Score', fontsize=label_fontsize, fontweight='bold')
     axs[1].set_title('Percent Change in F1 Score for All Reads from vg giraffe', fontsize=title_fontsize, fontweight='bold')
