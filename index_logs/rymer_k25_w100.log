@@ -1,0 +1,37 @@
+Loading input graph from vgan_corrected/share/vgan/hcfiles/graph.og
+Loading GBWT from vgan_corrected/share/vgan/hcfiles/graph.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from vgan_corrected/share/vgan/hcfiles/graph.dist
+Building RYmerIndex with k = 25, w = 100
+Total count: 196091
+DUMPING RYMER HASH
+3029 keys (2998 unique)
+RYmer occurrences: 3060
+Load factor: 0.739502
+Construction so far: 8.63435 seconds
+Hash table size: 4096
+Time usage: 8.63522 seconds
+Memory usage: 0.42091 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg rymer -t 16 -p -g vgan_corrected/share/vgan/hcfiles/graph.gbwt -d vgan_corrected/share/vgan/hcfiles/graph.dist -o vgan_corrected/share/vgan/hcfiles/graph.ry vgan_corrected/share/vgan/hcfiles/graph.og -k 25 -w 100"
+	User time (seconds): 20.82
+	System time (seconds): 0.51
+	Percent of CPU this job got: 243%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:08.74
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 441356
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 108564
+	Voluntary context switches: 146
+	Involuntary context switches: 62
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 272
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

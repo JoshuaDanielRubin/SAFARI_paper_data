@@ -1,0 +1,37 @@
+Loading input graph from vgan_corrected/share/vgan/hcfiles/graph.og
+Loading GBWT from vgan_corrected/share/vgan/hcfiles/graph.gbwt
+Building GBWTGraph
+Loading SnarlDistanceIndex from vgan_corrected/share/vgan/hcfiles/graph.dist
+Building MinimizerIndex with k = 15, w = 3
+Total count: 139948
+DUMPING MINIMIZER HASH
+44146 keys (44078 unique)
+Minimizer occurrences: 44214
+Load factor: 0.673615
+Construction so far: 0.790559 seconds
+Hash table size: 65536
+Time usage: 0.794776 seconds
+Memory usage: 0.426136 GiB
+	Command being timed: "./vgan_corrected/dep/vg/bin/vg minimizer -t 16 -p -g vgan_corrected/share/vgan/hcfiles/graph.gbwt -d vgan_corrected/share/vgan/hcfiles/graph.dist -o vgan_corrected/share/vgan/hcfiles/graph.min vgan_corrected/share/vgan/hcfiles/graph.og -k 15 -w 3"
+	User time (seconds): 0.87
+	System time (seconds): 0.62
+	Percent of CPU this job got: 172%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.87
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 446836
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 107578
+	Voluntary context switches: 113
+	Involuntary context switches: 8
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 4112
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
