@@ -1,0 +1,97 @@
+Damage,Tool,Metric,Value
+ddhigh,giraffe,Precision,0.99774
+ddhigh,giraffe,Recall,0.22003
+ddhigh,giraffe,Correct mitochondrial mappings,18978
+ddhigh,giraffe,Incorrect mitochondrial mappings,43
+ddhigh,giraffe,Mito reads mapped,1877449
+ddhigh,giraffe,Mito reads unmapped,67274
+ddhigh,giraffe,Bacteria reads mapped,320
+ddhigh,giraffe,Bacteria reads unmapped,7588200
+ddhigh,giraffe,NuMT reads mapped,5041
+ddhigh,giraffe,NuMT reads unmapped,24649
+ddhigh,giraffe,Precision,1.00000
+ddhigh,giraffe,Recall,0.55460
+ddhigh,safari,Precision,0.99775
+ddhigh,safari,Recall,0.29343
+ddhigh,safari,Correct mitochondrial mappings,19049
+ddhigh,safari,Incorrect mitochondrial mappings,43
+ddhigh,safari,Mito reads mapped,1898852
+ddhigh,safari,Mito reads unmapped,45870
+ddhigh,safari,Bacteria reads mapped,480
+ddhigh,safari,Bacteria reads unmapped,7588040
+ddhigh,safari,NuMT reads mapped,5742
+ddhigh,safari,NuMT reads unmapped,23948
+ddhigh,safari,Precision,1.00000
+ddhigh,safari,Recall,0.55531
+ddmid,giraffe,Precision,0.99807
+ddmid,giraffe,Recall,0.87710
+ddmid,giraffe,Correct mitochondrial mappings,19147
+ddmid,giraffe,Incorrect mitochondrial mappings,37
+ddmid,giraffe,Mito reads mapped,1942429
+ddmid,giraffe,Mito reads unmapped,2683
+ddmid,giraffe,Bacteria reads mapped,400
+ddmid,giraffe,Bacteria reads unmapped,7587104
+ddmid,giraffe,NuMT reads mapped,6839
+ddmid,giraffe,NuMT reads unmapped,23203
+ddmid,giraffe,Precision,1.00000
+ddmid,giraffe,Recall,0.55676
+ddmid,safari,Precision,0.99807
+ddmid,safari,Recall,0.91863
+ddmid,safari,Correct mitochondrial mappings,19148
+ddmid,safari,Incorrect mitochondrial mappings,37
+ddmid,safari,Mito reads mapped,1943416
+ddmid,safari,Mito reads unmapped,1696
+ddmid,safari,Bacteria reads mapped,456
+ddmid,safari,Bacteria reads unmapped,7587048
+ddmid,safari,NuMT reads mapped,7420
+ddmid,safari,NuMT reads unmapped,22622
+ddmid,safari,Precision,1.00000
+ddmid,safari,Recall,0.55681
+dnone,giraffe,Precision,0.99812
+dnone,giraffe,Recall,0.97031
+dnone,giraffe,Correct mitochondrial mappings,19151
+dnone,giraffe,Incorrect mitochondrial mappings,36
+dnone,giraffe,Mito reads mapped,1944528
+dnone,giraffe,Mito reads unmapped,586
+dnone,giraffe,Bacteria reads mapped,344
+dnone,giraffe,Bacteria reads unmapped,7587952
+dnone,giraffe,NuMT reads mapped,6831
+dnone,giraffe,NuMT reads unmapped,22933
+dnone,giraffe,Precision,1.00000
+dnone,giraffe,Recall,0.55682
+dnone,safari,Precision,0.99812
+dnone,safari,Recall,0.98039
+dnone,safari,Correct mitochondrial mappings,19151
+dnone,safari,Incorrect mitochondrial mappings,36
+dnone,safari,Mito reads mapped,1944731
+dnone,safari,Mito reads unmapped,383
+dnone,safari,Bacteria reads mapped,400
+dnone,safari,Bacteria reads unmapped,7587896
+dnone,safari,NuMT reads mapped,7385
+dnone,safari,NuMT reads unmapped,22379
+dnone,safari,Precision,1.00000
+dnone,safari,Recall,0.55684
+dsingle,giraffe,Precision,0.99812
+dsingle,giraffe,Recall,0.95616
+dsingle,giraffe,Correct mitochondrial mappings,19151
+dsingle,giraffe,Incorrect mitochondrial mappings,36
+dsingle,giraffe,Mito reads mapped,1944338
+dsingle,giraffe,Mito reads unmapped,878
+dsingle,giraffe,Bacteria reads mapped,376
+dsingle,giraffe,Bacteria reads unmapped,7588088
+dsingle,giraffe,NuMT reads mapped,6894
+dsingle,giraffe,NuMT reads unmapped,23304
+dsingle,giraffe,Precision,1.00000
+dsingle,giraffe,Recall,0.55681
+dsingle,safari,Precision,0.99812
+dsingle,safari,Recall,0.97120
+dsingle,safari,Correct mitochondrial mappings,19151
+dsingle,safari,Incorrect mitochondrial mappings,36
+dsingle,safari,Mito reads mapped,1944648
+dsingle,safari,Mito reads unmapped,568
+dsingle,safari,Bacteria reads mapped,432
+dsingle,safari,Bacteria reads unmapped,7588032
+dsingle,safari,NuMT reads mapped,7558
+dsingle,safari,NuMT reads unmapped,22640
+dsingle,safari,Precision,1.00000
+dsingle,safari,Recall,0.55684
