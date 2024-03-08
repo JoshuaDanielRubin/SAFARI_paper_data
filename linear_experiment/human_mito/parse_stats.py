@@ -48,7 +48,7 @@ def write_to_csv(data, output_file_path):
 
 if __name__ == "__main__":
     input_file_path = sys.argv[1]  # Adjust this to your actual input file path
-    output_file_path = 'output_table.csv'    # Adjust this if you want a different output file name
+    output_file_path = sys.argv[2]    # Adjust this if you want a different output file name
     
     # Parse the input file
     data = parse_data(input_file_path)

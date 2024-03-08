@@ -1,9 +1,10 @@
 import os
 import re
 from collections import defaultdict
+import sys
 
 # Directory containing the stat files
-directory = 'alignments/'
+directory = sys.argv[1]
 
 # Data structure to hold parsed data
 results = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))

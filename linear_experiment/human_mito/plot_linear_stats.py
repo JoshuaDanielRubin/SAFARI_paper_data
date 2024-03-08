@@ -1,82 +1,76 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import sys
+def load_and_prepare_data_adjusted(linear_stats_path, k10_w2_path):
+    linear_stats_df = pd.read_csv(linear_stats_path)
+    k10_w2_df = pd.read_csv(k10_w2_path)
+    combined_df = pd.concat([linear_stats_df, k10_w2_df])
+    
+    # Adjusting tool names
+    tool_name_adjustments = {
+        'aln': 'BWA ALN',
+        'aln (anc)': 'BWA ALN (anc)',
+        'bbmap': 'BBMap',
+        'bowtie2': 'Bowtie2',
+        'bwa-mem': 'BWA-MEM',
+        'shrimp': 'SHRiMP',
+        'giraffe': 'vg giraffe',
+        'safari': 'SAFARI'
+    }
+    combined_df['Tool_Display'] = combined_df['Tool'].apply(lambda x: tool_name_adjustments.get(x.lower(), x))
+    
+    # Correcting the damage level adjustments
+    damage_level_adjustments_corrected = {
+        'ddlow': 'Single',
+        'ddmid': 'Mid',
+        'ddhigh': 'High',
+        'none': 'None',
+        'dnone': 'None',
+        'dsingle': 'Single'
+    }
+    combined_df['Damage_Level'] = combined_df['Damage'].apply(lambda x: damage_level_adjustments_corrected.get(x, x))
+    
+    return combined_df
 
-def load_data(file_path):
-    return pd.read_csv(file_path)
+def plot_data_final(combined_df):
+    metrics_of_interest_corrected = ['Mito reads mapped', 'Bacteria reads mapped', 'NuMT reads mapped']
+    subplot_titles = [
+        'Mitochondrial Reads Correctly Mapped',
+        'Bacterial Reads Spuriously Mapped',
+        'NuMT Reads Spuriously Mapped'
+    ]
+    damage_order = ['None', 'Single', 'Mid', 'High']
+    
+    fig, axes = plt.subplots(3, 1, figsize=(14, 22))
+    plt.rc('font', size=12, weight='bold', style='italic')
+    
+    for i, metric in enumerate(metrics_of_interest_corrected):
+        sns.barplot(data=combined_df[combined_df['Metric'] == metric], x='Tool_Display', y='Value', hue='Damage_Level',
+                    hue_order=damage_order, ax=axes[i])
+        axes[i].set_title(subplot_titles[i], fontsize=16, fontweight='bold')
+        axes[i].set_ylabel('Count', fontsize=14, fontweight='bold')
+        axes[i].set_xlabel('Tool', fontsize=14, fontweight='bold')
+        axes[i].tick_params(axis='x', labelrotation=45)
+        axes[i].tick_params(axis='both', labelsize=12)
 
-def calculate_percent_change(data):
-    giraffe_scores = data[data['Tool'] == 'giraffe'].set_index('Damage')
-    
-    def percent_change(row, column):
-        giraffe_score = giraffe_scores.loc[row['Damage'], column]
-        return ((row[column] - giraffe_score) / giraffe_score) * 100
-    
-    data['% Change All Reads'] = data.apply(percent_change, args=('F1 Score (All Reads)',), axis=1)
-    data['% Change Mito Reads'] = data.apply(percent_change, args=('F1 Score (Mitochondrial Reads)',), axis=1)
-    return data
-
-def plot_data_custom_bold_large_corrected_final(data):
-    data_filtered = data[data['Tool'] != 'giraffe']
-    color_palette = ['#6495ED', '#FF69B4', '#BA55D3', '#20B2AA', '#87CEFA', '#32CD32', '#FFD700']
-    custom_order = {'safari': 'SAFARI', 'aln': 'BWA-ALN', 'aln_anc': 'BWA-ALN (anc)', 'mem': 'BWA-MEM', 'shrimp': 'SHRiMP', 'bowtie2': 'Bowtie2', 'bb': 'BBMAP'}
-    damages_custom_labels = {'dnone': 'None', 'dsingle': 'Single', 'ddmid': 'Mid', 'ddhigh': 'High'}
-    damages = sorted(data['Damage'].unique(), key=lambda x: ['dnone', 'dsingle', 'ddmid', 'ddhigh'].index(x))
-    
-    data_filtered['Tool'] = data_filtered['Tool'].map(custom_order)
-    tools_order = ['SAFARI', 'BWA-ALN', 'BWA-ALN (anc)', 'BWA-MEM', 'SHRiMP', 'Bowtie2', 'BBMAP']
-    x = np.arange(len(tools_order))
-    width = 0.2
-    
-    fig, axs = plt.subplots(2, 1, figsize=(20, 18))
-    
-    for i, dmg in enumerate(damages):
-        mito_scores = data_filtered[data_filtered['Damage'] == dmg].groupby('Tool')['% Change Mito Reads'].mean().reindex(tools_order)
-        axs[0].bar(x - width*1.5 + i*width, mito_scores, width, label=damages_custom_labels[dmg], color=color_palette[i % len(color_palette)])
-    
-    for i, dmg in enumerate(damages):
-        all_scores = data_filtered[data_filtered['Damage'] == dmg].groupby('Tool')['% Change All Reads'].mean().reindex(tools_order)
-        axs[1].bar(x - width*1.5 + i*width, all_scores, width, label=damages_custom_labels[dmg], color=color_palette[i % len(color_palette)])
-    
-    axs[0].set_xticks([])  # Removing x-ticks entirely for the first subplot
-    
-    title_fontsize = 24
-    label_fontsize = 22
-    tick_labelsize = 20
-    legend_fontsize = 18
-    legend_title_fontsize = 20  # Setting the legend title fontsize
-    
-    axs[0].set_ylabel('Percent Change in F1 Score', fontsize=label_fontsize, fontweight='bold')
-    axs[0].set_title('Percent Change in F1 Score for Mitochondrial Reads from vg giraffe', fontsize=title_fontsize, fontweight='bold')
-    
-    axs[1].set_ylabel('Percent Change in F1 Score', fontsize=label_fontsize, fontweight='bold')
-    axs[1].set_title('Percent Change in F1 Score for All Reads from vg giraffe', fontsize=title_fontsize, fontweight='bold')
-    axs[1].tick_params(axis='x', labelsize=tick_labelsize, labelrotation=45)
-    axs[1].tick_params(axis='y', labelsize=tick_labelsize)
-    
-    axs[1].set_xticks(x)
-    axs[1].set_xticklabels(tools_order, rotation=45, fontsize=tick_labelsize, fontweight='bold')
-    
-    for ax in axs:
-        legend = ax.legend(title='Damage', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=legend_fontsize)
-        legend.get_title().set_fontsize(legend_title_fontsize)  # Adjusting title size
-        legend.get_title().set_weight('bold')  # Making title bold
+        # Adjust y-axis limit for the first plot to avoid legend overlap and disable scientific notation
+        if i == 0:
+            ymin, ymax = combined_df[combined_df['Metric'] == metric]['Value'].min(), combined_df[combined_df['Metric'] == metric]['Value'].max()
+            delta = (ymax - ymin) * 0.1
+            ymax_adjusted = ymax + delta + (ymax * 0.05)  # Increase max limit a bit more
+            axes[i].set_ylim(ymin - delta, ymax_adjusted)
+            axes[i].legend(title='Damage Level', title_fontsize='13', fontsize='12', loc='upper left')
+            axes[i].ticklabel_format(style='plain', axis='y')  # Disable scientific notation
+        else:
+            ymin, ymax = combined_df[combined_df['Metric'] == metric]['Value'].min(), combined_df[combined_df['Metric'] == metric]['Value'].max()
+            delta = (ymax - ymin) * 0.1
+            axes[i].set_ylim(ymin - delta, ymax + delta)
+            axes[i].legend(title='Damage Level', title_fontsize='13', fontsize='12', loc='upper left')
 
     plt.tight_layout()
-    plt.savefig('linear.png')  # Saving the plot as 'linear.png'
-    plt.show()
+    return plt
 
-def main():
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <path_to_data_file>")
-        sys.exit(1)
-    
-    file_path = sys.argv[1]
-    data = load_data(file_path)
-    data = calculate_percent_change(data)
-    plot_data_custom_bold_large_corrected_final(data)
+# Re-load and prepare data with adjusted functions
+combined_df_final = load_and_prepare_data_adjusted(linear_stats_path, k10_w2_path)
 
-if __name__ == "__main__":
-    main()
+# Generate and display the final adjusted plot
+plot_final = plot_data_final(combined_df_final)
+plot_final.show()
 
