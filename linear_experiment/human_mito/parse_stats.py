@@ -80,8 +80,8 @@ def compute_metrics(stats):
 
     total_samples = mito_correct + mito_incorrect + mito_unmapped + bacteria_mapped + bacteria_unmapped + numt_mapped + numt_unmapped
 
-    y_true = [1] * (mito_correct + mito_incorrect + mito_unmapped) + [0] * (bacteria_mapped + bacteria_unmapped + numt_mapped + numt_unmapped)
-    y_pred = [1] * (mito_correct + mito_incorrect + bacteria_mapped + numt_mapped) + [0] * (mito_unmapped + bacteria_unmapped + numt_unmapped)
+    y_true = np.array([1] * (mito_correct + mito_unmapped) + [0] * (mito_incorrect + bacteria_mapped + bacteria_unmapped + numt_mapped + numt_unmapped))
+    y_pred = np.array([1] * (mito_correct + mito_incorrect + bacteria_mapped + numt_mapped) + [0] * (mito_unmapped + bacteria_unmapped + numt_unmapped))
 
     precision_score = precision(y_true, y_pred)
     recall_score = recall(y_true, y_pred)
@@ -95,8 +95,6 @@ def compute_metrics(stats):
         'accuracy': accuracy_score
     }
 
-    return {}
-
 def process_subfolder(subfolder_path, csv_writer):
     print(subfolder_path)
     k, w = subfolder_path.split('/')[-1].split('_')
@@ -109,7 +107,7 @@ def process_subfolder(subfolder_path, csv_writer):
         if file_name.endswith('.stat'):
             file_path = os.path.join(subfolder_path, file_name)
             tool_name = file_name.split('_')[-1].split('.')[0]
-            damage_level = file_name.split('_')[3][1:]
+            damage_level = file_name.split('_')[5][1:]
 
             stats = parse_stat_file(file_path)
             metrics = compute_metrics(stats)
@@ -130,7 +128,7 @@ def main():
         alignments_dir = 'alignments'
         for subfolder in os.listdir(alignments_dir):
             subfolder_path = os.path.join(alignments_dir, subfolder)
-            if os.path.isdir(subfolder_path) and (subfolder.startswith('k') or subfolder == 'linear_stats'):
+            if os.path.isdir(subfolder_path) and (subfolder.startswith('k') or subfolder == 'linear_results'):
                 process_subfolder(subfolder_path, csv_writer)
 
 
