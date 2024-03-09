@@ -1,6 +1,5 @@
 import os
 import csv
-from sklearn.metrics import precision_score, f1_score, accuracy_score
 import numpy as np
 
 def parse_stat_file(file_path):
@@ -45,36 +44,35 @@ def parse_stat_file(file_path):
         'numt_unmapped': numt_unmapped
     }
 
-def precision(y_true, y_pred):
-    true_positives = np.sum((y_true == 1) & (y_pred == 1))
-    predicted_positives = np.sum(y_pred == 1)
-    if predicted_positives == 0:
-        return 0
-    return true_positives / predicted_positives
+def compute_confusion_matrix_elements(y_true, y_pred):
+    TP = np.sum((y_true == 1) & (y_pred == 1))
+    TN = np.sum((y_true == 0) & (y_pred == 0))
+    FP = np.sum((y_true == 0) & (y_pred == 1))
+    FN = np.sum((y_true == 1) & (y_pred == 0))
+    return TP, FP, TN, FN
 
-def sensitivity(y_true, y_pred): # Renamed from recall to sensitivity
-    true_positives = np.sum((y_true == 1) & (y_pred == 1))
-    actual_positives = np.sum(y_true == 1)
-    if actual_positives == 0:
+def precision(TP, FP):
+    if TP + FP == 0:
         return 0
-    return true_positives / actual_positives
+    return TP / (TP + FP)
 
-def specificity(y_true, y_pred):
-    true_negatives = np.sum((y_true == 0) & (y_pred == 0))
-    actual_negatives = np.sum(y_true == 0)
-    if actual_negatives == 0:
+def sensitivity(TP, FN):  # Also known as recall
+    if TP + FN == 0:
         return 0
-    return true_negatives / actual_negatives
+    return TP / (TP + FN)
 
-def f1_score(y_true, y_pred):
-    p = precision(y_true, y_pred)
-    r = sensitivity(y_true, y_pred) # Updated to use sensitivity
-    if p == 0 and r == 0:
+def specificity(TN, FP):
+    if TN + FP == 0:
         return 0
-    return 2 * (p * r) / (p + r)
+    return TN / (TN + FP)
 
-def accuracy(y_true, y_pred):
-    return np.sum(y_true == y_pred) / len(y_true)
+def f1_score(precision, sensitivity):
+    if precision == 0 and sensitivity == 0:
+        return 0
+    return 2 * (precision * sensitivity) / (precision + sensitivity)
+
+def accuracy(TP, TN, FP, FN):
+    return (TP + TN) / (TP + TN + FP + FN)
 
 def compute_metrics(stats):
     mito_correct = stats['mito_correct']
@@ -88,18 +86,23 @@ def compute_metrics(stats):
     y_true = np.array([1] * (mito_correct + mito_unmapped) + [0] * (mito_incorrect + bacteria_mapped + bacteria_unmapped + numt_mapped + numt_unmapped))
     y_pred = np.array([1] * (mito_correct + mito_incorrect + bacteria_mapped + numt_mapped) + [0] * (mito_unmapped + bacteria_unmapped + numt_unmapped))
 
-    precision_score = precision(y_true, y_pred)
-    sensitivity_score = sensitivity(y_true, y_pred)
-    specificity_score = specificity(y_true, y_pred)
-    f1 = f1_score(y_true, y_pred)
-    accuracy_score = accuracy(y_true, y_pred)
+    TP, FP, TN, FN = compute_confusion_matrix_elements(y_true, y_pred)
+    precision_score = precision(TP, FP)
+    sensitivity_score = sensitivity(TP, FN)
+    specificity_score = specificity(TN, FP)
+    f1 = f1_score(precision_score, sensitivity_score)
+    accuracy_score = accuracy(TP, TN, FP, FN)
 
     return {
         'precision': precision_score,
         'sensitivity': sensitivity_score,
         'specificity': specificity_score,
         'f1': f1,
-        'accuracy': accuracy_score
+        'accuracy': accuracy_score,
+        'TP': TP,
+        'FP': FP,
+        'TN': TN,
+        'FN': FN
     }
 
 def process_subfolder(subfolder_path, csv_writer):
@@ -124,7 +127,7 @@ def process_subfolder(subfolder_path, csv_writer):
 
 def main():
     output_file = 'results.csv'
-    fieldnames = ['k', 'w', 'tool', 'damage_level', 'mito_correct', 'mito_incorrect', 'mito_mapped', 'mito_unmapped', 'bacteria_mapped', 'bacteria_unmapped', 'numt_mapped', 'numt_unmapped', 'precision', 'sensitivity', 'specificity', 'f1', 'accuracy']
+    fieldnames = ['k', 'w', 'tool', 'damage_level', 'mito_correct', 'mito_incorrect', 'mito_mapped', 'mito_unmapped', 'bacteria_mapped', 'bacteria_unmapped', 'numt_mapped', 'numt_unmapped', 'precision', 'sensitivity', 'specificity', 'f1', 'accuracy', 'TP', 'FP', 'TN', 'FN']
 
     with open(output_file, 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
