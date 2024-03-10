@@ -1,6 +1,7 @@
 import os
 import csv
 import numpy as np
+import re
 
 def parse_stat_file(file_path):
     with open(file_path, 'r') as f:
@@ -105,6 +106,7 @@ def compute_metrics(stats):
         'FN': FN
     }
 
+
 def process_subfolder(subfolder_path, csv_writer):
     k, w = subfolder_path.split('/')[-1].split('_')
     k = int(k[1:]) if k != 'linear' else None
@@ -117,17 +119,25 @@ def process_subfolder(subfolder_path, csv_writer):
             tool_name = file_name.split('_')[-1].split('.')[0]
             damage_level = file_name.split('_')[5][1:]
 
+            # Use regex to find read length (lXX) and subsampling rate (sX.X or sX)
+            read_length_match = re.search(r'_l(\d+)_', file_name)
+            subsampling_rate_match = re.search(r'_s([0-9]+\.?[0-9]*)_', file_name)
+            read_length = int(read_length_match.group(1)) if read_length_match else None
+            subsampling_rate = float(subsampling_rate_match.group(1)) if subsampling_rate_match else None
+
             stats = parse_stat_file(file_path)
             metrics = compute_metrics(stats)
 
-            row = [k, w, tool_name, damage_level]
+            row = [k, w, tool_name, damage_level, read_length, subsampling_rate]
             row.extend(stats.values())
             row.extend(metrics.values())
             csv_writer.writerow(row)
 
+
 def main():
-    output_file = 'results.csv'
-    fieldnames = ['k', 'w', 'tool', 'damage_level', 'mito_correct', 'mito_incorrect', 'mito_mapped', 'mito_unmapped', 'bacteria_mapped', 'bacteria_unmapped', 'numt_mapped', 'numt_unmapped', 'precision', 'sensitivity', 'specificity', 'f1', 'accuracy', 'TP', 'FP', 'TN', 'FN']
+    output_file = 'newresults.csv'
+    fieldnames = ['k', 'w', 'tool', 'read_length', 'subsampling_rate', 'damage_level', 'mito_correct', 'mito_incorrect', 'mito_mapped', 'mito_unmapped', 'bacteria_mapped', 'bacteria_unmapped', \
+                  'numt_mapped', 'numt_unmapped', 'precision', 'sensitivity', 'specificity', 'f1', 'accuracy', 'TP', 'FP', 'TN', 'FN']
 
     with open(output_file, 'w', newline='') as csvfile:
         csv_writer = csv.writer(csvfile)
