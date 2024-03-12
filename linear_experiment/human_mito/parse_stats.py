@@ -1,3 +1,4 @@
+
 import os
 import csv
 import numpy as np
@@ -84,12 +85,22 @@ def compute_metrics(stats):
     numt_mapped = stats['numt_mapped']
     numt_unmapped = stats['numt_unmapped']
 
-    y_true = np.array([1] * (mito_correct + mito_unmapped) + [0] * (mito_incorrect + bacteria_mapped + bacteria_unmapped + numt_mapped + numt_unmapped))
-    y_pred = np.array([1] * (mito_correct + mito_incorrect + bacteria_mapped + numt_mapped) + [0] * (mito_unmapped + bacteria_unmapped + numt_unmapped))
+    # Here's the main adjustment: consider mito_unmapped in FN calculation
+    # Constructing y_true and y_pred to better reflect actual and predicted conditions
+    y_true_mito = [1] * (mito_correct + mito_incorrect)  # True mitochondrial reads, both correctly and incorrectly mapped
+    y_pred_mito = [1] * mito_correct + [0] * mito_incorrect  # Predictions for mitochondrial reads
+    y_true_non_mito = [0] * (bacteria_mapped + bacteria_unmapped + numt_mapped + numt_unmapped)  # True non-mitochondrial reads
+    y_pred_non_mito = [1] * (bacteria_mapped + numt_mapped) + [0] * (bacteria_unmapped + numt_unmapped)  # Predictions for non-mitochondrial reads
+    y_true = y_true_mito + y_true_non_mito
+    y_pred = y_pred_mito + y_pred_non_mito
 
-    TP, FP, TN, FN = compute_confusion_matrix_elements(y_true, y_pred)
+    # Add the unmapped mitochondrial reads to y_true (as true mito reads) and y_pred (as not predicted as mito)
+    y_true += [1] * mito_unmapped  # These are true mitochondrial reads that were not mapped
+    y_pred += [0] * mito_unmapped  # These were not predicted as mitochondrial because they were unmapped
+
+    TP, FP, TN, FN = compute_confusion_matrix_elements(np.array(y_true), np.array(y_pred))
     precision_score = precision(TP, FP)
-    sensitivity_score = sensitivity(TP, FN)
+    sensitivity_score = sensitivity(TP, FN)  # Also known as recall
     specificity_score = specificity(TN, FP)
     f1 = f1_score(precision_score, sensitivity_score)
     accuracy_score = accuracy(TP, TN, FP, FN)
@@ -105,7 +116,6 @@ def compute_metrics(stats):
         'TN': TN,
         'FN': FN
     }
-
 
 def process_subfolder(subfolder_path, csv_writer):
     k, w = subfolder_path.split('/')[-1].split('_')
@@ -135,8 +145,8 @@ def process_subfolder(subfolder_path, csv_writer):
 
 
 def main():
-    output_file = 'newresults.csv'
-    fieldnames = ['k', 'w', 'tool', 'read_length', 'subsampling_rate', 'damage_level', 'mito_correct', 'mito_incorrect', 'mito_mapped', 'mito_unmapped', 'bacteria_mapped', 'bacteria_unmapped', \
+    output_file = 'results.csv'
+    fieldnames = ['k', 'w', 'tool', 'damage_level', 'read_length', 'subsampling_rate', 'mito_correct', 'mito_incorrect', 'mito_mapped', 'mito_unmapped', 'bacteria_mapped', 'bacteria_unmapped', \
                   'numt_mapped', 'numt_unmapped', 'precision', 'sensitivity', 'specificity', 'f1', 'accuracy', 'TP', 'FP', 'TN', 'FN']
 
     with open(output_file, 'w', newline='') as csvfile:
