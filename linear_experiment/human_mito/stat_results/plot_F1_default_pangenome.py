@@ -14,8 +14,15 @@ def main():
     # Calculate median F1 scores
     median_f1_scores = subset_df.groupby(['tool', 'damage_level'])['f1'].median().reset_index()
 
+    # Define custom order for damage levels
+    damage_order = ['None', 'Single-stranded', 'Mid', 'High']
+    median_f1_scores['damage_level'] = pd.Categorical(median_f1_scores['damage_level'], categories=damage_order, ordered=True)
+
+    # Sort the DataFrame by the 'damage_level' to ensure the plot follows the custom order
+    median_f1_scores.sort_values('damage_level', inplace=True)
+
     # Correcting the case sensitivity issue for the palette
-    corrected_palette = {'vg giraffe': 'orange', 'SAFARI': 'green'}
+    corrected_palette = {'vg giraffe': 'orange', 'SAFARI': 'green'}  # Ensure correct case for consistency
 
     # Create a barplot
     plt.figure(figsize=(10, 6))
