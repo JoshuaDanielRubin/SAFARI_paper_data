@@ -9,13 +9,13 @@ def main():
     data = pd.read_csv(file_path)
 
     # Subset the dataframe
-    subset_df = data[(data['k'] == 29) & (data['w'] == 11) & (data['tool'].str.lower().isin(['safari', 'giraffe']))]
+    subset_df = data[(data['k'] == 29) & (data['w'] == 11) & (data['tool'].str.lower().isin(['SAFARI', 'vg giraffe']))]
 
     # Calculate median F1 scores
     median_f1_scores = subset_df.groupby(['tool', 'damage_level'])['f1'].median().reset_index()
 
     # Correcting the case sensitivity issue for the palette
-    corrected_palette = {'giraffe': 'orange', 'safari': 'green'}
+    corrected_palette = {'vg giraffe': 'orange', 'SAFARI': 'green'}
 
     # Create a barplot
     plt.figure(figsize=(10, 6))
