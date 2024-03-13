@@ -18,7 +18,7 @@ def main():
     optimal_data = pd.merge(data, optimal_params, on=['tool', 'k', 'w'])
 
     # Subset the dataframe to only include specific tools
-    subset_df = optimal_data[(optimal_data['damage_level'] == 'High') & optimal_data['tool'].str.strip().str.lower().isin(['safari', 'vg giraffe'])]
+    subset_df = optimal_data[optimal_data['tool'].str.strip().str.lower().isin(['safari', 'vg giraffe'])]
 
     # Calculate median F1 scores
     median_f1_scores = subset_df.groupby(['tool', 'damage_level'])['f1'].median().reset_index()
