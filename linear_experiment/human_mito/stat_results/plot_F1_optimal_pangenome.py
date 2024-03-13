@@ -31,7 +31,7 @@ def main():
     median_f1_scores.sort_values('damage_level', inplace=True)
 
     # Correcting the case sensitivity issue for the palette
-    corrected_palette = {'vg giraffe': 'orange', 'safari': 'green'}
+    corrected_palette = {'vg giraffe': 'orange', 'SAFARI': 'green'}
 
     # Create a barplot
     plt.figure(figsize=(10, 6))
