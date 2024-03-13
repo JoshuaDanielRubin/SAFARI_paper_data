@@ -20,6 +20,7 @@ def main():
 
     # Sort the DataFrame by the 'damage_level' to ensure the plot follows the custom order
     median_f1_scores.sort_values('damage_level', inplace=True)
+    print(median_f1_scores)
 
     # Correcting the case sensitivity issue for the palette
     corrected_palette = {'vg giraffe': 'orange', 'SAFARI': 'green'}  # Ensure correct case for consistency
