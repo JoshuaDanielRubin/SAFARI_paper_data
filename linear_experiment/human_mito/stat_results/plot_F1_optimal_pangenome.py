@@ -20,6 +20,8 @@ def main():
     # Subset the dataframe to only include specific tools
     subset_df = optimal_data[optimal_data['tool'].str.strip().str.lower().isin(['safari', 'vg giraffe'])]
 
+    print(subset_df)
+
     # Calculate median F1 scores
     median_f1_scores = subset_df.groupby(['tool', 'damage_level'])['f1'].median().reset_index()
 
