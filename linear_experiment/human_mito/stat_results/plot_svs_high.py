@@ -11,26 +11,37 @@ def calculate_f1(data):
 def plot_best_f1(data_path):
     # Load data
     data = pd.read_csv(data_path)
-    
-    # Assuming the input data already contains 'sensitivity', 'specificity', 'k', 'w', and 'tool' columns
-    # Filter for 'High' damage level samples and calculate F1 scores
-    filtered_data = data[(data['damage_level'] == 'High')].copy()
-    filtered_data = calculate_f1(filtered_data)
 
-    # Group by tool, k, and w, then calculate median F1 score
+    # Placeholder for the rest of your existing code before plotting...
+    filtered_data = calculate_f1(data[(data['damage_level'] == 'High')].copy())
     medians_f1 = filtered_data.groupby(['tool', 'k', 'w'])['F1'].median().reset_index()
-
-    # Find the best (k,w) based on median F1 for each tool
     best_f1 = medians_f1.loc[medians_f1.groupby('tool')['F1'].idxmax()]
-
-    # Filter data for the best (k,w) values for each tool
     best_f1_data = filtered_data.merge(best_f1[['tool', 'k', 'w']], on=['tool', 'k', 'w'])
 
     # Plotting
     plt.figure(figsize=(10, 8))
-    for tool in best_f1_data['tool'].unique():
+    
+    # Predefined colors for specific tools
+    predefined_colors = {'SAFARI': 'green', 'vg giraffe': 'orange'}
+    
+    # Get a list of all tools to ensure unique colors for those not predefined
+    tools = best_f1_data['tool'].unique()
+    color_palette = plt.cm.get_cmap('hsv', len(tools)) # hsv colormap, adjust as needed
+    
+    # Assign colors ensuring unique colors for each tool
+    tool_colors = {}
+    for i, tool in enumerate(tools):
+        if tool in predefined_colors:
+            tool_colors[tool] = predefined_colors[tool]
+        else:
+            while color_palette(i) in predefined_colors.values(): # Ensure unique color assignment
+                i += 1
+            tool_colors[tool] = color_palette(i)
+    
+    # Plot each tool with its assigned color
+    for tool in tools:
         tool_data = best_f1_data[best_f1_data['tool'] == tool]
-        plt.scatter(tool_data['specificity'], tool_data['sensitivity'], label=f'{tool}', alpha=0.7)
+        plt.scatter(tool_data['specificity'], tool_data['sensitivity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7)
 
     plt.title('Sensitivity vs Specificity for Best (k,w) Parameters Based on F1 Score', fontsize=16, fontweight='bold')
     plt.xlabel('Specificity', fontsize=14, fontweight='bold')
