@@ -2,6 +2,7 @@ import os
 import re
 import numpy as np
 import glob
+import sys
 
 def parse_estimated_matrix(file_path):
     matrix = np.zeros((4, 4))  # A, C, G, T
@@ -89,7 +90,7 @@ def list_files(directory):
     return [os.path.join(directory, f) for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
 
 # Directory Paths
-alignments_dir = 'alignments/subs/'
+alignments_dir = sys.argv[1]
 ground_truth_dir = './'  # Adjust as necessary
 
 # List all substitution matrix files
