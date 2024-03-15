@@ -18,7 +18,7 @@ def plot_differences(data, column_name, y_label, title, file_name, legend_loc):
     plt.ylabel(y_label, fontsize=14, fontweight='bold')
     plt.title(title, fontsize=16, fontweight='bold', pad=20)
     plt.xticks(ticks=np.arange(len(formatted_labels)), labels=formatted_labels, rotation=45, ha="right", fontsize=12, fontweight='bold')
-    plt.ylim([pivot_medians_sorted_by_diff['diff'].min() * 1.1, pivot_medians_sorted_by_diff['diff'].max() * 1.1])
+    plt.ylim([pivot_medians_sorted_by_diff['diff'].min() * 1.1, 0.25])
     legend_elements = [plt.Line2D([0], [0], color='green', lw=4, label='SAFARI'), plt.Line2D([0], [0], color='orange', lw=4, label='vg giraffe')]
     plt.legend(handles=legend_elements, title='Tool', title_fontsize='20', fontsize=18, loc=legend_loc, frameon=True, shadow=True)
     plt.tight_layout()
