@@ -31,7 +31,7 @@ def main():
     # Create the plot with custom settings
     plt.figure(figsize=(16, 9))
     sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=custom_palette)
-    plt.title('Median F1 Score by Tool Stratified by Damage Level', fontsize=16)
+    plt.title('Median F1 Score by Tool Stratified by Damage Level ('+ sys.argv[3] + ")", fontsize=16)
     plt.xlabel('Damage Level', fontsize=14)
     plt.ylabel('Median F1 Score', fontsize=14)
     plt.legend(title='Tool', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=12)

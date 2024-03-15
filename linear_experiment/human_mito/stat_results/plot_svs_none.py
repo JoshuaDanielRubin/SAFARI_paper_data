@@ -43,7 +43,7 @@ def plot_best_f1(data_path):
         tool_data = best_f1_data[best_f1_data['tool'] == tool]
         plt.scatter(tool_data['specificity'], tool_data['sensitivity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7)
 
-    plt.title('Sensitivity vs Specificity for Best (k,w) Parameters Based on F1 Score', fontsize=16, fontweight='bold')
+    plt.title('Sensitivity vs Specificity for Best (k,w) Parameters Based on F1 Score (' + sys.argv[3] + ")", fontsize=16, fontweight='bold')
     plt.xlabel('Specificity', fontsize=14, fontweight='bold')
     plt.ylabel('Sensitivity', fontsize=14, fontweight='bold')
     plt.legend()
@@ -53,8 +53,8 @@ def plot_best_f1(data_path):
     plt.show()
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        print("Usage: python script.py <data_path> <output path>")
+    if len(sys.argv) != 4:
+        print("Usage: python script.py <data_path> <output path> <Dist>")
         sys.exit(1)
     data_path = sys.argv[1]
     plot_best_f1(data_path)

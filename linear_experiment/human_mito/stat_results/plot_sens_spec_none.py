@@ -34,7 +34,7 @@ plt.axhline(0, color='grey', linewidth=0.8)
 plt.xlabel('(k,w) Values', fontsize=14, fontweight='bold')
 plt.ylabel('Difference in Median Sensitivity\n(SAFARI - vg giraffe)', fontsize=14, fontweight='bold')
 plt.ylim(-0.1, 0.25)
-plt.title('Difference in Median Sensitivity Between SAFARI and vg giraffe\non High-damage Samples', fontsize=16, fontweight='bold', pad=20)
+plt.title('Difference in Median Sensitivity Between SAFARI and vg giraffe\non High-damage Samples ('+ sys.argv[3] + ")", fontsize=16, fontweight='bold', pad=20)
 plt.xticks(ticks=np.arange(len(formatted_labels)), labels=formatted_labels, rotation=45, ha="right", fontsize=12, fontweight='bold')
 
 # Adjusting legend size
