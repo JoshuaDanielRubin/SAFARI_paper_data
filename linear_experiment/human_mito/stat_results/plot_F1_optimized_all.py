@@ -9,7 +9,7 @@ def main():
 
     # Function to identify the optimal k and w for each tool
     def optimize_k_w(group):
-        optimal_row = group.loc[group['f1'].idxmax()]
+        optimal_row = group.loc[group['sensitivity'].idxmax()]
         return optimal_row[['k', 'w']]
 
     # Find the optimal k and w for each tool
@@ -21,6 +21,9 @@ def main():
     # Subset the dataframe to only include specific tools
     subset_df = optimal_data
 
+    # Assuming subset_df is your DataFrame
+    print(subset_df[(subset_df['tool'] == 'vg giraffe') | (subset_df['tool'] == 'SAFARI')])
+
     # Calculate median F1 scores
     median_f1_scores = subset_df.groupby(['tool', 'damage_level'])['f1'].median().reset_index()
 
@@ -30,7 +33,6 @@ def main():
 
     # Sort the DataFrame by the 'damage_level' to ensure the plot follows the custom order
     median_f1_scores.sort_values('damage_level', inplace=True)
-    print(median_f1_scores)
 
     # Correcting the case sensitivity issue for the palette
     corrected_palette = {'vg giraffe': 'orange', 'SAFARI': 'green', 'BBMAP': 'blue', 'SHRiMP': 'red', 'BWA-MEM':'purple', \
