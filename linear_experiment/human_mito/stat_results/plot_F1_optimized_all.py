@@ -9,7 +9,7 @@ def main():
 
     # Function to identify the optimal k and w for each tool
     def optimize_k_w(group):
-        optimal_row = group.loc[group['sensitivity'].idxmax()]
+        optimal_row = group.loc[group['f1'].idxmax()]
         return optimal_row[['k', 'w']]
 
     # Find the optimal k and w for each tool
