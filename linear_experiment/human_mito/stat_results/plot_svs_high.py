@@ -41,9 +41,10 @@ def plot_best_f1(data_path):
     # Plot each tool with its assigned color
     for tool in tools:
         tool_data = best_f1_data[best_f1_data['tool'] == tool]
+        print(tool_data[['tool', 'k', 'w', 'sensitivity']])
         plt.scatter(tool_data['specificity'], tool_data['sensitivity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7)
 
-    plt.title('Sensitivity vs Specificity for Best (k,w) \n Parameters Based on F1 Score (' + sys.argv[3] + ", High Damage)", fontsize=16, fontweight='bold')
+    plt.title('Sensitivity vs Specificity for Best (k,w) \n Parameters Based on Median F1 Score (' + sys.argv[3] + ", High Damage)", fontsize=16, fontweight='bold')
     plt.xlabel('Specificity', fontsize=14, fontweight='bold')
     plt.ylabel('Sensitivity', fontsize=14, fontweight='bold')
     plt.legend()
