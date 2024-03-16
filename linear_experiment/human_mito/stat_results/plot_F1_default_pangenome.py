@@ -20,6 +20,7 @@ def main():
 
     # Sort the DataFrame by the 'damage_level' to ensure the plot follows the custom order
     median_f1_scores.sort_values('damage_level', inplace=True)
+    print(median_f1_scores)
 
     # Correcting the case sensitivity issue for the palette
     corrected_palette = {'vg giraffe': 'orange', 'SAFARI': 'green'}  # Ensure correct case for consistency
@@ -31,7 +32,7 @@ def main():
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool')
-    plt.ylim(0.7, 1)  # Restrict y-axis to start at 0.7
+    plt.ylim(0.6, 1)  # Restrict y-axis to start at 0.7
     plt.tight_layout()
 
     plt.savefig(sys.argv[2])
