@@ -25,15 +25,24 @@ def main():
     # Correcting the case sensitivity issue for the palette
     corrected_palette = {'vg giraffe': 'orange', 'SAFARI': 'green'}  # Ensure correct case for consistency
 
-    # Create a barplot
+    # Calculate the maximum and minimum values of the F1 scores
+    max_f1 = median_f1_scores['f1'].max()
+    min_f1 = median_f1_scores['f1'].min()
+
+    # Set the lower limit to be slightly below the minimum value and the upper limit to be slightly above the maximum value
+    ylim_lower = min_f1 - 0.05  # Adjust as needed
+    ylim_upper = max_f1 + 0.05  # Adjust as needed
+
+    # Create the barplot
     plt.figure(figsize=(10, 6))
     sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette)
     plt.title('Median F1 Score by Pangenome Tool \n Stratified by Damage Matrix (Default Parameters k=29, w=11, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool')
-    plt.ylim(0.6, 0.94)  # Restrict y-axis to start at 0.7
-    plt.tight_layout()
+
+    # Set the y-axis limits
+    plt.ylim(ylim_lower, ylim_upper)
 
     plt.savefig(sys.argv[2])
 
