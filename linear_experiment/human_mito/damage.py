@@ -46,7 +46,7 @@ def average_matrices(matrix_list):
 
 def find_ground_truth_files(damage_type):
     gt_mapping = {
-        'dmid': ('dmid3.dat', 'dmid5.dat'),
+        'dmid': ('dmid3.dat', 'dmid5.dat'),  # Corrected file extensions
         'dhigh': ('dhigh3.dat', 'dhigh5.dat'),
         'none': ('none3.dat', 'none5.dat'),
         'single': ('single3.dat', 'single5.dat'),
@@ -54,32 +54,37 @@ def find_ground_truth_files(damage_type):
     return gt_mapping.get(damage_type, (None, None))
 
 def process_files(file_paths, ground_truth_dir):
-    rmse_results = {}
+    rmse_results = []
     ground_truth_matrices = {}
     
-    # Pre-calculate and average ground truth matrices
     for damage_type in ['dmid', 'dhigh', 'none', 'single']:
         gt_files = find_ground_truth_files(damage_type)
         matrices = [parse_ground_truth(os.path.join(ground_truth_dir, gt_file)) for gt_file in gt_files if gt_file]
         ground_truth_matrices[damage_type] = average_matrices(matrices)
     
     for file_path in file_paths:
+        print(file_path)
+        path_parts = file_path.split(os.sep)
+        fragment_dist = path_parts[-3]  
+        if 'linear_results' in file_path:
+            k, w = 'linear', 'linear'
+        else:
+            match = re.search(r'k(\d+)_w(\d+)', path_parts[-2])
+            if match:
+                k, w = match.groups()
+            else:
+                print(f"File does not match expected pattern: {file_path}")
+                continue
+        
         filename = os.path.basename(file_path)
         damage_type = re.search(r'_d(.*?)_', filename).group(1)
         tool_name = re.search(r'_s0\.\d+_(.*?)_', filename).group(1)
         
-        category = (damage_type, tool_name)
         estimated_matrix = parse_estimated_matrix(file_path)
         ground_truth_matrix = ground_truth_matrices[damage_type]
         rmse = compare_matrices(estimated_matrix, ground_truth_matrix)
         
-        if category not in rmse_results:
-            rmse_results[category] = []
-        rmse_results[category].append(rmse)
-    
-    # Calculate median RMSE for each category
-    for category, rmses in rmse_results.items():
-        rmse_results[category] = np.median(rmses)
+        rmse_results.append((fragment_dist, k, w, damage_type, tool_name, rmse))
     
     return rmse_results
 
@@ -87,19 +92,29 @@ def compare_matrices(estimated, ground_truth):
     return np.sqrt(np.mean((estimated - ground_truth) ** 2))
 
 def list_files(directory):
-    return [os.path.join(directory, f) for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
+    return glob.glob(directory + '/**/*.txt', recursive=True)
 
-# Directory Paths
-alignments_dir = sys.argv[1]
-ground_truth_dir = './'  # Adjust as necessary
+def write_results_to_file(rmse_results, output_file_path):
+    with open(output_file_path, 'w') as f:
+        for result in rmse_results:
+            f.write(','.join(map(str, result)) + '\n')
 
-# List all substitution matrix files
-file_paths = list_files(alignments_dir)
+if __name__ == "__main__":
+    if len(sys.argv) < 4:
+        print("Usage: python damage.py <alignments_dir_vin> <alignments_dir_chag> <output_file_path>")
+        sys.exit(1)
+    
+    alignments_dir_vin = sys.argv[1]
+    alignments_dir_chag = sys.argv[2]
+    output_file_path = sys.argv[3]
+    ground_truth_dir = './'  # Adjust as necessary
 
-# Process files and calculate RMSE
-rmse_results = process_files(file_paths, ground_truth_dir)
+    vin_file_paths = list_files(alignments_dir_vin)
+    chag_file_paths = list_files(alignments_dir_chag)
+    all_file_paths = vin_file_paths + chag_file_paths
 
-# Display Results
-for category, rmse in sorted(rmse_results.items()):
-    print(f"Category: {category}, RMSE: {rmse}")
+    rmse_results = process_files(all_file_paths, ground_truth_dir)
+    write_results_to_file(rmse_results, output_file_path)
+
+    print(f"Results written to {output_file_path}")
 
