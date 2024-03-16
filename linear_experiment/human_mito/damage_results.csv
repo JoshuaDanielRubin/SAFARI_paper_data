@@ -1,4 +1,4 @@
-fragment_len_dist,k,w,tool,RMSE
+fragment_len_dist,k,w,damage_level,tool,RMSE
 Vindija,linear,linear,High,BWA ALN,0.12480438682438415
 Vindija,linear,linear,High,BWA ALN,0.13078172030568266
 Vindija,linear,linear,High,BBMap,0.1235656697889055
