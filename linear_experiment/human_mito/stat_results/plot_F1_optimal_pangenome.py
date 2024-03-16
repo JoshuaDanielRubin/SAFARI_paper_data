@@ -9,7 +9,9 @@ def main():
 
     # Function to identify the optimal k and w for each tool
     def optimize_k_w(group):
-        return group.loc[group['f1'].idxmax()][['k', 'w']]
+        optimal_row = group.loc[group['f1'].idxmax()]
+        print(f"Tool: {optimal_row['tool']}, k: {optimal_row['k']}, w: {optimal_row['w']}, F1: {optimal_row['f1']}, Sensitivity: {optimal_row['sensitivity']}, Specificity: {optimal_row['specificity']}")
+        return optimal_row[['k', 'w']]
 
     # Find the optimal k and w for each tool
     optimal_params = data.groupby('tool').apply(optimize_k_w).reset_index()
@@ -19,8 +21,6 @@ def main():
 
     # Subset the dataframe to only include specific tools
     subset_df = optimal_data[optimal_data['tool'].str.strip().str.lower().isin(['safari', 'vg giraffe'])]
-
-    print(subset_df)
 
     # Calculate median F1 scores
     median_f1_scores = subset_df.groupby(['tool', 'damage_level'])['f1'].median().reset_index()
