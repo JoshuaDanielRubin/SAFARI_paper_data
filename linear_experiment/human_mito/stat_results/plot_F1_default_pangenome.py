@@ -32,7 +32,7 @@ def main():
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool')
-    plt.ylim(0.6, 1)  # Restrict y-axis to start at 0.7
+    plt.ylim(0.6, 0.94)  # Restrict y-axis to start at 0.7
     plt.tight_layout()
 
     plt.savefig(sys.argv[2])
