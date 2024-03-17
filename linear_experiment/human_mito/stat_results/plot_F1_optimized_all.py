@@ -6,6 +6,7 @@ import sys
 def main():
     file_path = sys.argv[1]
     data = pd.read_csv(file_path)
+    data=data[data['damage_level']=='High']
 
     def optimize_k_w(group):
         optimal_row = group.loc[group['sensitivity'].idxmax()]
@@ -23,7 +24,7 @@ def main():
     median_f1_scores = optimal_data.groupby(['tool', 'damage_level'])['f1'].mean().reset_index()
 
     # Define custom order for damage levels
-    damage_order = ['None', 'Single-stranded', 'Mid', 'High']
+    damage_order = ['High']
     median_f1_scores['damage_level'] = pd.Categorical(median_f1_scores['damage_level'], categories=damage_order, ordered=True)
 
     # Sort the DataFrame by the 'damage_level' to ensure the plot follows the custom order
