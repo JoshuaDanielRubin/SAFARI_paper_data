@@ -38,13 +38,21 @@ This repository contains the scripts, data, and analyses necessary to reproduce 
   - Script: `parseBamMito.py`
   - Description: Extracts statistical data from BAM files, supporting comprehensive performance evaluation.
 
+- **Damage Rate Estimation**:
+  - Script: `damage.py`
+  - Description: Generates a CSV file with results from the damage rate estimation experiment, offering insights into DNA degradation patterns.
+
+- **Generate Substitution Matrices**:
+  - Script: `make_subs.py`
+  - Description: Creates substitution matrices per sample, facilitating the analysis of sequence variation and evolutionary dynamics.
+
 ## spurious_model Directory
 
 - **Estimate parameters for spurious alignment model**:
   - Script: `main.py`
   - Description: Estimates parameters for the power law distribution of our spurious alignment model using RYmer and minimizer indexes.
 
-## Additional Resources
+## Additional Folders
 
 - **Index Logs** (`index_logs`):
   - Contains detailed logs and data regarding the construction of minimizer and RYmer indexes with various (k,w) parameter sets, facilitating replication and modification of our indexing strategy.
@@ -54,3 +62,4 @@ This repository contains the scripts, data, and analyses necessary to reproduce 
 
 - **Alignment and Performance Data** (`linear_experiment/human_mito/alignments`):
   - Stores alignment outputs, performance statistics, and substitution matrices, serving as a repository for raw and processed data crucial to our study's insights.
+
