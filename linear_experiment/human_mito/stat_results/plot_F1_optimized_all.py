@@ -43,7 +43,8 @@ def main():
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool')
-    plt.ylim(0.85, 1)  # Restrict y-axis to start at 0.7
+    plt.yscale('log')  # Set the y-axis to a logarithmic scale
+    plt.ylim(0.85, 1)  # You might need to adjust this based on your log scale needs
     plt.tight_layout()
 
     plt.savefig(sys.argv[2])
