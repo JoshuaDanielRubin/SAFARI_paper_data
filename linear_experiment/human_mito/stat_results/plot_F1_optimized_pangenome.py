@@ -10,6 +10,7 @@ def main():
     # Function to identify the optimal k and w for each tool
     def optimize_k_w(group):
         optimal_row = group.loc[group['sensitivity'].idxmax()]
+        print(f"Selected w: {optimal_row['w']}, k: {optimal_row['k']}")
         return optimal_row[['k', 'w']]
 
     # Find the optimal k and w for each tool
@@ -43,7 +44,7 @@ def main():
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool')
-    plt.ylim(0.95, 1)  # Restrict y-axis to start at 0.7
+    plt.ylim(0.998, 1)  # Restrict y-axis to start at 0.7
     plt.tight_layout()
 
     plt.savefig(sys.argv[2])
