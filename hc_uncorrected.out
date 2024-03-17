@@ -1199,23 +1199,23 @@ Processing /home/projects/MAAG/Magpie/Magpie/haplocart_ancient/subsampled_reps/2
 [M::bam2fq_mainloop] discarded 0 singletons
 [M::bam2fq_mainloop] processed 1116987 reads
 	Command being timed: "./run_hc.sh"
-	User time (seconds): 10453.30
-	System time (seconds): 1000.11
-	Percent of CPU this job got: 2317%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 8:14.21
+	User time (seconds): 3327.22
+	System time (seconds): 511.43
+	Percent of CPU this job got: 2808%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 2:16.65
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 1335592
+	Maximum resident set size (kbytes): 1335532
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 4
-	Minor (reclaiming a frame) page faults: 233627729
-	Voluntary context switches: 3134561
-	Involuntary context switches: 1152451
+	Major (requiring I/O) page faults: 104
+	Minor (reclaiming a frame) page faults: 210278575
+	Voluntary context switches: 2228661
+	Involuntary context switches: 232674
 	Swaps: 0
-	File system inputs: 736
-	File system outputs: 90464
+	File system inputs: 1591096
+	File system outputs: 157472
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
