@@ -40,7 +40,6 @@ def generate_percentage_decrease_plots(input_file_path):
     plt.title('Percentage Decrease in Median RMSE from vg giraffe to SAFARI\nacross Different Damage Levels', fontsize=16, fontweight='bold', loc='left')
     plt.xlabel('Damage Level', fontsize=14, fontweight='bold')
     plt.ylabel('Percentage Decrease in Median RMSE', fontsize=14, fontweight='bold')
-    plt.ylim(-0.01, 0.065)
     plt.legend(title='Fragment Length Dist.', fontsize='medium', title_fontsize='14')
 
     plt.tight_layout()
