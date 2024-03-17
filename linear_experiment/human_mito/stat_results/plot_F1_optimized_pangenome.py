@@ -10,11 +10,13 @@ def main():
     # Function to identify the optimal k and w for each tool
     def optimize_k_w(group):
         optimal_row = group.loc[group['sensitivity'].idxmax()]
-        print(f"Selected w: {optimal_row['w']}, k: {optimal_row['k']}")
+        #print(f"Selected w: {optimal_row['w']}, k: {optimal_row['k']}")
         return optimal_row[['k', 'w']]
 
+    high_data = data[data['damage_level'] == 'High']
+
     # Find the optimal k and w for each tool
-    optimal_params = data.groupby('tool').apply(optimize_k_w).reset_index()
+    optimal_params = high_data.groupby('tool').apply(optimize_k_w).reset_index()
 
     # Merge the original data with the optimal parameters to filter it
     optimal_data = pd.merge(data, optimal_params, on=['tool', 'k', 'w'])
