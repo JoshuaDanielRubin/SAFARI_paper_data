@@ -23,8 +23,8 @@ mkdir -p "$target_dir"
 # Function to process BAM files
 process_bam() {
     bam_file="$1"
-    filename=$(basename "$bam_file")
-    new_file="$target_dir/$filename"
+    filename=$(basename "$bam_file" .bam)
+    new_file="$target_dir/${filename}_sorted.bam"
 
     if [ -f "$new_file" ]; then
         echo "$new_file already exists, skipping."
@@ -54,12 +54,23 @@ process_bam() {
     }' | \
     samtools view -Sb - > "$filtered_bam"
 
-    # Attempt to recalibrate MD tag
-    if samtools calmd -b "$filtered_bam" "$reference_fasta" > "$new_file"; then
-        echo "Processed $bam_file --> $new_file using $reference_fasta"
+    # Sort, create index, and generate substitution profiles
+    if samtools sort -o "$new_file" "$filtered_bam" && samtools index "$new_file"; then
+        echo "Sorted and indexed $new_file"
         rm "$filtered_bam"
-        if ! samtools quickcheck "$new_file"; then
-            echo "Warning: $new_file might be corrupted or incomplete."
+
+        # Generating substitution matrix
+        stats_file="${new_file%.bam}_stats.txt"
+        samtools stats "$new_file" > "$stats_file"
+        echo "Generated stats for $new_file"
+
+        # Attempt to extract substitution matrix more broadly
+        matrix_file="${new_file%.bam}_substitution_matrix.txt"
+        grep -A 12 '^SN.*substitutions:' "$stats_file" > "$matrix_file"
+        if [ -s "$matrix_file" ]; then
+            echo "Extracted substitution matrix for $new_file"
+        else
+            echo "No substitution matrix data found for $new_file"
         fi
     else
         echo "Failed processing $bam_file with reference file $reference_fasta."
@@ -71,7 +82,7 @@ export -f process_bam
 export source_dir target_dir reference_fasta1 reference_fasta2
 
 # Process BAM files in parallel
-find "$source_dir" -name '*.bam' | parallel -j 20 process_bam {}
+find "$source_dir" -maxdepth 1 -name '*.bam' | parallel -j 20 process_bam {}
 
 echo "Processing complete."
 
