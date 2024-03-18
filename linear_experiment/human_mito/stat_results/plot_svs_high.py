@@ -18,6 +18,7 @@ def plot_best_sensitivity(data_path):
     # Identify the best (k,w) combination for each tool based on median sensitivity
     best_sensitivity = medians_sensitivity.loc[medians_sensitivity.groupby('tool')['sensitivity'].idxmax()]
     best_sensitivity_data = filtered_data.merge(best_sensitivity[['tool', 'k', 'w']], on=['tool', 'k', 'w'])
+    print(best_sensitivity_data)
 
     # Plotting
     plt.figure(figsize=(10, 8))
@@ -42,7 +43,7 @@ def plot_best_sensitivity(data_path):
     # Plot each tool with its assigned color
     for tool in tools:
         tool_data = best_sensitivity_data[best_sensitivity_data['tool'] == tool]
-        plt.scatter(tool_data['specificity'], tool_data['sensitivity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7)
+        plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7)
 
     plt.title('Sensitivity vs Specificity for Best (k,w) \n Parameters Based on Median Sensitivity (' + sys.argv[3] + ", High Damage)", fontsize=16, fontweight='bold')
     plt.xlabel('Specificity', fontsize=14, fontweight='bold')
