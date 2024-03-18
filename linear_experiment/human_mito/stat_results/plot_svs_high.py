@@ -3,20 +3,21 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
-def calculate_f1(data):
-    # Placeholder for F1 calculation; replace with appropriate calculation method
-    data['F1'] = 2 * (data['sensitivity'] * data['specificity']) / (data['sensitivity'] + data['specificity'])
+def calculate_sensitivity(data):
+    # No additional calculation needed for sensitivity, assuming it's already a column in the data
     return data
 
-def plot_best_f1(data_path):
+def plot_best_sensitivity(data_path):
     # Load data
     data = pd.read_csv(data_path)
 
-    # Placeholder for the rest of your existing code before plotting...
-    filtered_data = calculate_f1(data[(data['damage_level'] == 'High')].copy())
-    medians_f1 = filtered_data.groupby(['tool', 'k', 'w'])['F1'].median().reset_index()
-    best_f1 = medians_f1.loc[medians_f1.groupby('tool')['F1'].idxmax()]
-    best_f1_data = filtered_data.merge(best_f1[['tool', 'k', 'w']], on=['tool', 'k', 'w'])
+    # Filtering data for 'None' damage level and calculating sensitivity
+    filtered_data = calculate_sensitivity(data[(data['damage_level'] == 'High')].copy())
+    # Get medians of sensitivity grouped by tool, k, and w
+    medians_sensitivity = filtered_data.groupby(['tool', 'k', 'w'])['sensitivity'].median().reset_index()
+    # Identify the best (k,w) combination for each tool based on median sensitivity
+    best_sensitivity = medians_sensitivity.loc[medians_sensitivity.groupby('tool')['sensitivity'].idxmax()]
+    best_sensitivity_data = filtered_data.merge(best_sensitivity[['tool', 'k', 'w']], on=['tool', 'k', 'w'])
 
     # Plotting
     plt.figure(figsize=(10, 8))
@@ -25,7 +26,7 @@ def plot_best_f1(data_path):
     predefined_colors = {'SAFARI': 'green', 'vg giraffe': 'orange'}
     
     # Get a list of all tools to ensure unique colors for those not predefined
-    tools = best_f1_data['tool'].unique()
+    tools = best_sensitivity_data['tool'].unique()
     color_palette = plt.cm.get_cmap('hsv', len(tools)) # hsv colormap, adjust as needed
     
     # Assign colors ensuring unique colors for each tool
@@ -40,11 +41,10 @@ def plot_best_f1(data_path):
     
     # Plot each tool with its assigned color
     for tool in tools:
-        tool_data = best_f1_data[best_f1_data['tool'] == tool]
-        print(tool_data[['tool', 'k', 'w', 'sensitivity']])
+        tool_data = best_sensitivity_data[best_sensitivity_data['tool'] == tool]
         plt.scatter(tool_data['specificity'], tool_data['sensitivity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7)
 
-    plt.title('Sensitivity vs Specificity for Best (k,w) \n Parameters Based on Median F1 Score (' + sys.argv[3] + ", High Damage)", fontsize=16, fontweight='bold')
+    plt.title('Sensitivity vs Specificity for Best (k,w) \n Parameters Based on Median Sensitivity (' + sys.argv[3] + ", High Damage)", fontsize=16, fontweight='bold')
     plt.xlabel('Specificity', fontsize=14, fontweight='bold')
     plt.ylabel('Sensitivity', fontsize=14, fontweight='bold')
     plt.legend()
@@ -58,5 +58,5 @@ if __name__ == '__main__':
         print("Usage: python script.py <data_path> <output path> <Dist>")
         sys.exit(1)
     data_path = sys.argv[1]
-    plot_best_f1(data_path)
+    plot_best_sensitivity(data_path)
 
