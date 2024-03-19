@@ -23,8 +23,17 @@ def parse_ground_truth(file_path):
 def compare_matrices(estimated, ground_truth):
     return np.sqrt(np.mean((estimated - ground_truth) ** 2))
 
-def list_files(directory):
-    return glob.glob(directory + '/**/*.prof', recursive=True)
+def list_files(base_directory):
+    # Find all subdirectories starting with 'k'
+    subdirs = [d for d in os.listdir(base_directory) if os.path.isdir(os.path.join(base_directory, d)) and d.startswith('k')]
+    all_files = []
+    # Iterate through each matching subdir to find .prof files
+    for subdir in subdirs:
+        subdir_path = os.path.join(base_directory, subdir)
+        # Use glob to find all .prof files within the subdir
+        files = glob.glob(os.path.join(subdir_path, '*.prof'))
+        all_files.extend(files)
+    return all_files
 
 def find_ground_truth_files(damage_type, ground_truth_dir, strand):
     pattern = f"{damage_type}{strand}.dat"
@@ -56,18 +65,22 @@ def process_files(file_paths, ground_truth_dir):
         ground_truth_matrix = parse_ground_truth(gt_file_path)
         estimated_matrix = parse_estimated(file_path)
         rmse = compare_matrices(estimated_matrix, ground_truth_matrix)
-        fragment_len_dist = 'nothing'
-        if 'chag' in file_path:
-            fragment_len_dist = 'chag'
-        elif 'vin' in file_path:
-            fragment_len_dist = 'vin'
 
-        rmse_results.append((fragment_len_dist, k, w, damage_type, tool_name, rmse))
+        # Update fragment_len_dist for output file
+        fragment_len_dist = 'Vindija' if 'vin' in file_path else 'Chagyrskaya'
+        # Update tool name for output
+        tool_name = 'SAFARI' if 'safari' in tool_name else 'vg giraffe'
+        # Update damage levels for output
+        damage_level = {'none': 'None', 'dmid': 'Mid', 'dhigh': 'High', 'single': 'Single-stranded'}[damage_type]
+
+        rmse_results.append((fragment_len_dist, k, w, damage_level, tool_name, rmse))
     
     return rmse_results
 
 def write_results_to_file(rmse_results, output_file_path):
     with open(output_file_path, 'w') as f:
+        # Write header
+        f.write('fragment_len_dist,k,w,damage_level,tool,RMSE\n')
         for result in rmse_results:
             f.write(','.join(map(str, result)) + '\n')
 
@@ -86,3 +99,4 @@ if __name__ == "__main__":
     # Combine results from both directories and write to output
     combined_results = rmse_results_vin + rmse_results_chag
     write_results_to_file(combined_results, output_file)
+
