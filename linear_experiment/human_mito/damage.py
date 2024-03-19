@@ -4,35 +4,21 @@ import numpy as np
 import glob
 import sys
 
-def parse_estimated_matrix(data_str):
-    """
-    Parses the estimated matrix from a .prof file.
-    """
-    # Assuming data_str is a path to the .prof file for simplicity
-    with open(data_str, 'r') as file:
-        lines = file.readlines()[1:]  # Skip header line
-    
-    # Parse numerical values
+def parse_estimated(file_path):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()[1:]  # Skip header
     matrix = [list(map(float, line.strip().split('\t'))) for line in lines]
-    
     return np.array(matrix)
 
 def parse_ground_truth(file_path):
-    """
-    Parses the ground truth matrix from a .dat file.
-    """
     with open(file_path, 'r') as file:
-        lines = file.readlines()[1:]  # Assuming the first line is a header and should be ignored for consistency
-    
-    # Extract numerical values and ignore the ranges for now, focusing on the primary values
+        lines = file.readlines()[1:]  # Skip header
+        print(lines)
     matrix = []
     for line in lines:
-        row_values = []
-        for value in line.strip().split('\t')[1:]:  # Skip the first item which is not a numerical value
-            primary_value = float(value.split(' ')[0])
-            row_values.append(primary_value)
-        matrix.append(row_values)
-    
+        parts = line.strip().split('\t')[1:]  # Skip first column
+        row = [float(part.split(' ')[0]) for part in parts]  # Take only the first (numeric) part of each cell
+        matrix.append(row)
     return np.array(matrix)
 
 def compare_matrices(estimated, ground_truth):
@@ -51,12 +37,10 @@ def process_files(estimated_files, ground_truth_dir, output_file):
         damage_type = re.search(r'_d(.*?)_', filename).group(1)
         tool_name = re.search(r'_s0\.\d+_(.*?)_', filename).group(1)
         strand = '3' if '_3' in filename else '5'
-        
-        ground_truth_files = list_prof_files(ground_truth_dir)
         for gt_file in ground_truth_files:
             if damage_type in gt_file and strand in gt_file:
                 ground_truth_matrix = parse_ground_truth(gt_file)
-                estimated_matrix = parse_estimated_matrix(file_path)
+                estimated_matrix = parse_estimated(file_path)
                 print(ground_truth_matrix)
                 print("\n\n\n")
                 print(estimated_matrix)
