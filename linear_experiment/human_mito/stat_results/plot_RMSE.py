@@ -12,8 +12,8 @@ def generate_percentage_decrease_plots(input_file_path):
                                           categories=["None", "Single-stranded", "Mid", "High"],
                                           ordered=True)
 
-    # Filter the dataset based on the criteria
-    filtered_data = data[~((data['tool'].isin(['SAFARI', 'vg giraffe'])) & ~((data['k'] == '29') & (data['w'] == '11')))]
+    # Adjust the filter to use integers for 'k' and 'w'
+    filtered_data = data[(data['tool'].isin(['SAFARI', 'vg giraffe']))]
 
     # Calculate the median RMSE across samples by tool, for each 'fragment_len_dist' and 'damage_level'
     median_rmse = filtered_data.groupby(['fragment_len_dist', 'damage_level', 'tool'])['RMSE'].median().reset_index()
@@ -21,13 +21,14 @@ def generate_percentage_decrease_plots(input_file_path):
     # Pivot the table to have tools as columns
     pivot_data = median_rmse.pivot_table(index=['fragment_len_dist', 'damage_level'], columns='tool', values='RMSE').reset_index()
 
+    print(pivot_data)
+
     # Calculate the percentage decrease from vg giraffe to SAFARI
     pivot_data['percentage_decrease'] = ((pivot_data['vg giraffe'] - pivot_data['SAFARI']) / pivot_data['vg giraffe']) * 100
 
     # Melt the pivot_data for plotting
     melted_data = pivot_data.melt(id_vars=['fragment_len_dist', 'damage_level'], value_vars=['percentage_decrease'])
 
-    print(melted_data)
 
     # Set the aesthetic style of the plots, including making the text larger and bolder
     sns.set_style("whitegrid")
