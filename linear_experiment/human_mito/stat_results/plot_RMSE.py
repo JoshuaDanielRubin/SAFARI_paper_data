@@ -1,4 +1,3 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -49,7 +48,7 @@ def generate_percentage_decrease_plots(input_file_path):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) != 3:
-        print("Usage: python generate_percentage_decrease_plots.py <input_file_path>")
+        print("Usage: python plot_RMSE.py <input_file_path> <output_file_path>")
     else:
         input_file_path = sys.argv[1]
         generate_percentage_decrease_plots(input_file_path)
