@@ -4,11 +4,36 @@ import numpy as np
 import glob
 import sys
 
-def parse_estimated_matrix(file_path):
-    # FILL IN
+def parse_estimated_matrix(data_str):
+    """
+    Parses the estimated matrix from a .prof file.
+    """
+    # Assuming data_str is a path to the .prof file for simplicity
+    with open(data_str, 'r') as file:
+        lines = file.readlines()[1:]  # Skip header line
+    
+    # Parse numerical values
+    matrix = [list(map(float, line.strip().split('\t'))) for line in lines]
+    
+    return np.array(matrix)
 
 def parse_ground_truth(file_path):
-    # FILL IN
+    """
+    Parses the ground truth matrix from a .dat file.
+    """
+    with open(file_path, 'r') as file:
+        lines = file.readlines()[1:]  # Assuming the first line is a header and should be ignored for consistency
+    
+    # Extract numerical values and ignore the ranges for now, focusing on the primary values
+    matrix = []
+    for line in lines:
+        row_values = []
+        for value in line.strip().split('\t')[1:]:  # Skip the first item which is not a numerical value
+            primary_value = float(value.split(' ')[0])
+            row_values.append(primary_value)
+        matrix.append(row_values)
+    
+    return np.array(matrix)
 
 def average_matrices(matrix_list):
     return np.mean(matrix_list, axis=0)
