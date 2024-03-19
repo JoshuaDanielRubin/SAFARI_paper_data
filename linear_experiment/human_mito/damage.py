@@ -4,32 +4,11 @@ import numpy as np
 import glob
 import sys
 
-def parse_estimated_matrix(data_str):
-    # FILL THIS IN
+def parse_estimated_matrix(file_path):
+    # FILL IN
 
 def parse_ground_truth(file_path):
-    conversion = {'A>C': (0, 1), 'A>G': (0, 2), 'A>T': (0, 3),
-                  'C>A': (1, 0), 'C>G': (1, 2), 'C>T': (1, 3),
-                  'G>A': (2, 0), 'G>C': (2, 1), 'G>T': (2, 3),
-                  'T>A': (3, 0), 'T>C': (3, 1), 'T>G': (3, 2)}
-    matrix = np.zeros((4, 4))
-    with open(file_path, 'r') as file:
-        headers = next(file).strip().split()
-        for line in file:
-            parts = re.split(r'\s+', line.strip())
-            for i, header in enumerate(headers):
-                if header in conversion:
-                    row_idx, col_idx = conversion[header]
-                    prob_part = parts[i + 1].split('[')[0]
-                    if prob_part == "0.0":
-                        prob = 0.0
-                    else:
-                        try:
-                            prob = float(prob_part)
-                        except ValueError:
-                            continue
-                    matrix[row_idx, col_idx] = prob
-    return matrix
+    # FILL IN
 
 def average_matrices(matrix_list):
     return np.mean(matrix_list, axis=0)
@@ -54,6 +33,8 @@ def process_files(file_paths, ground_truth_dir):
     
     for file_path in file_paths:
         print(file_path)
+        if '_3' not in file_path and '_5' not in file_path:
+            continue
         path_parts = file_path.split(os.sep)
         fragment_dist = path_parts[-3]  
         if 'linear_results' in file_path:
