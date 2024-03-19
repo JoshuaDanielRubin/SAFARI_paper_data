@@ -35,82 +35,52 @@ def parse_ground_truth(file_path):
     
     return np.array(matrix)
 
-def average_matrices(matrix_list):
-    return np.mean(matrix_list, axis=0)
+def compare_matrices(estimated, ground_truth):
+    return np.sqrt(np.mean((estimated - ground_truth) ** 2))  # RMSE
 
-def find_ground_truth_files(damage_type):
-    gt_mapping = {
-        'dmid': ('dmid3.dat', 'dmid5.dat'),  # Corrected file extensions
-        'dhigh': ('dhigh3.dat', 'dhigh5.dat'),
-        'none': ('none3.dat', 'none5.dat'),
-        'single': ('single3.dat', 'single5.dat'),
-    }
-    return gt_mapping.get(damage_type, (None, None))
+def list_prof_files(directory):
+    """Recursively list .prof files in a given directory that contain '_3' or '_5'."""
+    return [os.path.join(dirpath, f)
+            for dirpath, _, files in os.walk(directory)
+            for f in files if f.endswith('.prof') and ('_3' in f or '_5' in f)]
 
-def process_files(file_paths, ground_truth_dir):
-    rmse_results = []
-    ground_truth_matrices = {}
-    
-    for damage_type in ['dmid', 'dhigh', 'none', 'single']:
-        gt_files = find_ground_truth_files(damage_type)
-        matrices = [parse_ground_truth(os.path.join(ground_truth_dir, gt_file)) for gt_file in gt_files if gt_file]
-        ground_truth_matrices[damage_type] = average_matrices(matrices)
-    
-    for file_path in file_paths:
-        print(file_path)
-        if '_3' not in file_path and '_5' not in file_path:
-            continue
-        path_parts = file_path.split(os.sep)
-        fragment_dist = path_parts[-3]  
-        if 'linear_results' in file_path:
-            k, w = 'linear', 'linear'
-        else:
-            match = re.search(r'k(\d+)_w(\d+)', path_parts[-2])
-            if match:
-                k, w = match.groups()
-            else:
-                print(f"File does not match expected pattern: {file_path}")
-                continue
-        
+def process_files(estimated_files, ground_truth_dir, output_file):
+    rmse_results = {}
+    for file_path in estimated_files:
         filename = os.path.basename(file_path)
         damage_type = re.search(r'_d(.*?)_', filename).group(1)
         tool_name = re.search(r'_s0\.\d+_(.*?)_', filename).group(1)
+        strand = '3' if '_3' in filename else '5'
         
-        estimated_matrix = parse_estimated_matrix(file_path)
-        ground_truth_matrix = ground_truth_matrices[damage_type]
-        rmse = compare_matrices(estimated_matrix, ground_truth_matrix)
-        
-        rmse_results.append((fragment_dist, k, w, damage_type, tool_name, rmse))
+        ground_truth_files = list_prof_files(ground_truth_dir)
+        for gt_file in ground_truth_files:
+            if damage_type in gt_file and strand in gt_file:
+                ground_truth_matrix = parse_ground_truth(gt_file)
+                estimated_matrix = parse_estimated_matrix(file_path)
+                print(ground_truth_matrix)
+                print("\n\n\n")
+                print(estimated_matrix)
+                rmse = compare_matrices(estimated_matrix, ground_truth_matrix)
+                category = (damage_type, tool_name, strand)
+                
+                if category not in rmse_results:
+                    rmse_results[category] = []
+                rmse_results[category].append(rmse)
     
-    return rmse_results
+    # Calculate average RMSE for each category
+    for category, rmses in rmse_results.items():
+        rmse_results[category] = np.median(rmses)
 
-def compare_matrices(estimated, ground_truth):
-    return np.sqrt(np.mean((estimated - ground_truth) ** 2))
+    # Save results to the output file
+    with open(output_file, 'w') as out_file:
+        for category, rmse in sorted(rmse_results.items()):
+            out_file.write(f"Category: {category}, RMSE: {rmse}\n")
 
-def list_files(directory):
-    return glob.glob(directory + '/**/*.prof', recursive=True)
+# Example Usage
+vin_dir = sys.argv[1]
+chag_dir = sys.argv[2]
+output_file = sys.argv[3]
 
-def write_results_to_file(rmse_results, output_file_path):
-    with open(output_file_path, 'w') as f:
-        for result in rmse_results:
-            f.write(','.join(map(str, result)) + '\n')
-
-if __name__ == "__main__":
-    if len(sys.argv) < 4:
-        print("Usage: python damage.py <alignments_dir_vin> <alignments_dir_chag> <output_file_path>")
-        sys.exit(1)
-    
-    alignments_dir_vin = sys.argv[1]
-    alignments_dir_chag = sys.argv[2]
-    output_file_path = sys.argv[3]
-    ground_truth_dir = './'  # Adjust as necessary
-
-    vin_file_paths = list_files(alignments_dir_vin)
-    chag_file_paths = list_files(alignments_dir_chag)
-    all_file_paths = vin_file_paths + chag_file_paths
-
-    rmse_results = process_files(all_file_paths, ground_truth_dir)
-    write_results_to_file(rmse_results, output_file_path)
-
-    print(f"Results written to {output_file_path}")
+estimated_files = list_prof_files(vin_dir)
+process_files(estimated_files, chag_dir, output_file)
 
