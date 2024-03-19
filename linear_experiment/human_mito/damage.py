@@ -4,18 +4,8 @@ import numpy as np
 import glob
 import sys
 
-def parse_estimated_matrix(file_path):
-    matrix = np.zeros((4, 4))  # A, C, G, T
-    with open(file_path, 'r') as file:
-        for line in file:
-            parts = line.strip().split()
-            row_idx = "ACGT".find(parts[0])
-            for i, count in enumerate(parts[1:]):
-                matrix[row_idx, i] = int(count)
-    total_counts = np.sum(matrix)
-    if total_counts > 0:
-        return matrix / total_counts
-    return matrix
+def parse_estimated_matrix(data_str):
+    # FILL THIS IN
 
 def parse_ground_truth(file_path):
     conversion = {'A>C': (0, 1), 'A>G': (0, 2), 'A>T': (0, 3),
@@ -92,7 +82,7 @@ def compare_matrices(estimated, ground_truth):
     return np.sqrt(np.mean((estimated - ground_truth) ** 2))
 
 def list_files(directory):
-    return glob.glob(directory + '/**/*.txt', recursive=True)
+    return glob.glob(directory + '/**/*.prof', recursive=True)
 
 def write_results_to_file(rmse_results, output_file_path):
     with open(output_file_path, 'w') as f:
