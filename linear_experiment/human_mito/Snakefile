@@ -7,9 +7,9 @@ LENGTHS=["125"]
 RATES=["0.1", "0.15", "0.2", "0.25", "0.3", "0.35", "0.4", "0.45", "0.5", "0.55", "0.6", "0.65", "0.7", "0.75", "0.8", "0.85", "0.9", "0.95"]
 #RATES=["0.95"]
 DAMAGE=["dhigh", "dmid", "none", "single"]
-#DAMAGE=["none", "dhigh"]
+#DAMAGE=["none"]
+#ALIGNERS=["aln_anc", "aln", "bb", "bowtie2", "mem", "shrimp"]
 ALIGNERS=["safari", "giraffe"]
-ALIGNERSC=[]
 FRAGNUM=100000
 NUMT_COUNT=1000
 
@@ -111,7 +111,7 @@ rule fragsim:
         fraglen="\d+"
     shell:
         "/home/ctools/gargammel/src/fragSim  -n {wildcards.nfrags} -s \
-         /home/projects2/DNA_reconstruct/gabrieldir/insertSizes/chagyrskaya8.gz --circ generation_{wildcards.step} {input.input_1} | gzip > {output}"
+         /home/projects2/DNA_reconstruct/gabrieldir/insertSizes/Vi33.19.gz --circ generation_{wildcards.step} {input.input_1} | gzip > {output}"
 
 
 rule deamsim:
@@ -229,7 +229,7 @@ rule fragsim_numtS:
     wildcard_constraints:
         fraglen="\d+"
     shell:
-        "/home/ctools//gargammel/src/fragSim  -n {wildcards.fragn} -s  /home/projects2/DNA_reconstruct/gabrieldir/insertSizes/chagyrskaya8.gz \
+        "/home/ctools//gargammel/src/fragSim  -n {wildcards.fragn} -s  /home/projects2/DNA_reconstruct/gabrieldir/insertSizes/Vi33.19.gz \
          {input.input_1} | gzip > {output}"
 
 
@@ -448,16 +448,29 @@ rule safari:
             /home/projects/MAAG/Magpie/Magpie/vgan_corrected/dep/vg/bin/vg giraffe \
            --deam-3p /home/projects/MAAG/Magpie/Magpie/linear_experiment/human_mito/alignments/profs/numtS_and_gen_{wildcards.step}_n100000_d{wildcards.dam}_l125_s{wildcards.rate}_aln_anc_3.prof \
            --deam-5p /home/projects/MAAG/Magpie/Magpie/linear_experiment/human_mito/alignments/profs/numtS_and_gen_{wildcards.step}_n100000_d{wildcards.dam}_l125_s{wildcards.rate}_aln_anc_5.prof \
-           -t 10 \
+           -t 20 \
            -f /dev/stdin \
-           -j 0.75 \
-           -o bam \
-           --ref-paths PATHS \
+           -j 0.5 \
            -m rCRS_graph/graph.min \
            -d rCRS_graph/graph.dist \
            -q rCRS_graph/graph.ry \
-           -Z rCRS_graph/graph.giraffe.gbz \
-           | /home/ctools/samtools-1.13/samtools sort /dev/stdin > {output}"
+           -Z rCRS_graph/graph.giraffe.gbz |
+
+           nice -19 /home/projects/MAAG/Magpie/Magpie/vgan_corrected/dep/vg/bin/vg surject -l -A \
+                    -x  /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.xg \
+           -t 3 -p H2a2a1 -b - | \
+           samtools sort -o {output} - && samtools index {output}"
+
+           #-t 20 \
+           #-f /dev/stdin \
+           #-j 0.5 \
+           #-o bam \
+           #--ref-paths PATHS \
+           #-m rCRS_graph/graph.min \
+           #-d rCRS_graph/graph.dist \
+           #-q rCRS_graph/graph.ry \
+           #-Z rCRS_graph/graph.giraffe.gbz \
+           #| /home/ctools/samtools-1.13/samtools sort /dev/stdin > {output}"
 
 ##giraffe
 rule giraffe:
@@ -469,7 +482,7 @@ rule giraffe:
     benchmark: "benchmarks/giraffe_numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_s{rate}.tsv"
     shell: "nice -19 /home/ctools/interleave_fastq/interleavefastq.sh {input.input_1} {input.input_2} {input.input_3} | awk 'NF' | \
             /home/projects/MAAG/Magpie/Magpie/vgan_uncorrected/dep/vg/bin/vg giraffe \
-           -t 10 \
+           -t 20 \
            -f /dev/stdin \
            --ref-paths PATHS \
            -o bam \
