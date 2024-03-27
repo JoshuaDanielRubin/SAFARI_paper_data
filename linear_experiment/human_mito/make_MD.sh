@@ -1,88 +1,65 @@
 #!/bin/bash
 
 # Define directories and reference FASTA files
-source_dir="alignments"
-target_dir="alignments/with_md"
+source_dir="alignments/vin"
+target_dir="alignments/with_md/vin"
 reference_fasta1="H2a2a1.fa"
 reference_fasta2="rCRS.fa"
 
-# Check for samtools and parallel
+# Check for samtools
 if ! command -v samtools &> /dev/null; then
     echo "samtools could not be found. Please install samtools."
     exit 1
 fi
 
+# Check for parallel
 if ! command -v parallel &> /dev/null; then
     echo "GNU Parallel could not be found. Please install GNU Parallel."
     exit 1
 fi
 
-# Create the target directory if it doesn't exist
-mkdir -p "$target_dir"
+# Index reference FASTA files (if not already indexed)
+samtools faidx "$reference_fasta1"
+samtools faidx "$reference_fasta2"
 
 # Function to process BAM files
 process_bam() {
     bam_file="$1"
-    filename=$(basename "$bam_file" .bam)
-    new_file="$target_dir/${filename}_sorted.bam"
+    subfolder=$(dirname "$bam_file" | sed "s|^$source_dir/||") # Extract subfolder from the path
+    new_subfolder="$target_dir/$subfolder"
+    mkdir -p "$new_subfolder" # Create corresponding subfolder in target_dir
 
-    if [ -f "$new_file" ]; then
-        echo "$new_file already exists, skipping."
+    filename=$(basename "$bam_file" .bam)
+    md_bam_file="$new_subfolder/${filename}_sorted_md.bam"
+
+    if [ -f "$md_bam_file" ]; then
+        echo "$md_bam_file already exists, skipping."
         return 0
     fi
 
     # Select reference based on filename keywords
+    reference_fasta="$reference_fasta2" # Default reference
     if [[ "$filename" == *"safari"* ]] || [[ "$filename" == *"giraffe"* ]]; then
         reference_fasta="$reference_fasta1"
-    else
-        reference_fasta="$reference_fasta2"
     fi
 
-    # Temporary file for filtered BAM
-    filtered_bam=$(mktemp)
+    # Sort BAM, add MD tag, and index
+    samtools sort "$bam_file" | \
+    samtools calmd -b - "$reference_fasta" > "$md_bam_file"
 
-    # Filter and process BAM file
-    samtools view -h "$bam_file" | \
-    awk -F'\t' 'BEGIN {OFS = FS}
-    {
-        if ($0 ~ /^@/) {
-            print
-        } else {
-            cigar = $6
-            if (cigar !~ /^[0-9]+[ID]/ && cigar !~ /[ID][0-9]+$/) print
-        }
-    }' | \
-    samtools view -Sb - > "$filtered_bam"
-
-    # Sort, create index, and generate substitution profiles
-    if samtools sort -o "$new_file" "$filtered_bam" && samtools index "$new_file"; then
-        echo "Sorted and indexed $new_file"
-        rm "$filtered_bam"
-
-        # Generating substitution matrix
-        stats_file="${new_file%.bam}_stats.txt"
-        samtools stats "$new_file" > "$stats_file"
-        echo "Generated stats for $new_file"
-
-        # Attempt to extract substitution matrix more broadly
-        matrix_file="${new_file%.bam}_substitution_matrix.txt"
-        grep -A 12 '^SN.*substitutions:' "$stats_file" > "$matrix_file"
-        if [ -s "$matrix_file" ]; then
-            echo "Extracted substitution matrix for $new_file"
-        else
-            echo "No substitution matrix data found for $new_file"
-        fi
+    if [ $? -eq 0 ]; then
+        echo "Sorted and added MD to $md_bam_file"
     else
-        echo "Failed processing $bam_file with reference file $reference_fasta."
-        rm "$filtered_bam"
+        echo "Failed processing $bam_file with reference $reference_fasta."
+        [ -f "$md_bam_file" ] && rm "$md_bam_file"
     fi
 }
 
 export -f process_bam
 export source_dir target_dir reference_fasta1 reference_fasta2
 
-# Process BAM files in parallel
-find "$source_dir" -maxdepth 1 -name '*.bam' | parallel -j 20 process_bam {}
+# Process BAM files in parallel, including those in specific subfolders
+find "$source_dir" \( -path "*/linear_results" -o -path "*/k*_*" \) -type f -name '*.bam' | parallel -j 40 process_bam {}
 
 echo "Processing complete."
 
