@@ -4,13 +4,17 @@ import numpy as np
 import sys
 import glob
 
+# Avoid scientific notation
+np.set_printoptions(suppress=True)
+
 def parse_estimated(file_path):
+    #print(file_path)
     with open(file_path, 'r') as file:
         lines = file.readlines()[1:]  # Skip header
     matrix = [list(map(float, line.strip().split('\t'))) for line in lines]
     return np.array(matrix)
 
-def parse_ground_truth(file_path):
+def parse_ground_truth(file_path, strand):
     with open(file_path, 'r') as file:
         lines = file.readlines()[1:]  # Skip header
     matrix = []
@@ -18,7 +22,11 @@ def parse_ground_truth(file_path):
         parts = line.strip().split('\t')[1:]  # Skip first column
         row = [float(part.split(' ')[0]) for part in parts]  # Take only the first (numeric) part of each cell
         matrix.append(row)
+
+    matrix = matrix[::-1]
+    
     return np.array(matrix)
+
 
 def compare_matrices(estimated, ground_truth):
     return np.sqrt(np.mean((estimated - ground_truth) ** 2))
@@ -54,33 +62,48 @@ def process_files(file_paths, ground_truth_dir):
             continue
         damage_type = re.search(r'_d(.*?)_', filename).group(1)
         tool_name = re.search(r'_s0\.\d+_(.*?)_', filename).group(1)
+        sub_rate = re.search(r'_s(0\.\d+)_', filename).group(1)
         strand = '3' if '_3' in filename else '5'
         k, w = parse_k_w_from_path(file_path)
+        #print(k,w)
 
         gt_file_path = find_ground_truth_files(damage_type, ground_truth_dir, strand)
         if not gt_file_path:
             print(f"No ground truth file found for {filename}")
             continue
 
-        ground_truth_matrix = parse_ground_truth(gt_file_path)
+        ground_truth_matrix = parse_ground_truth(gt_file_path, strand)
         estimated_matrix = parse_estimated(file_path)
+
+        if damage_type == 'dhigh' and strand == '3':
+            print('\n\n\n')
+            print(tool_name)
+            print(file_path)
+            print(ground_truth_matrix)
+            print('\n')
+            print(estimated_matrix)
+            print('\n\n\n')
+
         rmse = compare_matrices(estimated_matrix, ground_truth_matrix)
 
-        # Update fragment_len_dist for output file
-        fragment_len_dist = 'Vindija' if 'vin' in file_path else 'Chagyrskaya'
-        # Update tool name for output
-        tool_name = 'SAFARI' if 'safari' in tool_name else 'vg giraffe'
+        # Check for 'vin' in file_path, default to 'N/A' if neither 'vin' nor 'Chagyrskaya' are present
+        fragment_len_dist = 'Vindija' if 'vin' in file_path else ('Chagyrskaya' if 'chag' in file_path else 'N/A')
+
+        # Check if 'safari' is in tool_name, default to 'N/A' if neither 'safari' nor 'vg giraffe' are present
+        tool_name = 'SAFARI' if 'safari' in tool_name else ('vg giraffe' if 'giraffe' in tool_name else 'N/A')
+
+
         # Update damage levels for output
         damage_level = {'none': 'None', 'dmid': 'Mid', 'dhigh': 'High', 'single': 'Single-stranded'}[damage_type]
 
-        rmse_results.append((fragment_len_dist, k, w, damage_level, tool_name, rmse))
+        rmse_results.append((fragment_len_dist, k, w, damage_level, tool_name, sub_rate, rmse))
     
     return rmse_results
 
 def write_results_to_file(rmse_results, output_file_path):
     with open(output_file_path, 'w') as f:
         # Write header
-        f.write('fragment_len_dist,k,w,damage_level,tool,RMSE\n')
+        f.write('fragment_len_dist,k,w,damage_level,tool,sub_rate,RMSE\n')
         for result in rmse_results:
             f.write(','.join(map(str, result)) + '\n')
 
