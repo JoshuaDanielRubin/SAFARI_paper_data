@@ -446,31 +446,16 @@ rule safari:
     benchmark: "benchmarks/safari_numtS_and_gen_{step}_n{nfrags}_d{dam}_l{length}_s{rate}.tsv"
     shell: "nice -19 /home/ctools/interleave_fastq/interleavefastq.sh {input.input_1} {input.input_2} {input.input_3} | awk 'NF' | \
             /home/projects/MAAG/Magpie/Magpie/vgan_corrected/dep/vg/bin/vg giraffe \
-           --deam-3p /home/projects/MAAG/Magpie/Magpie/linear_experiment/human_mito/alignments/profs/numtS_and_gen_{wildcards.step}_n100000_d{wildcards.dam}_l125_s{wildcards.rate}_aln_anc_3.prof \
-           --deam-5p /home/projects/MAAG/Magpie/Magpie/linear_experiment/human_mito/alignments/profs/numtS_and_gen_{wildcards.step}_n100000_d{wildcards.dam}_l125_s{wildcards.rate}_aln_anc_5.prof \
+           --deam-3p alignments/profs/numtS_and_gen_{wildcards.step}_n100000_d{wildcards.dam}_l125_s{wildcards.rate}_aln_anc_3.prof \
+           --deam-5p alignments/profs/numtS_and_gen_{wildcards.step}_n100000_d{wildcards.dam}_l125_s{wildcards.rate}_aln_anc_5.prof \
            -t 20 \
            -f /dev/stdin \
            -j 0.5 \
            -m rCRS_graph/graph.min \
            -d rCRS_graph/graph.dist \
            -q rCRS_graph/graph.ry \
-           -Z rCRS_graph/graph.giraffe.gbz |
-
-           nice -19 /home/projects/MAAG/Magpie/Magpie/vgan_corrected/dep/vg/bin/vg surject -l -A \
-                    -x  /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.xg \
-           -t 3 -p H2a2a1 -b - | \
-           samtools sort -o {output} - && samtools index {output}"
-
-           #-t 20 \
-           #-f /dev/stdin \
-           #-j 0.5 \
-           #-o bam \
-           #--ref-paths PATHS \
-           #-m rCRS_graph/graph.min \
-           #-d rCRS_graph/graph.dist \
-           #-q rCRS_graph/graph.ry \
-           #-Z rCRS_graph/graph.giraffe.gbz \
-           #| /home/ctools/samtools-1.13/samtools sort /dev/stdin > {output}"
+           -Z rCRS_graph/graph.giraffe.gbz | \
+           /home/ctools/samtools-1.13/samtools sort /dev/stdin> {output}"
 
 ##giraffe
 rule giraffe:
