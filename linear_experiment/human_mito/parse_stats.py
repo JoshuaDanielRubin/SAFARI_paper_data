@@ -1,8 +1,8 @@
-
 import os
 import csv
 import numpy as np
 import re
+import sys
 
 def parse_stat_file(file_path):
     with open(file_path, 'r') as f:
@@ -119,6 +119,7 @@ def compute_metrics(stats):
 
 def process_subfolder(subfolder_path, csv_writer):
     k, w = subfolder_path.split('/')[-1].split('_')
+    print(k,w)
     k = int(k[1:]) if k != 'linear' else None
     w = int(w[1:]) if w != 'results' else None
 
@@ -145,7 +146,7 @@ def process_subfolder(subfolder_path, csv_writer):
 
 
 def main():
-    output_file = 'results.csv'
+    output_file = sys.argv[2]
     fieldnames = ['k', 'w', 'tool', 'damage_level', 'read_length', 'subsampling_rate', 'mito_correct', 'mito_incorrect', 'mito_mapped', 'mito_unmapped', 'bacteria_mapped', 'bacteria_unmapped', \
                   'numt_mapped', 'numt_unmapped', 'precision', 'sensitivity', 'specificity', 'f1', 'accuracy', 'TP', 'FP', 'TN', 'FN']
 
@@ -153,7 +154,7 @@ def main():
         csv_writer = csv.writer(csvfile)
         csv_writer.writerow(fieldnames)
 
-        alignments_dir = 'alignments'
+        alignments_dir = sys.argv[1]
         for subfolder in os.listdir(alignments_dir):
             subfolder_path = os.path.join(alignments_dir, subfolder)
             if os.path.isdir(subfolder_path) and (subfolder.startswith('k') or subfolder == 'linear_results'):

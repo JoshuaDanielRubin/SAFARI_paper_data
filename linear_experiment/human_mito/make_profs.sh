@@ -21,9 +21,9 @@ process_bam_file() {
     fi
 
     if [[ "$base_name" == *"single"* ]]; then
-        ./bam2prof/src/bam2prof -minl 20 -q -single "$bam_file" > "$output_file"
+        ./bam2prof/src/bam2prof -minl 20 -q -single -minq 0 -length 5 "$bam_file" > "$output_file"
     else
-        ./bam2prof/src/bam2prof -minl 20 -q -both "$bam_file" > "$output_file"
+        ./bam2prof/src/bam2prof -minl 20 -q -both -minq 0 -length 5 "$bam_file" > "$output_file"
     fi
 }
 
@@ -39,7 +39,7 @@ find "$BAM_DIR_BASE" -mindepth 1 -maxdepth 1 -type d ! -name '*under_ten*' | whi
 
     # Check if there are BAM files in the directory
     shopt -s nullglob
-    bam_files=("$BAM_DIR"/*safari*.bam)
+    bam_files=("$BAM_DIR"/*{safari,giraffe}*.bam)
     if [ ${#bam_files[@]} -eq 0 ]; then
         echo "No BAM files found in $BAM_DIR directory."
         continue

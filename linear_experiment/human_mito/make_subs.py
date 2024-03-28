@@ -43,7 +43,7 @@ def sort_and_index_bam(original_bam_path):
 def process_bam_files(base_alignments_dir, output_base_dir, reference_genome_base):
     os.makedirs(output_base_dir, exist_ok=True)
     
-    for main_folder in ['vin', 'chag']:
+    for main_folder in ['chag', 'vin']:
         alignments_dir = os.path.join(base_alignments_dir, main_folder)
         
         for subfolder in os.listdir(alignments_dir):

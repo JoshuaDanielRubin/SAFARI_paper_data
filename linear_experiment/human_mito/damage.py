@@ -23,12 +23,15 @@ def parse_ground_truth(file_path, strand):
         row = [float(part.split(' ')[0]) for part in parts]  # Take only the first (numeric) part of each cell
         matrix.append(row)
 
-    matrix = matrix[::-1]
-    
     return np.array(matrix)
 
 
 def compare_matrices(estimated, ground_truth):
+    #print('\n\n\n')
+    #print(ground_truth)
+    #print('\n')
+    #print(estimated)
+    #print('\n\n\n')
     return np.sqrt(np.mean((estimated - ground_truth) ** 2))
 
 def list_files(base_directory):
@@ -65,6 +68,8 @@ def process_files(file_paths, ground_truth_dir):
         sub_rate = re.search(r'_s(0\.\d+)_', filename).group(1)
         strand = '3' if '_3' in filename else '5'
         k, w = parse_k_w_from_path(file_path)
+        #if damage_type != 'dmid':
+        #    continue
         #print(k,w)
 
         gt_file_path = find_ground_truth_files(damage_type, ground_truth_dir, strand)
@@ -75,16 +80,19 @@ def process_files(file_paths, ground_truth_dir):
         ground_truth_matrix = parse_ground_truth(gt_file_path, strand)
         estimated_matrix = parse_estimated(file_path)
 
-        if damage_type == 'dhigh' and strand == '3':
-            print('\n\n\n')
-            print(tool_name)
-            print(file_path)
-            print(ground_truth_matrix)
-            print('\n')
-            print(estimated_matrix)
-            print('\n\n\n')
 
-        rmse = compare_matrices(estimated_matrix, ground_truth_matrix)
+        if damage_type in ['dhigh', 'dmid', 'none']:
+            if strand == '5':
+                rmse = compare_matrices(estimated_matrix[:, 6], ground_truth_matrix[:, 5])
+            elif strand == '3':
+                rmse = compare_matrices(estimated_matrix[:, 5], ground_truth_matrix[:, 6][::-1])
+
+        if damage_type == 'single':
+            if strand == '5':
+                rmse = compare_matrices(estimated_matrix[:, 5], ground_truth_matrix[:, 5])
+            else:
+                rmse = compare_matrices(estimated_matrix[:, 5], ground_truth_matrix[:, 5][::-1])
+
 
         # Check for 'vin' in file_path, default to 'N/A' if neither 'vin' nor 'Chagyrskaya' are present
         fragment_len_dist = 'Vindija' if 'vin' in file_path else ('Chagyrskaya' if 'chag' in file_path else 'N/A')

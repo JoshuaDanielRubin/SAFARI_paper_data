@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Define directories and reference FASTA files
-source_dir="alignments/vin"
-target_dir="alignments/with_md/vin"
+source_dir="alignments/chag"
+target_dir="alignments/with_md/chag"
 reference_fasta1="H2a2a1.fa"
 reference_fasta2="rCRS.fa"
 
