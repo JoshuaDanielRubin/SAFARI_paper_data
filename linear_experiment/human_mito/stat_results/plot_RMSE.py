@@ -36,7 +36,7 @@ def generate_percentage_decrease_plots(input_file_path):
 
     # Set the aesthetic style of the plots, including making the text larger and bolder
     sns.set_style("whitegrid")
-    sns.set_context("talk", font_scale=1)
+    #sns.set_context("talk", font_scale=1)
 
     print(melted_data)
 
