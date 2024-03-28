@@ -2,6 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
+import numpy as np
+np.set_printoptions(precision=15)
+pd.set_option('display.precision', 15)
 
 def generate_percentage_decrease_plots(input_file_path):
     # Load the dataset
@@ -14,6 +17,8 @@ def generate_percentage_decrease_plots(input_file_path):
 
     # Adjust the filter to use integers for 'k' and 'w'
     filtered_data = data[(data['tool'].isin(['SAFARI', 'vg giraffe']))]
+
+    filtered_data = filtered_data[filtered_data['k'] == 29]
 
     # Calculate the median RMSE across samples by tool, for each 'fragment_len_dist' and 'damage_level'
     median_rmse = filtered_data.groupby(['fragment_len_dist', 'damage_level', 'tool'])['RMSE'].median().reset_index()
@@ -29,10 +34,11 @@ def generate_percentage_decrease_plots(input_file_path):
     # Melt the pivot_data for plotting
     melted_data = pivot_data.melt(id_vars=['fragment_len_dist', 'damage_level'], value_vars=['percentage_decrease'])
 
-
     # Set the aesthetic style of the plots, including making the text larger and bolder
     sns.set_style("whitegrid")
     sns.set_context("talk", font_scale=1)
+
+    print(melted_data)
 
     # Create the bar plot
     plt.figure(figsize=(12, 8))
