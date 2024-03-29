@@ -49,7 +49,7 @@ def plot_best_sensitivity(data_path):
             jittered_specificity = tool_data['specificity']
             plt.scatter(jittered_sensitivity, jittered_specificity, label=f'{tool}', color=tool_colors[tool], alpha=0.7, edgecolor='black', linewidth=0.5)
         else:
-            plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7, marker='^')
+            plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7)
 
     plt.title('Sensitivity vs Specificity for Best (k,w) \n Parameters Based on Median Sensitivity (' + sys.argv[3] + ", No Damage)", fontsize=16, fontweight='bold')
     plt.xlabel('Sensitivity', fontsize=14, fontweight='bold')
