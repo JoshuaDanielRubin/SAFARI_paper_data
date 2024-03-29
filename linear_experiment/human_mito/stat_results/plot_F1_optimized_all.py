@@ -42,7 +42,7 @@ def main():
     # Create a barplot
     plt.figure(figsize=(10, 6))
     sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette)
-    plt.title('Median F1 Score by Pangenome Tool \n Stratified by Damage Level (Optimized Parameters, ' + sys.argv[3] + ")")
+    plt.title('Median F1 Score by Tool \n Stratified by Damage Level (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool')
