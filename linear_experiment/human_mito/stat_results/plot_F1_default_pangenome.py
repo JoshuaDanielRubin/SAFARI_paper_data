@@ -31,7 +31,7 @@ def main():
 
     # Set the lower limit to be slightly below the minimum value and the upper limit to be slightly above the maximum value
     ylim_lower = min_f1 - 0.05  # Adjust as needed
-    ylim_upper = max_f1 + 0.05  # Adjust as needed
+    ylim_upper = max_f1 + 0.005
 
     # Create the barplot
     plt.figure(figsize=(10, 6))
