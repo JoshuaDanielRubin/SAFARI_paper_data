@@ -11,7 +11,7 @@ def main():
     def optimize_k_w(group):
         optimal_row = group.loc[group['sensitivity'].idxmax()]
         # Print the selected values of w and k
-        print(f"Selected w: {optimal_row['w']}, k: {optimal_row['k']}")
+        print(f"Selected w: {optimal_row['k']}, k: {optimal_row['w']}")
         return optimal_row[['k', 'w']]
 
     # Find the optimal k and w for each tool
