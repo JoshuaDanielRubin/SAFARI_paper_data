@@ -45,8 +45,8 @@ def plot_best_sensitivity(data_path):
         tool_data = best_sensitivity_data[best_sensitivity_data['tool'] == tool]
         if tool == 'vg giraffe':
             # Adding slight jitter to 'vg giraffe' data points
-            jittered_sensitivity = tool_data['sensitivity'] + (random.random() * 0.01 - 0.005)
-            jittered_specificity = tool_data['specificity'] + (random.random() * 0.01 - 0.005)
+            jittered_sensitivity = tool_data['sensitivity']
+            jittered_specificity = tool_data['specificity']
             plt.scatter(jittered_sensitivity, jittered_specificity, label=f'{tool}', color=tool_colors[tool], alpha=0.7, edgecolor='black', linewidth=0.5)
         else:
             plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7, marker='^')
