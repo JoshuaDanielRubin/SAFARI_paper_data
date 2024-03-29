@@ -17,18 +17,18 @@ df = pd.DataFrame(data)
 plt.figure(figsize=(10, 6))
 
 # Plotting each line
-plt.plot(df["Deamination factor"], df["vg giraffe Hominin"], color='orange', label='vg giraffe Hominin')
-plt.plot(df["Deamination factor"], df["SAFARI Hominin"], color='green', label='SAFARI Hominin')
-plt.plot(df["Deamination factor"], df["vg giraffe rCRS"], color='orange', linestyle='--', label='vg giraffe rCRS')
-plt.plot(df["Deamination factor"], df["SAFARI rCRS"], color='green', linestyle='--', label='SAFARI rCRS')
+plt.plot(df["Deamination factor"], df["vg giraffe Hominin"], color='orange', label='vg giraffe (Hominin graph)')
+plt.plot(df["Deamination factor"], df["SAFARI Hominin"], color='green', label='SAFARI (Hominin graph)')
+plt.plot(df["Deamination factor"], df["vg giraffe rCRS"], color='orange', linestyle='--', label='vg giraffe (rCRS graph)')
+plt.plot(df["Deamination factor"], df["SAFARI rCRS"], color='green', linestyle='--', label='SAFARI (rCRS graph)')
 
 # Adding titles and labels
-plt.title('Aligned Reads Mapping: vg giraffe vs. SAFARI')
+plt.title('Aligned Reads: vg giraffe vs. SAFARI')
 plt.xlabel('Deamination factor')
 plt.ylabel('Number of Aligned Reads')
 plt.legend()
 
 # Show the plot
 plt.tight_layout()
-plt.savefig("hominin_results.png")
+plt.savefig("hominin_results.png", dpi=300)
 
