@@ -41,12 +41,12 @@ def main():
 
     # Create a barplot
     plt.figure(figsize=(10, 6))
-    sns.barplot(data=median_f1_scores, x='damage_level', y='log_f1', hue='tool', palette=corrected_palette)
-    plt.title('Log Median F1 Score by Pangenome Tool \n Stratified by Damage Level (Optimized Parameters, ' + sys.argv[3] + ")")
+    sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette)
+    plt.title('Median F1 Score by Pangenome Tool \n Stratified by Damage Level (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
-    plt.ylabel('Median Log F1 Score')
+    plt.ylabel('Median F1 Score')
     plt.legend(title='Tool')
-    #plt.ylim(0.85, 1)  # You might need to adjust this based on your log scale needs
+    plt.ylim(0.85, 1)  # You might need to adjust this based on your log scale needs
     plt.tight_layout()
 
     plt.savefig(sys.argv[2])
