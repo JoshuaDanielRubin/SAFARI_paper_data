@@ -43,13 +43,14 @@ def plot_best_sensitivity(data_path):
     # Modify the plotting loop
     for tool in tools:
         tool_data = best_sensitivity_data[best_sensitivity_data['tool'] == tool]
+        print(tool_data)
         if tool == 'vg giraffe':
             # Adding slight jitter to 'vg giraffe' data points
             jittered_sensitivity = tool_data['sensitivity']
             jittered_specificity = tool_data['specificity']
             plt.scatter(jittered_sensitivity, jittered_specificity, label=f'{tool}', color=tool_colors[tool], alpha=0.7, edgecolor='black', linewidth=0.5)
         else:
-            plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7)
+            plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7, marker='^')
 
     plt.title('Sensitivity vs Specificity for Best (k,w) \n Parameters Based on Median Sensitivity (' + sys.argv[3] + ", No Damage)", fontsize=16, fontweight='bold')
     plt.xlabel('Sensitivity', fontsize=14, fontweight='bold')
