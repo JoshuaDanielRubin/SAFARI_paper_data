@@ -2,6 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import sys
+import numpy as np
 
 def main():
     file_path = sys.argv[1]
@@ -30,6 +31,8 @@ def main():
     # Sort the DataFrame by the 'damage_level' to ensure the plot follows the custom order
     median_f1_scores.sort_values('damage_level', inplace=True)
 
+    median_f1_scores['log_f1'] = np.log(median_f1_scores['f1'])
+
     print(median_f1_scores)
 
     # Correcting the case sensitivity issue for the palette
@@ -38,12 +41,11 @@ def main():
 
     # Create a barplot
     plt.figure(figsize=(10, 6))
-    sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette)
+    sns.barplot(data=median_f1_scores, x='damage_level', y='log_f1', hue='tool', palette=corrected_palette)
     plt.title('Log Median F1 Score by Pangenome Tool \n Stratified by Damage Level (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
-    plt.ylabel('Median F1 Score')
+    plt.ylabel('Median Log F1 Score')
     plt.legend(title='Tool')
-    plt.yscale('log')  # Set the y-axis to a logarithmic scale
     plt.ylim(0.85, 1)  # You might need to adjust this based on your log scale needs
     plt.tight_layout()
 
