@@ -6,19 +6,19 @@
 Predicting sample: stdin
 Using 35 threads
 Processing sample 1 of 1
+Reading GAM file QcReEhu
 Mapping reads...
 Guessing that /net/node07/home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.gg is GBWTGraph
 Guessing that /net/node07/home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.xg is XG
 Guessing that /net/node07/home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles/graph.gbwt is Giraffe GBWT
-Reading GAM file ubsfP1d
 
 Reads mapped
-Done reading GAM file /tmp/ubsfP1d
-Found 30 reads.
+Done reading GAM file /tmp/QcReEhu
+Found 49 reads.
 Removing PCR duplicates ...
 PCR duplicates removed.
-Computing haplogroup likelihoods from 30 reads.
+Computing haplogroup likelihoods from 49 reads.
 
 
 #sample	predicted haplogroup	reads
-stdin	B2	30
+stdin	U8a1b	49
