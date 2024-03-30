@@ -15,6 +15,7 @@ def load_data(file_path):
                 current_threshold = parse_threshold(line.strip())
             elif not line.startswith('#') and line.strip():
                 parts = line.split('\t')
+                print(parts)
                 taxon = parts[0]
                 number_of_reads = int(parts[2])
                 if taxon not in data_by_taxon:
@@ -61,7 +62,7 @@ def plot_data(incremental_data_by_taxon, data_by_taxon):
     ax.legend([plt.Rectangle((0,0),1,1, color=colors[threshold[0]]) for threshold in thresholds], [f"Threshold {threshold[0]}" for threshold in thresholds], loc='upper left', bbox_to_anchor=(1,1))
 
     plt.tight_layout()
-    plt.savefig("threshold_plot3.png")
+    plt.savefig("threshold_plot.png")
 
 file_path = 'threshold_data.txt'  # Update with the path to your file
 data_by_taxon = load_data(file_path)
