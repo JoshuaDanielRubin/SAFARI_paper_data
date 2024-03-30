@@ -52,8 +52,8 @@ def plot_data(incremental_data_by_taxon, data_by_taxon):
         for j, (threshold, _) in enumerate(incremental_data_by_taxon[taxon]):
             ax.bar(i, heights[j], bar_width, bottom=bottoms[j], color=colors[threshold])
 
-      # Add a horizontal dashed line at y=50
-    ax.axhline(y=50, color='green', linestyle='--')
+      # Add a horizontal dashed line at y=100
+    ax.axhline(y=100, color='green', linestyle='--')
 
     ax.set_xticks(range(len(sorted_taxa)))
     ax.set_xticklabels(sorted_taxa, rotation=90, fontstyle='italic')
@@ -62,7 +62,7 @@ def plot_data(incremental_data_by_taxon, data_by_taxon):
     ax.legend([plt.Rectangle((0,0),1,1, color=colors[threshold[0]]) for threshold in thresholds], [f"Threshold {threshold[0]}" for threshold in thresholds], loc='upper left', bbox_to_anchor=(1,1))
 
     plt.tight_layout()
-    plt.savefig("threshold_plot.png")
+    plt.savefig("post_threshold_plot.png")
 
 file_path = 'threshold_data.txt'  # Update with the path to your file
 data_by_taxon = load_data(file_path)
