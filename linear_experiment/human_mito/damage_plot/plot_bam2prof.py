@@ -68,10 +68,10 @@ all_data = pd.concat([fivep_data, threep_data], axis=0)
 common_ylim = (all_data.min().min(), min(all_data.max().max()+0.05,1.0))
 
 # Plot and save left end data with common y-axis scale
-plot_data(fivep_data, '5\' Substitution Rates', save_path=f'{output_prefix}_5p_end_plot.pdf', ylim=common_ylim)
+plot_data(fivep_data, '5\' Substitution Rates', save_path=f'{output_prefix}_5p_end_plot.png', ylim=common_ylim)
 
 # Plot and save right end data with common y-axis scale and y-axis labels on the right
-plot_data(threep_data, '3\' Substitution Rates', reverse_xaxis=True, save_path=f'{output_prefix}_3p_end_plot.pdf', ylim=common_ylim, yticks_right=True)
+plot_data(threep_data, '3\' Substitution Rates', reverse_xaxis=True, save_path=f'{output_prefix}_3p_end_plot.png', ylim=common_ylim, yticks_right=True)
 
 
 # Create a single figure with two subplots side by side
@@ -133,5 +133,5 @@ axs[2].legend(handles, labels, loc='center left', ncol=1, borderaxespad=0.)
 plt.tight_layout(rect=[0, 0, 0.9, 1])  # Adjust layout to make space for the legend
 plt.subplots_adjust(right=0.95)  # Adjust this value as needed to reduce white space
 
-plt.savefig(f'{output_prefix}_combined_plot_with_legend.pdf')
+plt.savefig(f'{output_prefix}_combined_plot_with_legend.png')
 plt.close(fig)
