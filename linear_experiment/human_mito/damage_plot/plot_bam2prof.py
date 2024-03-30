@@ -81,7 +81,7 @@ fig, axs = plt.subplots(1, 2, figsize=(20, 8))
 # Function to plot data on given axis
 def plot_data_combined(ax, data, title, reverse_xaxis=False, ylim=None, yticks_right=False):
 
-    plt.rcParams.update({'font.size': 16,  # Adjust font size as needed
+    plt.rcParams.update({'font.size': 15,  # Adjust font size as needed
                          'font.weight': 'bold'})  # Make text bold
 
     lines, labels = [], []  # Track labels for the legend
@@ -93,7 +93,7 @@ def plot_data_combined(ax, data, title, reverse_xaxis=False, ylim=None, yticks_r
         else:
             line, = ax.plot(data.index, data[column], label=column, linewidth=thin_line_width)
         lines.append(line)
-    ax.set_xlabel('Position on the fragment (bp)')
+    ax.set_xlabel('Position on the fragment (bp)', fontsize=15, fontweight='bold')
     ax.set_title(title)
     ax.grid(True)
     if reverse_xaxis:
