@@ -43,7 +43,7 @@ def generate_percentage_decrease_plots(input_file_path):
     sns.barplot(x='damage_level', y='value', hue='fragment_len_dist', data=melted_data, palette="coolwarm")
     plt.title('Difference in Median RMSE from vg giraffe to SAFARI\nacross Different Damage Levels', fontsize=16, fontweight='bold', loc='left')
     plt.xlabel('Damage Level', fontsize=14, fontweight='bold')
-    plt.ylabel('Percentage Decrease in Median RMSE', fontsize=14, fontweight='bold')
+    plt.ylabel('Difference in Median RMSE', fontsize=14, fontweight='bold')
     plt.legend(title='Fragment Length Dist.', fontsize='medium', title_fontsize='14')
 
     plt.tight_layout()
