@@ -29,13 +29,26 @@ def generate_percentage_decrease_plots(input_file_path):
     # Melt the pivot_data for plotting
     melted_data = pivot_data.melt(id_vars=['fragment_len_dist', 'damage_level'], var_name='Tool', value_name='RMSE')
 
+    # Order and palette customization
+    tools_order = ['SAFARI', 'vg giraffe']  # Add other tools to the list as needed
+    tools_palette = {'SAFARI': 'green', 'vg giraffe': 'orange'}  # Add distinct colors for other tools
+    
+    # You can dynamically adjust the order and palette if the tools vary
+    # For example, add any tools not already included to the order list and generate colors
+    additional_tools = sorted(set(melted_data['Tool']) - set(tools_order))
+    tools_order += additional_tools
+    # Use a colormap or define a list of colors for additional tools
+    cmap = plt.get_cmap("tab10")  # This is an example; adjust as needed
+    for i, tool in enumerate(additional_tools):
+        tools_palette[tool] = cmap(i % cmap.N)
+
     # Creating the plots
     fig, axs = plt.subplots(2, 1, figsize=(10, 12), sharex=True)
     
-    # Filtering data for each site and plotting
+    # Filtering data for each site and plotting with customized order and palette
     for i, site in enumerate(["Chagyrskaya", "Vindija"]):
         site_data = melted_data[melted_data['fragment_len_dist'] == site]
-        sns.barplot(x='damage_level', y='RMSE', hue='Tool', data=site_data, ax=axs[i], ci=None)
+        sns.barplot(x='damage_level', y='RMSE', hue='Tool', data=site_data, ax=axs[i], ci=None, hue_order=tools_order, palette=tools_palette)
         axs[i].set_title(site)
         axs[i].set_ylabel('Median RMSE')
         axs[i].set_xlabel('Damage Level')
