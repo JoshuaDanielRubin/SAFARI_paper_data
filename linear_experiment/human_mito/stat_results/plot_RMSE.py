@@ -26,13 +26,11 @@ def generate_percentage_decrease_plots(input_file_path):
     # Pivot the table to have tools as columns
     pivot_data = median_rmse.pivot_table(index=['fragment_len_dist', 'damage_level'], columns='tool', values='RMSE').reset_index()
 
-    print(pivot_data)
-
     # Calculate the percentage decrease from vg giraffe to SAFARI
-    pivot_data['percentage_decrease'] = ((pivot_data['vg giraffe'] - pivot_data['SAFARI']) / pivot_data['vg giraffe']) * 100
+    pivot_data['difference'] = ((pivot_data['vg giraffe'] - pivot_data['SAFARI']))
 
     # Melt the pivot_data for plotting
-    melted_data = pivot_data.melt(id_vars=['fragment_len_dist', 'damage_level'], value_vars=['percentage_decrease'])
+    melted_data = pivot_data.melt(id_vars=['fragment_len_dist', 'damage_level'], value_vars=['difference'])
 
     # Set the aesthetic style of the plots, including making the text larger and bolder
     sns.set_style("whitegrid")
@@ -43,7 +41,7 @@ def generate_percentage_decrease_plots(input_file_path):
     # Create the bar plot
     plt.figure(figsize=(12, 8))
     sns.barplot(x='damage_level', y='value', hue='fragment_len_dist', data=melted_data, palette="coolwarm")
-    plt.title('Percentage Decrease in Median RMSE from vg giraffe to SAFARI\nacross Different Damage Levels', fontsize=16, fontweight='bold', loc='left')
+    plt.title('Difference in Median RMSE from vg giraffe to SAFARI\nacross Different Damage Levels', fontsize=16, fontweight='bold', loc='left')
     plt.xlabel('Damage Level', fontsize=14, fontweight='bold')
     plt.ylabel('Percentage Decrease in Median RMSE', fontsize=14, fontweight='bold')
     plt.legend(title='Fragment Length Dist.', fontsize='medium', title_fontsize='14')
