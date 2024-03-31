@@ -22,7 +22,7 @@ def main():
     optimal_data = pd.merge(data, optimal_params, on=['tool', 'k', 'w'])
 
     # Calculate median F1 scores
-    median_f1_scores = optimal_data.groupby(['tool', 'damage_level'])['f1'].mean().reset_index()
+    median_f1_scores = optimal_data.groupby(['tool', 'damage_level'])['f1'].median().reset_index()
 
     # Define custom order for damage levels
     damage_order = ['High']
@@ -46,7 +46,7 @@ def main():
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool')
-    plt.ylim(0.85, 1)  # You might need to adjust this based on your log scale needs
+    plt.ylim(0.91, 1)  # You might need to adjust this based on your log scale needs
     plt.tight_layout()
 
     plt.savefig(sys.argv[2])
