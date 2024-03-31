@@ -7,7 +7,7 @@ import numpy as np
 def main():
     file_path = sys.argv[1]
     data = pd.read_csv(file_path)
-    data=data[data['damage_level']=='High']
+    #data=data[data['damage_level']=='High']
 
     def optimize_k_w(group):
         optimal_row = group.loc[group['sensitivity'].idxmax()]
@@ -25,7 +25,7 @@ def main():
     median_f1_scores = optimal_data.groupby(['tool', 'damage_level'])['f1'].median().reset_index()
 
     # Define custom order for damage levels
-    damage_order = ['High']
+    damage_order = ['None', 'Single-stranded', 'Mid', 'High']
     median_f1_scores['damage_level'] = pd.Categorical(median_f1_scores['damage_level'], categories=damage_order, ordered=True)
 
     # Sort the DataFrame by the 'damage_level' to ensure the plot follows the custom order
@@ -46,7 +46,7 @@ def main():
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool')
-    plt.ylim(0.91, 1)  # You might need to adjust this based on your log scale needs
+    plt.ylim(0.85, 1)  # You might need to adjust this based on your log scale needs
     plt.tight_layout()
 
     plt.savefig(sys.argv[2])
