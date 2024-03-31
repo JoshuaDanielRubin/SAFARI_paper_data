@@ -25,7 +25,7 @@ def main():
     optimal_data = pd.merge(subset_df, optimal_params, on=['tool', 'k', 'w'])
 
     # Calculate median F1 scores
-    median_f1_scores = optimal_data.groupby(['tool', 'damage_level'])['f1'].mean().reset_index()
+    median_f1_scores = optimal_data.groupby(['tool', 'damage_level'])['f1'].median().reset_index()
 
     # Define custom order for damage levels
     damage_order = ['High']
@@ -44,7 +44,7 @@ def main():
     # Create a barplot
     plt.figure(figsize=(10, 6))
     sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette)
-    plt.title('Median F1 Score by Tool \n Stratified by Damage Level (Optimized Parameters, ' + sys.argv[3] + ")")
+    plt.title('Median F1 Score at High Damage by Pangenome Tool \n (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.ylim(0.998, 0.999)
