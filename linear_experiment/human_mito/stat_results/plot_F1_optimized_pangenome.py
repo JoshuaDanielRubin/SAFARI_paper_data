@@ -4,6 +4,9 @@ import seaborn as sns
 import sys
 import numpy as np
 
+# Adjust font size and remove bold weight for the global text properties
+plt.rcParams.update({'font.size': 15, 'font.weight': 'normal'})
+
 def main():
     file_path = sys.argv[1]
     data = pd.read_csv(file_path)
@@ -46,7 +49,7 @@ def main():
     plt.title('Median F1 Score at High Damage by Pangenome Tool \n (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
-    plt.ylim(0.998, 0.999)
+    plt.ylim(0.995, 0.999)
     plt.legend(title='Tool')
     plt.tight_layout()
 
