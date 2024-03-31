@@ -45,7 +45,7 @@ def main():
     plt.title('Median F1 Score by Tool \n Stratified by Damage Level (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
-    plt.legend(title='Tool')
+    plt.legend(title='Tool', bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.ylim(0.85, 1)  # You might need to adjust this based on your log scale needs
     plt.tight_layout()
 
