@@ -43,7 +43,7 @@ def plot_best_sensitivity(data_path):
     # Plot each tool with its assigned color
     for tool in tools:
         tool_data = best_sensitivity_data[best_sensitivity_data['tool'] == tool]
-        plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7)
+        plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.7, s=80)
 
     plt.title('Sensitivity vs Specificity for Best (k,w) \n Parameters Based on Median Sensitivity (' + sys.argv[3] + ", High Damage)", fontsize=16, fontweight='bold')
     plt.xlabel('Sensitivity', fontsize=14, fontweight='bold')
