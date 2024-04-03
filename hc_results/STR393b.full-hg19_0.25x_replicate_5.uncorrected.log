@@ -7,14 +7,34 @@ Predicting sample: stdin
 Using 35 threads
 Processing sample 1 of 1
 Mapping reads...
-Reading GAM file rIobKEf
+Reading GAM file ZtCndoO
 Reads mapped
-Done reading GAM file /tmp/rIobKEf
-Found 46 reads.
+Done reading GAM file /tmp/ZtCndoO
+Found 44 reads.
 Removing PCR duplicates ...
 PCR duplicates removed.
-Computing haplogroup likelihoods from 46 reads.
+Computing haplogroup likelihoods from 44 reads.
 
 
 #sample	predicted haplogroup	reads
-stdin	H3w	46
+stdin	H3w	44
+╦ ╦┌─┐┌─┐┬  ┌─┐╔═╗┌─┐┬─┐┌┬┐
+╠═╣├─┤├─┘│  │ │║  ├─┤├┬┘ │
+╩ ╩┴ ┴┴  ┴─┘└─┘╚═╝┴ ┴┴└─ ┴
+
+
+Predicting sample: stdin
+Using 35 threads
+Processing sample 1 of 1
+Mapping reads...
+Reading GAM file jwmc7gO
+Reads mapped
+Done reading GAM file /tmp/jwmc7gO
+Found 44 reads.
+Removing PCR duplicates ...
+PCR duplicates removed.
+Computing haplogroup likelihoods from 44 reads.
+
+
+#sample	predicted haplogroup	reads
+stdin	H3w	44

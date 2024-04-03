@@ -7,9 +7,9 @@ Predicting sample: stdin
 Using 35 threads
 Processing sample 1 of 1
 Mapping reads...
-Reading GAM file QWq1JVA
+Reading GAM file 4E9eOub
 Reads mapped
-Done reading GAM file /tmp/QWq1JVA
+Done reading GAM file /tmp/4E9eOub
 Found 91 reads.
 Removing PCR duplicates ...
 PCR duplicates removed.
