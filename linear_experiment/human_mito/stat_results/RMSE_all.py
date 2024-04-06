@@ -49,7 +49,8 @@ def plot_rmse_by_damage_level(input_file_path):
         sns.barplot(x='damage_level', y='RMSE', hue='Tool', data=site_specific_data, ax=axes[i], ci=None, hue_order=tool_order, palette=color_map)
         axes[i].set_title(site)
         axes[i].set_ylabel('Median RMSE')
-        axes[i].set_xlabel('Damage Level')
+
+    axes[-1].set_xlabel('Damage Level')
 
     plt.tight_layout()
     plt.savefig("RMSE_all_tools_comparison.png")
