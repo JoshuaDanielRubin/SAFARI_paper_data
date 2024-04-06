@@ -35,14 +35,21 @@ def main():
 
     print(median_f1_scores)
 
-    # Correcting the case sensitivity issue for the palette
-    corrected_palette = {'vg giraffe': 'orange', 'SAFARI': 'green', 'BBMAP': 'blue', 'SHRiMP': 'red', 'BWA-MEM':'purple', \
-                         'BWA ALN': 'pink', 'BWA ALN (anc)':'black', 'Bowtie2': 'brown'}
+    corrected_palette = {
+    'vg giraffe': 'orange', 
+    'SAFARI': 'green', 
+    'BBMAP': '#1f7872',  # Teal
+    'SHRiMP': '#6996b3',  # Light Blue
+    'BWA-MEM': '#5e3a8c',  # Deep Violet
+    'BWA ALN': '#ff99cc',  # Soft Magenta
+    'BWA ALN (anc)': '#36454f',  # Charcoal Grey
+    'Bowtie2': '#a45a52'  # Rust
+                         }
 
     # Create a barplot
     plt.figure(figsize=(10, 6))
     sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette)
-    plt.title('Median F1 Score by Tool \n Stratified by Damage Level (Optimized Parameters, ' + sys.argv[3] + ")")
+    plt.title('Median F1 Score (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool', bbox_to_anchor=(1.05, 1), loc='upper left')

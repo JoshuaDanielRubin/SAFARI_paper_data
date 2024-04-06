@@ -50,10 +50,11 @@ def plot_rmse_by_damage_level(input_file_path):
         axes[i].set_title(site)
         axes[i].set_ylabel('Median RMSE')
 
-    axes[-1].set_xlabel('Damage Level')
+    axes[0].set_xlabel('')
+    axes[1].set_xlabel('Damage Level')
 
     plt.tight_layout()
-    plt.savefig("RMSE_all_tools_comparison.png")
+    plt.savefig("RMSE_all_tools_comparison2.png")
 
     # Modify the legend to not use bold font
     for ax in axes:
