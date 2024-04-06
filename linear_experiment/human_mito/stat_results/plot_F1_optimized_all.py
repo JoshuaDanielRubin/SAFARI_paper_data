@@ -4,16 +4,15 @@ import seaborn as sns
 import sys
 import numpy as np
 
+def optimize_k_w(group):
+    optimal_row = group.loc[group['sensitivity'].idxmax()]
+    # Print the selected values of w and k
+    print(f"Selected w: {optimal_row['k']}, k: {optimal_row['w']}")
+    return optimal_row[['k', 'w']]
+
 def main():
     file_path = sys.argv[1]
     data = pd.read_csv(file_path)
-    #data=data[data['damage_level']=='High']
-
-    def optimize_k_w(group):
-        optimal_row = group.loc[group['sensitivity'].idxmax()]
-        # Print the selected values of w and k
-        print(f"Selected w: {optimal_row['k']}, k: {optimal_row['w']}")
-        return optimal_row[['k', 'w']]
 
     # Find the optimal k and w for each tool
     optimal_params = data.groupby('tool').apply(optimize_k_w).reset_index()
@@ -28,12 +27,14 @@ def main():
     damage_order = ['None', 'Single-stranded', 'Mid', 'High']
     median_f1_scores['damage_level'] = pd.Categorical(median_f1_scores['damage_level'], categories=damage_order, ordered=True)
 
+    # Extract tool order from the 'High' damage level
+    high_damage_order = median_f1_scores[median_f1_scores['damage_level'] == 'High'].sort_values('f1', ascending=False)['tool'].tolist()
+
+    # Ensure the tool column is Categorical with the order determined from the 'High' damage level
+    median_f1_scores['tool'] = pd.Categorical(median_f1_scores['tool'], categories=high_damage_order, ordered=True)
+
     # Sort the DataFrame by the 'damage_level' to ensure the plot follows the custom order
     median_f1_scores.sort_values('damage_level', inplace=True)
-
-    median_f1_scores['log_f1'] = np.log(median_f1_scores['f1'])
-
-    print(median_f1_scores)
 
     corrected_palette = {
     'vg giraffe': 'orange', 
@@ -44,7 +45,7 @@ def main():
     'BWA ALN': '#ff99cc',  # Soft Magenta
     'BWA ALN (anc)': '#36454f',  # Charcoal Grey
     'Bowtie2': '#a45a52'  # Rust
-                         }
+    }
 
     # Create a barplot
     plt.figure(figsize=(10, 6))
@@ -53,7 +54,7 @@ def main():
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
     plt.legend(title='Tool', bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.ylim(0.90, 1)  # You might need to adjust this based on your log scale needs
+    plt.ylim(0.90, 1)  # Adjust based on your needs
     plt.tight_layout()
 
     plt.savefig(sys.argv[2])
