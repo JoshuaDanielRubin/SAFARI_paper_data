@@ -21,11 +21,7 @@ def main():
     median_f1_scores['damage_level'] = pd.Categorical(median_f1_scores['damage_level'], categories=damage_order, ordered=True)
 
     # Determine the order of tools based on their performance at 'High' damage level
-    high_damage_order = median_f1_scores[median_f1_scores['damage_level'] == 'High'].sort_values('f1', ascending=False)['tool']
-
-    # Reorder the DataFrame based on this tool order for all damage levels
-    median_f1_scores['tool'] = pd.Categorical(median_f1_scores['tool'], categories=high_damage_order, ordered=True)
-    median_f1_scores = median_f1_scores.sort_values(['damage_level', 'tool'])
+    high_damage_order = median_f1_scores[median_f1_scores['damage_level'] == 'High'].sort_values('f1', ascending=False)['tool'].tolist()
 
     corrected_palette = {
         'vg giraffe': 'orange', 
@@ -38,10 +34,8 @@ def main():
         'Bowtie2': '#a45a52'
     }
 
-    print(median_f1_scores)
-
     plt.figure(figsize=(10, 6))
-    sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette, order=high_damage_order)
+    sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette, hue_order=high_damage_order)
     plt.title('Median F1 Score (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
     plt.ylabel('Median F1 Score')
