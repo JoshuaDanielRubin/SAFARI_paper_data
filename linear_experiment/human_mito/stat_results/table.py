@@ -11,7 +11,7 @@ def analyze_and_save(input_file_path, output_file_path):
     # Filter for SAFARI and vg giraffe tools
     filtered_data = data[data['tool'].isin(['SAFARI', 'vg giraffe'])]
 
-    # Extend the aggregation to sum up unmapped counts and calculate total for mito
+    # Ensure aggregation includes the median for mito_total_sum for each (k, w) pair
     agg_operations = {
         'bacteria_mapped': 'median',
         'bacteria_unmapped': 'sum',
@@ -21,16 +21,14 @@ def analyze_and_save(input_file_path, output_file_path):
         'mito_incorrect': 'sum',
         'mito_unmapped': 'sum',
         'mito_mapped': 'sum',
-        'mito_total_sum': 'median'  # Aggregating the newly added total mito count
+        'mito_total_sum': 'median'  # This already ensures the median for each (k, w) pair
     }
     grouped = filtered_data.groupby(['k', 'w', 'tool']).agg(agg_operations).reset_index()
 
     # Calculate total counts
     grouped['bacteria_total'] = grouped['bacteria_mapped'] + grouped['bacteria_unmapped']
     grouped['numt_total'] = grouped['numt_mapped'] + grouped['numt_unmapped']
-    grouped['mito_total'] = grouped['mito_correct'] + grouped['mito_mapped']
-
-    # Update to use the median of mito_total_sum for the "out of" part in mito results
+    # Update mito_total to use mito_total_sum directly as it is the median value we need
     grouped['mito_total'] = grouped['mito_total_sum']
 
     # Pivot the table for side by side comparison, including total counts
@@ -39,10 +37,10 @@ def analyze_and_save(input_file_path, output_file_path):
                                               'numt_mapped', 'numt_total', 
                                               'mito_correct', 'mito_total']).reset_index()
 
-    # Convert numeric columns that should be integers back to integers and prepare for "out of" formatting
-    for col in ['bacteria_mapped', 'bacteria_total', 'numt_mapped', 'numt_total', 'mito_correct', 'mito_total']:
-        for tool in ['SAFARI', 'vg giraffe']:
-            pivot_table[(col, tool)] = pivot_table[(col, tool)].fillna(0).astype(int)
+    # Ensure all numeric columns are integers
+    for col in pivot_table.columns:
+        if col[0] in ['bacteria_mapped', 'bacteria_total', 'numt_mapped', 'numt_total', 'mito_correct', 'mito_total']:
+            pivot_table[col] = pivot_table[col].fillna(0).astype(int)
 
     # Format the columns to "mapped/total" or "correct/total"
     for metric in ['bacteria_mapped', 'numt_mapped', 'mito_correct']:
@@ -59,8 +57,10 @@ def analyze_and_save(input_file_path, output_file_path):
     ]
     pivot_table = pivot_table.reindex(columns=pd.MultiIndex.from_tuples(columns_order))
 
-    # Convert to LaTeX with custom formatting
-    latex_table = pivot_table.to_latex(index=False)
+    # Convert to LaTeX with custom formatting to ensure no .0 for integers
+    latex_table = pivot_table.to_latex(index=False, formatters={
+        col: lambda x: x.split('.')[0] if '.' in x else x for col in pivot_table.columns
+    })
 
     # Save the LaTeX table to file
     with open(output_file_path, 'w') as f:
