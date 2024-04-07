@@ -25,26 +25,18 @@ def analyze_and_save(input_file_path, output_file_path):
                                               'numt_mapped', 'numt_total', 
                                               'mito_correct', 'mito_total_sum']).reset_index()
 
-    # Formatting for "mapped/total" or "correct/total"
+    # Convert to integers and format for "mapped/total" or "correct/total"
     for metric in ['bacteria_mapped', 'numt_mapped', 'mito_correct']:
         for tool in ['SAFARI', 'vg giraffe']:
             total_col = metric.replace('mapped', 'total').replace('correct', 'total_sum')
-            pivot_table[(metric, tool)] = pivot_table[(metric, tool)].astype(str) + '/' + pivot_table[(total_col, tool)].astype(str)
+            pivot_table[(metric, tool)] = pivot_table[(metric, tool)].astype(int).astype(str) + '/' + pivot_table[(total_col, tool)].astype(int).astype(str)
 
-    # Define the columns order with updated formatting
-    columns_order = [
-        ('k', ''), ('w', ''),
-        ('bacteria_mapped', 'SAFARI'), ('bacteria_mapped', 'vg giraffe'),
-        ('numt_mapped', 'SAFARI'), ('numt_mapped', 'vg giraffe'),
-        ('mito_correct', 'SAFARI'), ('mito_correct', 'vg giraffe')
-    ]
-    pivot_table = pivot_table.reindex(columns=pd.MultiIndex.from_tuples(columns_order))
-
-    # Save the table to a CSV file
-    pivot_table.to_csv(output_file_path, index=False)
+    # Save the table to a LaTeX file
+    with open(output_file_path, 'w') as latex_file:
+        latex_file.write(pivot_table.to_latex(index=False, escape=False))
 
 if __name__ == "__main__":
     input_file_path = sys.argv[1]  # The input CSV file name
-    output_file_path = sys.argv[2]  # The output CSV file name
+    output_file_path = sys.argv[2]  # The output LaTeX file name
     analyze_and_save(input_file_path, output_file_path)
 
