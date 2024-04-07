@@ -8,28 +8,44 @@ def analyze_and_save(input_file_path, output_file_path):
     # Filter for subsampling_rate=0.9
     data = data[data['subsampling_rate'] == 0.9]
     
-    # Calculate totals for bacteria, numt, and mito for each row
+    # Assuming 'bacteria_mapped' as 'bacteria_correct' for simplification
     data['bacteria_total'] = data['bacteria_mapped'] + data['bacteria_unmapped']
     data['numt_total'] = data['numt_mapped'] + data['numt_unmapped']
-    data['mito_total_sum'] = data['mito_correct'] + data['mito_incorrect'] + data['mito_unmapped']
+    data['mito_total'] = data['mito_correct'] + data['mito_incorrect'] + data['mito_unmapped']
 
     # Filter for SAFARI and vg giraffe tools
     filtered_data = data[data['tool'].isin(['SAFARI', 'vg giraffe'])]
 
-    # Since there's only one sample per tool per (k, w) pair, aggregate operations are not needed for medians
-    grouped = filtered_data.groupby(['k', 'w', 'tool']).first().reset_index()
+    # Select necessary columns and convert to integer for aggregation
+    columns = ['k', 'w', 'tool', 'bacteria_mapped', 'bacteria_total', 
+               'numt_mapped', 'numt_total', 'mito_correct', 'mito_total']
+    filtered_data = filtered_data[columns].astype({'bacteria_mapped': 'int', 'bacteria_total': 'int',
+                                                   'numt_mapped': 'int', 'numt_total': 'int',
+                                                   'mito_correct': 'int', 'mito_total': 'int'})
+    
+    # Pivot the table for side by side comparison
+    pivot_table = pd.pivot_table(filtered_data, values=['bacteria_mapped', 'bacteria_total', 
+                                                        'numt_mapped', 'numt_total', 
+                                                        'mito_correct', 'mito_total'], 
+                                 index=['k', 'w'], columns=['tool'], aggfunc='first').reset_index()
 
-    # Pivot the table for side by side comparison, including total counts
-    pivot_table = grouped.pivot_table(index=['k', 'w'], columns='tool', 
-                                      values=['bacteria_mapped', 'bacteria_total', 
-                                              'numt_mapped', 'numt_total', 
-                                              'mito_correct', 'mito_total_sum']).reset_index()
-
-    # Convert to integers and format for "mapped/total" or "correct/total"
+    # Formatting for "correct/total"
     for metric in ['bacteria_mapped', 'numt_mapped', 'mito_correct']:
+        total_col = metric.replace('_mapped', '_total').replace('_correct', '_total')
         for tool in ['SAFARI', 'vg giraffe']:
-            total_col = metric.replace('mapped', 'total').replace('correct', 'total_sum')
-            pivot_table[(metric, tool)] = pivot_table[(metric, tool)].astype(int).astype(str) + '/' + pivot_table[(total_col, tool)].astype(int).astype(str)
+            pivot_table[(metric, tool)] = pivot_table[(metric, tool)].astype(str) + '/' + pivot_table[(total_col, tool)].astype(str)
+
+    # Select and rename columns appropriately
+    pivot_table.columns = [' '.join(col).strip() for col in pivot_table.columns.values]
+    pivot_table.rename(columns={
+        'k ': 'k', 'w ': 'w',
+        'bacteria_mapped SAFARI': 'Bacteria SAFARI', 'bacteria_mapped vg giraffe': 'Bacteria vg giraffe',
+        'numt_mapped SAFARI': 'Numt SAFARI', 'numt_mapped vg giraffe': 'Numt vg giraffe',
+        'mito_correct SAFARI': 'Mito SAFARI', 'mito_correct vg giraffe': 'Mito vg giraffe'}, inplace=True)
+
+    # Simplify the table to only include necessary comparisons
+    pivot_table = pivot_table[['k', 'w', 'Bacteria SAFARI', 'Bacteria vg giraffe', 
+                               'Numt SAFARI', 'Numt vg giraffe', 'Mito SAFARI', 'Mito vg giraffe']]
 
     # Save the table to a LaTeX file
     with open(output_file_path, 'w') as latex_file:
