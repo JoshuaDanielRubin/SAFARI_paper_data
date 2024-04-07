@@ -1,10 +1,12 @@
-
 import pandas as pd
 import sys
 
 def analyze_and_save(input_file_path, output_file_path):
     # Load the data
     data = pd.read_csv(input_file_path)
+    
+    # Add a new column for the sum of mito-related counts
+    data['mito_total_sum'] = data['mito_correct'] + data['mito_incorrect'] + data['mito_unmapped']
 
     # Filter for SAFARI and vg giraffe tools
     filtered_data = data[data['tool'].isin(['SAFARI', 'vg giraffe'])]
@@ -18,7 +20,8 @@ def analyze_and_save(input_file_path, output_file_path):
         'mito_correct': 'median',
         'mito_incorrect': 'sum',
         'mito_unmapped': 'sum',
-        'mito_mapped': 'sum'
+        'mito_mapped': 'sum',
+        'mito_total_sum': 'median'  # Aggregating the newly added total mito count
     }
     grouped = filtered_data.groupby(['k', 'w', 'tool']).agg(agg_operations).reset_index()
 
@@ -26,6 +29,9 @@ def analyze_and_save(input_file_path, output_file_path):
     grouped['bacteria_total'] = grouped['bacteria_mapped'] + grouped['bacteria_unmapped']
     grouped['numt_total'] = grouped['numt_mapped'] + grouped['numt_unmapped']
     grouped['mito_total'] = grouped['mito_correct'] + grouped['mito_mapped']
+
+    # Update to use the median of mito_total_sum for the "out of" part in mito results
+    grouped['mito_total'] = grouped['mito_total_sum']
 
     # Pivot the table for side by side comparison, including total counts
     pivot_table = grouped.pivot_table(index=['k', 'w'], columns='tool', 
