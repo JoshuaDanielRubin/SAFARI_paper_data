@@ -11,18 +11,21 @@ data = {
 # Creating DataFrame
 df = pd.DataFrame(data)
 
-# Plotting
-fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(14, 6), sharey=True)
+# Plotting adjustments for larger and bold text
+plt.rcParams.update({'font.size': 14, 'font.weight': 'bold'})
+
+# Adjusting subplots to be vertical and sharing x-axis, also adjusting for a wider figure
+fig, axes = plt.subplots(nrows=2, ncols=1, figsize=(10, 12), sharex=True)
 
 df.plot(x='Damage Coefficient', y='hominin', ax=axes[0], marker='o', linestyle='-', color='blue', legend=False)
-axes[0].set_title('Full Hominin Panmitogenome')
-axes[0].set_xlabel('Damage Coefficient')
-axes[0].set_ylabel('Number Aligned')
+axes[0].set_title('Full Hominin Panmitogenome', fontsize=16, fontweight='bold')
+axes[0].set_ylabel('Number Aligned', fontsize=14, fontweight='bold')
 
 df.plot(x='Damage Coefficient', y='rCRS', ax=axes[1], marker='o', linestyle='-', color='red', legend=False)
-axes[1].set_title('Single-haplotype Panmitogenome')
-axes[1].set_xlabel('Damage Coefficient')
+axes[1].set_title('Single-haplotype Panmitogenome', fontsize=16, fontweight='bold')
+axes[1].set_xlabel('Damage Coefficient', fontsize=14, fontweight='bold')
+axes[1].set_ylabel('Number Aligned', fontsize=14, fontweight='bold')
 
 plt.tight_layout()
-plt.savefig("misspecified_dm.png")
+plt.savefig('misspecified_vertical.png')
 
