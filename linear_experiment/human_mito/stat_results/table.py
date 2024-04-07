@@ -5,6 +5,9 @@ def analyze_and_save(input_file_path, output_file_path):
     # Load the data
     data = pd.read_csv(input_file_path)
     
+    # Filter for subsampling_rate=0.9
+    data = data[data['subsampling_rate'] == 0.9]
+    
     # Calculate totals for bacteria, numt, and mito for each row
     data['bacteria_total'] = data['bacteria_mapped'] + data['bacteria_unmapped']
     data['numt_total'] = data['numt_mapped'] + data['numt_unmapped']
@@ -13,21 +16,8 @@ def analyze_and_save(input_file_path, output_file_path):
     # Filter for SAFARI and vg giraffe tools
     filtered_data = data[data['tool'].isin(['SAFARI', 'vg giraffe'])]
 
-    # Ensure aggregation includes the median for totals for each (k, w) pair
-    agg_operations = {
-        'bacteria_mapped': 'median',
-        'bacteria_unmapped': 'sum',
-        'numt_mapped': 'median',
-        'numt_unmapped': 'sum',
-        'mito_correct': 'median',
-        'mito_incorrect': 'sum',
-        'mito_unmapped': 'sum',
-        'mito_mapped': 'sum',
-        'bacteria_total': 'median',  # Taking median of the pre-calculated total
-        'numt_total': 'median',      # Ditto for numt
-        'mito_total_sum': 'median'   # Ditto for mito
-    }
-    grouped = filtered_data.groupby(['k', 'w', 'tool']).agg(agg_operations).reset_index()
+    # Since there's only one sample per tool per (k, w) pair, aggregate operations are not needed for medians
+    grouped = filtered_data.groupby(['k', 'w', 'tool']).first().reset_index()
 
     # Pivot the table for side by side comparison, including total counts
     pivot_table = grouped.pivot_table(index=['k', 'w'], columns='tool', 
