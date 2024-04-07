@@ -1,3 +1,4 @@
+
 import pandas as pd
 import sys
 
@@ -16,14 +17,15 @@ def analyze_and_save(input_file_path, output_file_path):
         'numt_unmapped': 'sum',
         'mito_correct': 'median',
         'mito_incorrect': 'sum',
-        'mito_unmapped': 'sum'
+        'mito_unmapped': 'sum',
+        'mito_mapped': 'sum'
     }
     grouped = filtered_data.groupby(['k', 'w', 'tool']).agg(agg_operations).reset_index()
 
     # Calculate total counts
     grouped['bacteria_total'] = grouped['bacteria_mapped'] + grouped['bacteria_unmapped']
     grouped['numt_total'] = grouped['numt_mapped'] + grouped['numt_unmapped']
-    grouped['mito_total'] = grouped['mito_correct'] + grouped['mito_unmapped']
+    grouped['mito_total'] = grouped['mito_correct'] + grouped['mito_mapped']
 
     # Pivot the table for side by side comparison, including total counts
     pivot_table = grouped.pivot_table(index=['k', 'w'], columns='tool', 
@@ -44,7 +46,7 @@ def analyze_and_save(input_file_path, output_file_path):
 
     # Define the columns order with updated formatting
     columns_order = [
-        ('k', ''), ('w', ''), 
+        ('k', ''), ('w', ''),
         ('bacteria_mapped', 'SAFARI'), ('bacteria_mapped', 'vg giraffe'),
         ('numt_mapped', 'SAFARI'), ('numt_mapped', 'vg giraffe'),
         ('mito_correct', 'SAFARI'), ('mito_correct', 'vg giraffe')
