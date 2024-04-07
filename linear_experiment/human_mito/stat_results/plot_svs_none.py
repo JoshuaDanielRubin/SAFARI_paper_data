@@ -52,7 +52,7 @@ def plot_best_sensitivity(data_path):
         else:
             plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.3, marker='^',s=80)
 
-    plt.title('Sensitivity vs Specificity for Optimized Parameters (' + sys.argv[3] + ", No Damage)", fontsize=16, fontweight='bold')
+    plt.title('Sensitivity vs Specificity for Optimized Parameters \n (' + sys.argv[3] + ", No Damage)", fontsize=16, fontweight='bold')
     plt.xlabel('Sensitivity', fontsize=14, fontweight='bold')
     plt.ylabel('Specificity', fontsize=14, fontweight='bold')
     plt.legend()
