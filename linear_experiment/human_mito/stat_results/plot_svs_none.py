@@ -1,46 +1,70 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 import sys
+import random
 
-def plot_sensitivity_k29_w11(data_path, output_path, dist):
+def calculate_f1(data):
+    # No additional calculation needed for f1, assuming it's already a column in the data
+    return data
+
+def plot_best_f1(data_path):
     # Load data
     data = pd.read_csv(data_path)
 
-    # Filtering data for 'None' damage level and specific k=29 and w=11
-    filtered_data = data[(data['damage_level'] == 'None') & (data['k'] == 29) & (data['w'] == 11)]
+    # Filtering data for 'None' damage level and calculating f1
+    filtered_data = calculate_f1(data[(data['damage_level'] == 'None')].copy())
+    # Get medians of f1 grouped by tool, k, and w
+    medians_f1 = filtered_data.groupby(['tool', 'k', 'w'])['f1'].median().reset_index()
+    # Identify the best (k,w) combination for each tool based on median f1
+    best_f1 = medians_f1.loc[medians_f1.groupby('tool')['f1'].idxmax()]
+    best_f1_data = filtered_data.merge(best_f1[['tool', 'k', 'w']], on=['tool', 'k', 'w'])
 
     # Plotting
     plt.figure(figsize=(10, 8))
+    
+    # Predefined colors for specific tools
     predefined_colors = {'SAFARI': 'green', 'vg giraffe': 'orange'}
-    tools = filtered_data['tool'].unique()
-    color_palette = plt.cm.get_cmap('hsv', len(tools))
-
+    
+    # Get a list of all tools to ensure unique colors for those not predefined
+    tools = best_f1_data['tool'].unique()
+    color_palette = plt.cm.get_cmap('hsv', len(tools)) # hsv colormap, adjust as needed
+    
+    # Assign colors ensuring unique colors for each tool
     tool_colors = {}
     for i, tool in enumerate(tools):
-        tool_colors[tool] = predefined_colors.get(tool, color_palette(i))
-
-    for tool in tools:
-        tool_data = filtered_data[filtered_data['tool'] == tool]
-        if tool == 'vg giraffe':
-            plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=tool, color=tool_colors[tool], alpha=1.0, edgecolor='black', linewidth=0.5, s=80)
+        if tool in predefined_colors:
+            tool_colors[tool] = predefined_colors[tool]
         else:
-            plt.scatter(tool_data['sensitivity'], tool_data['specificity'], label=tool, color=tool_colors[tool], alpha=0.3, marker='^', s=80)
+            while color_palette(i) in predefined_colors.values(): # Ensure unique color assignment
+                i += 1
+            tool_colors[tool] = color_palette(i)
+    
+    # Modify the plotting loop
+    for tool in tools:
+        tool_data = best_f1_data[best_f1_data['tool'] == tool]
+        print(tool_data)
+        if tool == 'vg giraffe':
+            # Adding slight jitter to 'vg giraffe' data points
+            jittered_f1 = tool_data['f1']
+            jittered_specificity = tool_data['specificity']
+            plt.scatter(jittered_f1, jittered_specificity, label=f'{tool}', color=tool_colors[tool], alpha=1.0, edgecolor='black', linewidth=0.5,s=80)
+        else:
+            plt.scatter(tool_data['f1'], tool_data['specificity'], label=f'{tool}', color=tool_colors[tool], alpha=0.3, marker='^',s=80)
 
-    plt.title(f'Sensitivity vs Specificity (k=29, w=11, No Damage, {dist})', fontsize=16, fontweight='bold')
-    plt.xlabel('Sensitivity', fontsize=14, fontweight='bold')
+    plt.title('f1 vs Specificity for Optimized Parameters \n (' + sys.argv[3] + ", No Damage)", fontsize=16, fontweight='bold')
+    plt.xlabel('f1', fontsize=14, fontweight='bold')
     plt.ylabel('Specificity', fontsize=14, fontweight='bold')
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig(output_path)
+    plt.savefig(sys.argv[2])
     plt.show()
 
 if __name__ == '__main__':
     if len(sys.argv) != 4:
-        print("Usage: python script.py <data_path> <output_path> <Dist>")
+        print("Usage: python script.py <data_path> <output path> <Dist>")
         sys.exit(1)
     data_path = sys.argv[1]
-    output_path = sys.argv[2]
-    dist = sys.argv[3]
-    plot_sensitivity_k29_w11(data_path, output_path, dist)
+    plot_best_f1(data_path)
 
