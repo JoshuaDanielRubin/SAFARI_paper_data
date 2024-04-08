@@ -1,160 +1,160 @@
 safari_hominin_0.25.bam
-Correct mitochondrial mappings: 68271
-Incorrect mitochondrial mappings: 64
-Mito reads mapped: 68271
-Mito reads unmapped: 931665
+Correct mitochondrial mappings: 11583
+Incorrect mitochondrial mappings: 30
+Mito reads mapped: 11583
+Mito reads unmapped: 13387
 
-Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads mapped: 1
+Bacteria reads unmapped: 24999
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_hominin_0.50.bam
-Correct mitochondrial mappings: 68271
-Incorrect mitochondrial mappings: 64
-Mito reads mapped: 68271
-Mito reads unmapped: 931665
+Correct mitochondrial mappings: 11583
+Incorrect mitochondrial mappings: 30
+Mito reads mapped: 11583
+Mito reads unmapped: 13387
 
-Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads mapped: 1
+Bacteria reads unmapped: 24999
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_hominin_0.75.bam
-Correct mitochondrial mappings: 68930
-Incorrect mitochondrial mappings: 64
-Mito reads mapped: 68930
-Mito reads unmapped: 931006
+Correct mitochondrial mappings: 11583
+Incorrect mitochondrial mappings: 30
+Mito reads mapped: 11583
+Mito reads unmapped: 13387
 
-Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads mapped: 1
+Bacteria reads unmapped: 24999
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_hominin_1.00.bam
-Correct mitochondrial mappings: 67907
-Incorrect mitochondrial mappings: 64
-Mito reads mapped: 67907
-Mito reads unmapped: 932029
+Correct mitochondrial mappings: 11583
+Incorrect mitochondrial mappings: 30
+Mito reads mapped: 11583
+Mito reads unmapped: 13387
 
-Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads mapped: 1
+Bacteria reads unmapped: 24999
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_hominin_1.25.bam
-Correct mitochondrial mappings: 67842
-Incorrect mitochondrial mappings: 59
-Mito reads mapped: 67842
-Mito reads unmapped: 932099
+Correct mitochondrial mappings: 11584
+Incorrect mitochondrial mappings: 30
+Mito reads mapped: 11584
+Mito reads unmapped: 13386
 
-Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads mapped: 1
+Bacteria reads unmapped: 24999
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_hominin_1.50.bam
-Correct mitochondrial mappings: 65530
-Incorrect mitochondrial mappings: 57
-Mito reads mapped: 65530
-Mito reads unmapped: 934413
+Correct mitochondrial mappings: 11583
+Incorrect mitochondrial mappings: 30
+Mito reads mapped: 11583
+Mito reads unmapped: 13387
 
-Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads mapped: 1
+Bacteria reads unmapped: 24999
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_hominin_1.75.bam
-Correct mitochondrial mappings: 63738
-Incorrect mitochondrial mappings: 57
-Mito reads mapped: 63738
-Mito reads unmapped: 936205
+Correct mitochondrial mappings: 11582
+Incorrect mitochondrial mappings: 30
+Mito reads mapped: 11582
+Mito reads unmapped: 13388
 
-Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads mapped: 1
+Bacteria reads unmapped: 24999
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_hominin_2.00.bam
-Correct mitochondrial mappings: 61348
-Incorrect mitochondrial mappings: 57
-Mito reads mapped: 61348
-Mito reads unmapped: 938595
+Correct mitochondrial mappings: 11582
+Incorrect mitochondrial mappings: 30
+Mito reads mapped: 11582
+Mito reads unmapped: 13388
 
-Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads mapped: 1
+Bacteria reads unmapped: 24999
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_rCRS_0.25.bam
-Correct mitochondrial mappings: 71482
-Incorrect mitochondrial mappings: 57
-Mito reads mapped: 71482
-Mito reads unmapped: 928461
+Correct mitochondrial mappings: 9188
+Incorrect mitochondrial mappings: 28
+Mito reads mapped: 9188
+Mito reads unmapped: 15784
 
 Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads unmapped: 25000
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_rCRS_0.50.bam
-Correct mitochondrial mappings: 71482
-Incorrect mitochondrial mappings: 57
-Mito reads mapped: 71482
-Mito reads unmapped: 928461
+Correct mitochondrial mappings: 9188
+Incorrect mitochondrial mappings: 28
+Mito reads mapped: 9188
+Mito reads unmapped: 15784
 
 Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads unmapped: 25000
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_rCRS_0.75.bam
-Correct mitochondrial mappings: 71548
-Incorrect mitochondrial mappings: 57
-Mito reads mapped: 71548
-Mito reads unmapped: 928395
+Correct mitochondrial mappings: 9188
+Incorrect mitochondrial mappings: 28
+Mito reads mapped: 9188
+Mito reads unmapped: 15784
 
 Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads unmapped: 25000
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_rCRS_1.00.bam
-Correct mitochondrial mappings: 70553
-Incorrect mitochondrial mappings: 57
-Mito reads mapped: 70553
-Mito reads unmapped: 929390
+Correct mitochondrial mappings: 9188
+Incorrect mitochondrial mappings: 28
+Mito reads mapped: 9188
+Mito reads unmapped: 15784
 
 Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads unmapped: 25000
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_rCRS_1.25.bam
-Correct mitochondrial mappings: 65035
-Incorrect mitochondrial mappings: 56
-Mito reads mapped: 65035
-Mito reads unmapped: 934909
+Correct mitochondrial mappings: 9188
+Incorrect mitochondrial mappings: 28
+Mito reads mapped: 9188
+Mito reads unmapped: 15784
 
 Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads unmapped: 25000
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_rCRS_1.50.bam
-Correct mitochondrial mappings: 58663
-Incorrect mitochondrial mappings: 56
-Mito reads mapped: 58663
-Mito reads unmapped: 941281
+Correct mitochondrial mappings: 9188
+Incorrect mitochondrial mappings: 28
+Mito reads mapped: 9188
+Mito reads unmapped: 15784
 
 Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads unmapped: 25000
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_rCRS_1.75.bam
-Correct mitochondrial mappings: 54351
-Incorrect mitochondrial mappings: 56
-Mito reads mapped: 54351
-Mito reads unmapped: 945593
+Correct mitochondrial mappings: 9188
+Incorrect mitochondrial mappings: 28
+Mito reads mapped: 9188
+Mito reads unmapped: 15784
 
 Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads unmapped: 25000
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
 safari_rCRS_2.00.bam
-Correct mitochondrial mappings: 51041
-Incorrect mitochondrial mappings: 56
-Mito reads mapped: 51041
-Mito reads unmapped: 948903
+Correct mitochondrial mappings: 9188
+Incorrect mitochondrial mappings: 28
+Mito reads mapped: 9188
+Mito reads unmapped: 15784
 
 Bacteria reads mapped: 0
-Bacteria reads unmapped: 0
+Bacteria reads unmapped: 25000
 NuMT reads mapped: 0
 NuMT reads unmapped: 0
