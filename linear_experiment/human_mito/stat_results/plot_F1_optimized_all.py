@@ -6,7 +6,7 @@ import numpy as np
 
 def optimize_k_w(group):
     optimal_row = group.loc[group['sensitivity'].idxmax()]
-    print(f"Selected w: {optimal_row['k']}, k: {optimal_row['w']}")
+    print(f"Selected k: {optimal_row['k']}, w: {optimal_row['w']}")
     return optimal_row[['k', 'w']]
 
 def main():
@@ -36,9 +36,9 @@ def main():
 
     plt.figure(figsize=(10, 6))
     sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette, hue_order=high_damage_order)
-    plt.title(r'Median $F_\{1}$ Score (Optimized Parameters, ' + sys.argv[3] + ")")
+    plt.title(r'Median $F_1$ Score (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
-    plt.ylabel(r'Median $F_\{1}$ Score')
+    plt.ylabel(r'Median $F_1$ Score')
     plt.legend(title='Tool', bbox_to_anchor=(1.05, 1), loc='upper left')
     plt.ylim(0.90, 1)
     plt.tight_layout()
