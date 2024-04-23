@@ -20,6 +20,8 @@ def plot_best_sensitivity(data_path):
     best_sensitivity = medians_sensitivity.loc[medians_sensitivity.groupby('tool')['sensitivity'].idxmax()]
     best_sensitivity_data = filtered_data.merge(best_sensitivity[['tool', 'k', 'w']], on=['tool', 'k', 'w'])
 
+    print(best_sensitivity_data)
+
     # Plotting
     plt.figure(figsize=(10, 8))
     
