@@ -29,8 +29,8 @@ def main():
         'BBMAP': '#1f7872',
         'SHRiMP': '#6996b3',
         'BWA-MEM': '#5e3a8c',
-        'BWA ALN': '#ff99cc',
-        'BWA ALN (anc)': '#36454f',
+        'BWA aln': '#ff99cc',
+        'BWA aln (anc)': '#36454f',
         'Bowtie2': '#a45a52'
     }
 
