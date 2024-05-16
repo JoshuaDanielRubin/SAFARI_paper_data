@@ -51,7 +51,7 @@ def plot_best_sensitivity(data_path):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig(sys.argv[2])
+    plt.savefig(sys.argv[2], dpi=300)
     plt.show()
 
 if __name__ == '__main__':
