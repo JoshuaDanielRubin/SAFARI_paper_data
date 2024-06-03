@@ -6,15 +6,15 @@ This repository contains the scripts, data, and analyses necessary to reproduce 
 
 - **Euka Experiment**: 
   - Script: `./run_euka.sh`
-  - Description: Runs the euka experiment, analyzing eukaryotic sequence data.
+  - Description: Runs the euka experiment.
 
 - **HaploCart Experiment**: 
   - Script: `./run_hc.sh`
-  - Description: Executes the HaploCart experiment, focusing on haplotype cartography.
+  - Description: Runs the HaploCart experiment.
 
 - **Index Creation**: 
   - Script: `./index.sh`
-  - Description: Generates the minimizer and RYmer index files on disk, critical for subsequent analyses.
+  - Description: Generates the minimizer and RYmer index files on disk.
 
 ## linear_experiment/human_mito Directory
 
@@ -32,19 +32,15 @@ This repository contains the scripts, data, and analyses necessary to reproduce 
 
 - **Generate simulations for linear aligner benchmarking experiment**:
   - Script: `Snakefile`
-  - Description: Produces simulations to benchmark linear aligners, underpinning comparative analyses.
+  - Description: Produces simulations to benchmark linear aligners compared to giraffe and SAFARI.
 
 - **Compute statistics from BAM file**:
   - Script: `parseBamMito.py`
-  - Description: Extracts statistical data from BAM files, supporting comprehensive performance evaluation.
+  - Description: Extracts alignment stats from BAM files.
 
 - **Damage Rate Estimation**:
   - Script: `damage.py`
-  - Description: Generates a CSV file with results from the damage rate estimation experiment, offering insights into DNA degradation patterns.
-
-- **Generate Substitution Matrices**:
-  - Script: `make_subs.py`
-  - Description: Creates substitution matrices per sample, facilitating the analysis of sequence variation and evolutionary dynamics.
+  - Description: Generates a CSV file with results from the damage rate estimation experiment.
 
 ## spurious_model Directory
 
@@ -55,11 +51,11 @@ This repository contains the scripts, data, and analyses necessary to reproduce 
 ## Additional Folders
 
 - **Index Logs** (`index_logs`):
-  - Contains detailed logs and data regarding the construction of minimizer and RYmer indexes with various (k,w) parameter sets, facilitating replication and modification of our indexing strategy.
+  - Contains detailed logs and data regarding the construction of minimizer and RYmer indexes with various (k,w) parameter sets.
 
 - **Statistical Analysis and Plotting** (`linear_experiment/human_mito/stat_results`):
-  - Houses scripts for statistical analysis and visualization of data from linear alignment and damage rate estimation experiments, enabling in-depth exploration and presentation of findings.
+  - Houses scripts for statistical analysis and visualization of data from linear alignment and damage rate estimation experiments.
 
 - **Alignment and Performance Data** (`linear_experiment/human_mito/alignments`):
-  - Stores alignment outputs, performance statistics, and substitution matrices, serving as a repository for raw and processed data crucial to our study's insights.
+  - Stores alignment outputs, performance statistics, and substitution matrices.
 
