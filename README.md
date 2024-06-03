@@ -20,7 +20,7 @@ This repository contains the scripts, data, and analyses necessary to reproduce 
 
 - **Evaluate**: 
   - Script: `evaluate.py`
-  - Description: Computes summary statistics from the `alignment_stats.csv` file for alignment quality assessment.
+  - Description: Computes summary statistics from the `alignment_stats.csv` file.
 
 - **Compare Damage Estimate**: 
   - Script: `compare_damage_est.py`
