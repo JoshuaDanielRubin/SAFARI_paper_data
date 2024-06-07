@@ -7,6 +7,7 @@ def analyze_and_save(input_file_path, output_file_path):
     
     # Filter for subsampling_rate=0.9
     data = data[data['subsampling_rate'] == 0.9]
+    data = data[data['damage_level'] == 'High']
     
     # Assuming 'bacteria_mapped' as 'bacteria_correct' for simplification
     data['bacteria_total'] = data['bacteria_mapped'] + data['bacteria_unmapped']
@@ -40,12 +41,12 @@ def analyze_and_save(input_file_path, output_file_path):
     pivot_table.rename(columns={
         'k ': 'k', 'w ': 'w',
         'bacteria_mapped SAFARI': 'Bacteria SAFARI', 'bacteria_mapped vg giraffe': 'Bacteria vg giraffe',
-        'numt_mapped SAFARI': 'Numt SAFARI', 'numt_mapped vg giraffe': 'Numt vg giraffe',
+        'numt_mapped SAFARI': 'NuMT SAFARI', 'numt_mapped vg giraffe': 'NuMT vg giraffe',
         'mito_correct SAFARI': 'Mito SAFARI', 'mito_correct vg giraffe': 'Mito vg giraffe'}, inplace=True)
 
     # Simplify the table to only include necessary comparisons
-    pivot_table = pivot_table[['k', 'w', 'Bacteria SAFARI', 'Bacteria vg giraffe', 
-                               'Numt SAFARI', 'Numt vg giraffe', 'Mito SAFARI', 'Mito vg giraffe']]
+    pivot_table = pivot_table[['k', 'w', 'Bacteria SAFARI', 'Bacteria vg giraffe',
+                               'NuMT SAFARI', 'NuMT vg giraffe', 'Mito SAFARI', 'Mito vg giraffe']]
 
     # Save the table to a LaTeX file
     with open(output_file_path, 'w') as latex_file:
