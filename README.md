@@ -50,9 +50,6 @@ This repository contains the scripts, data, and analyses necessary to reproduce 
 
 ## Additional Folders
 
-- **Index Logs** (`index_logs`):
-  - Contains detailed logs and data regarding the construction of minimizer and RYmer indexes with various (k,w) parameter sets.
-
 - **Statistical Analysis and Plotting** (`linear_experiment/human_mito/stat_results`):
   - Houses scripts for statistical analysis and visualization of data from linear alignment and damage rate estimation experiments.
 
