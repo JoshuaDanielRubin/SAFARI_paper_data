@@ -4,8 +4,8 @@
 total_threads=1
 
 # Specify the list of subsampling rates
-rates=("0.25x" "0.5x" "1x" "2x")
-#rates=("0.25x")
+#rates=("0.25x" "0.5x" "1x", "2x")
+rates=("0.25x")
 
 process_file_corrected() {
     bam_file=$1
@@ -28,7 +28,7 @@ process_file_corrected() {
     echo "Processing $bam_file" >&2
 
     # Run the haplocart pipeline
-    samtools bam2fq "$bam_file" -@ 20 | /home/projects/MAAG/Magpie/Magpie/vgan_corrected/bin/vgan haplocart -np -t 35 -fq1 /dev/stdin \
+    samtools bam2fq "$bam_file" -@ 1 | /home/projects/MAAG/Magpie/Magpie/vgan_corrected/bin/vgan haplocart -np -t 1 -fq1 /dev/stdin \
     --hc-files /home/projects/MAAG/Magpie/Magpie/vgan_corrected/share/vgan/hcfiles \
     --deam3p /home/projects/MAAG/Magpie/Magpie/dhigh3p.prof \
     --deam5p /home/projects/MAAG/Magpie/Magpie/dhigh5p.prof \
@@ -74,7 +74,7 @@ for rate in "${rates[@]}"; do
     fi
 
     # Run the function in parallel over all bam files
-    nice -19 parallel --keep-order -j 16 process_file_corrected ::: $(ls $dir/*.bam) ::: $threads_per_job ::: $rate
+    nice -19 parallel --keep-order -j 1 process_file_corrected ::: $(ls $dir/*.bam) ::: $threads_per_job ::: $rate
     #nice -19 parallel --keep-order -j 16 process_file_uncorrected ::: $(ls $dir/*.bam) ::: $threads_per_job ::: $rate
 
 
