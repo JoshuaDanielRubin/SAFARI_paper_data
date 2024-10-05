@@ -40,7 +40,7 @@ def rymer_transform(seq: str) -> str:
     return ''.join(RYMER_MAP.get(base, 'N') for base in seq)
 
 def create_minimizer(seq: str, k: int, w: int) -> str:
-    return min(seq[i:i+k] for i in range(w - k + 1))
+    return min((seq[i:i+k] for i in range(w - k + 1)), key=lambda x: hash(x))
 
 def create_index_table(sequence: str, k: int, w: int) -> Dict[str, List[int]]:
     table = defaultdict(list)
@@ -61,7 +61,10 @@ def process_kmer(args):
     if rymer_found:
         ref_segment = sequence[i:i+k]
 
-        mismatch_count = sum((a == 'T' and b == 'C') or (a == 'A' and b == 'G') for a, b in zip(kmer, ref_segment))
+        mismatch_count = sum(((a == 'T' and b == 'C') or (a == 'C' and b == 'T') or
+                     (a == 'A' and b == 'G') or (a == 'G' and b == 'A'))
+                     for a, b in zip(kmer, ref_segment))
+
         exact_match = kmer == ref_segment
         return mismatch_count, exact_match
     else:
@@ -84,7 +87,10 @@ def process_read(args):
         if rymer_found:
             ref_segment = sequence[i:i+k]
 
-            mismatch_count = sum((a == 'T' and b == 'C') or (a == 'A' and b == 'G') for a, b in zip(kmer, ref_segment))
+            mismatch_count = sum(((a == 'T' and b == 'C') or (a == 'C' and b == 'T') or
+                     (a == 'A' and b == 'G') or (a == 'G' and b == 'A'))
+                     for a, b in zip(kmer, ref_segment))
+
             mismatch_counts.append(mismatch_count)
             total_kmers += 1
 
@@ -154,7 +160,7 @@ plt.plot(k_values, average_mismatches, marker='o', linestyle='-')
 plt.xticks(k_values)
 plt.xlabel('Value of k')
 plt.ylabel('Mismatch Proportion')
-plt.title('Sequence Similarity as a Function of k')
+plt.title('Sequence Similarity of Seed as a Function of k')
 plt.grid(True)
 
 # Curve fitting for the plot
