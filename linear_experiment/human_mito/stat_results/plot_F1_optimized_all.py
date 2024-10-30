@@ -24,8 +24,8 @@ def main():
     high_damage_order = median_f1_scores[median_f1_scores['damage_level'] == 'High'].sort_values('f1', ascending=False)['tool'].tolist()
 
     corrected_palette = {
-        'vg giraffe': 'orange', 
-        'SAFARI': 'green', 
+        'vg giraffe': 'orange',
+        'SAFARI': 'green',
         'BBMAP': '#1f7872',
         'SHRiMP': '#6996b3',
         'BWA-MEM': '#5e3a8c',
@@ -34,13 +34,15 @@ def main():
         'Bowtie2': '#a45a52'
     }
 
+    print(median_f1_scores)
+
     plt.figure(figsize=(10, 6))
     sns.barplot(data=median_f1_scores, x='damage_level', y='f1', hue='tool', palette=corrected_palette, hue_order=high_damage_order)
     plt.title(r'Median $F_1$ Score (Optimized Parameters, ' + sys.argv[3] + ")")
     plt.xlabel('Damage Level')
     plt.ylabel(r'Median $F_1$ Score')
     plt.legend(title='Tool', bbox_to_anchor=(1.05, 1), loc='upper left')
-    plt.ylim(0.90, 1)
+    plt.ylim(0.86, 1)
     plt.tight_layout()
 
     plt.savefig(sys.argv[2])
