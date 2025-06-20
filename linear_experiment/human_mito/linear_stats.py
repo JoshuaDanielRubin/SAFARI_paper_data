@@ -1,76 +1,63 @@
-import matplotlib.pyplot as plt
-import numpy as np
+import os
 import re
 from collections import defaultdict
+import sys
 
-def parse_data(file_path):
-    data_struct = defaultdict(lambda: defaultdict(dict))
-    current_damage, current_tool, read_type = None, None, None
-    re_damage = re.compile(r'^Damage: (\w+)$')
-    re_tool = re.compile(r'^Tool: (\w+)$')
-    re_f1_score = re.compile(r'^\s+F1 Score: ([0-9.]+)$')
+# Directory containing the stat files
+directory = sys.argv[1]
 
-    with open(file_path, 'r') as file:
-        for line in file:
-            match_damage = re_damage.match(line)
-            if match_damage:
-                current_damage = match_damage.group(1)
-                continue
-            match_tool = re_tool.match(line)
-            if match_tool:
-                current_tool = match_tool.group(1)
-                continue
-            if '[Mitochondrial Reads]' in line:
-                read_type = 'mitochondrial'
-                continue
-            elif '[All Reads]' in line:
-                read_type = 'all'
-                continue
-            match_f1_score = re_f1_score.match(line)
-            if match_f1_score and current_damage and current_tool and read_type:
-                f1_score = float(match_f1_score.group(1))
-                data_struct[current_damage][current_tool][read_type] = f1_score
-    return data_struct
+# Data structure to hold parsed data
+results = defaultdict(lambda: defaultdict(lambda: defaultdict(int)))
 
-def calculate_percent_increases(data_struct):
-    percent_increases = defaultdict(lambda: defaultdict(float))
-    for damage, tools in data_struct.items():
-        if 'giraffe' in tools and 'safari' in tools:
-            for read_type in ['mitochondrial', 'all']:
-                giraffe_f1 = tools['giraffe'].get(read_type, 0)
-                safari_f1 = tools['safari'].get(read_type, 0)
-                if giraffe_f1 > 0:  # Avoid division by zero
-                    percent_increase = ((safari_f1 - giraffe_f1) / giraffe_f1) * 100
-                    percent_increases[damage][read_type] = percent_increase
-    return percent_increases
+# Regular expression to extract info from filenames and file contents
+file_re = re.compile(r'numtS_and_gen_0_n300000_(d\w+)_l\d+_s([\d.]+)_(\w+)\.stat')
+content_re = re.compile(r'(\w+ reads \w+): (\d+)')
 
-def plot_data(percent_increases):
-    damage_types_ordered = ['none', 'single', 'dmid', 'dhigh']
-    damage_names = ['None', 'Single-stranded', 'Mid', 'High']
-    mitochondrial_increases_ordered = [percent_increases[damage]['mitochondrial'] for damage in damage_types_ordered]
-    all_increases_ordered = [percent_increases[damage]['all'] for damage in damage_types_ordered]
-    
-    fig, axs = plt.subplots(2, 1, figsize=(10, 8), sharex=True)
-    y_positions_ordered = np.arange(len(damage_names))
-    
-    axs[0].barh(y_positions_ordered, mitochondrial_increases_ordered, color='skyblue')
-    axs[0].set_yticks(y_positions_ordered)
-    axs[0].set_yticklabels(damage_names, rotation=45)
-    axs[0].set_title('Increase of F1 Score for Mitochondrial Reads')
-    
-    axs[1].barh(y_positions_ordered, all_increases_ordered, color='lightgreen')
-    axs[1].set_yticks(y_positions_ordered)
-    axs[1].set_yticklabels(damage_names, rotation=45)
-    axs[1].set_xlabel('% Increase from Giraffe to SAFARI')
-    axs[1].set_ylabel('Damage Matrix')
-    axs[1].set_title('Increase of F1 Score for All Reads')
-    
-    plt.tight_layout()
-    plt.savefig("linear3.png")
+# Function to calculate precision, recall, and F1
+def calculate_metrics(correct, incorrect, unmapped):
+    precision = correct / (correct + incorrect) if correct + incorrect else 0
+    recall = correct / (correct + unmapped) if correct + unmapped else 0
+    f1 = 2 * (precision * recall) / (precision + recall) if precision + recall else 0
+    return precision, recall, f1
 
-if __name__ == "__main__":
-    file_path = 'linear_stats.txt'  # Update this path to your data file
-    data_struct = parse_data(file_path)
-    percent_increases = calculate_percent_increases(data_struct)
-    plot_data(percent_increases)
+# Parse each file
+for filename in os.listdir(directory):
+    match = file_re.search(filename)
+    if match:
+        damage, similarity, tool = match.groups()
+        with open(os.path.join(directory, filename), 'r') as file:
+            for line in file:
+                if 'Correct mitochondrial mappings' in line or 'Incorrect mitochondrial mappings' in line:
+                    key, value = line.strip().split(': ')
+                    results[damage][tool][key] = int(value)
+                else:
+                    content_match = content_re.search(line)
+                    if content_match:
+                        key, value = content_match.groups()
+                        results[damage][tool][key] += int(value)
 
+# Process and print the results
+for damage in sorted(results):
+    print(f'Damage: {damage}')
+    for tool in sorted(results[damage]):
+        data = results[damage][tool]
+        correct_mito = data['Correct mitochondrial mappings']
+        incorrect_mito = data['Incorrect mitochondrial mappings']
+        mapped_mito = correct_mito  # Assuming correct mappings are all that's considered "mapped"
+        unmapped_mito = data.get('Mito reads unmapped', 0)
+
+        # Calculate metrics for mitochondrial reads
+        mito_precision, mito_recall, mito_f1 = calculate_metrics(correct_mito, incorrect_mito, unmapped_mito)
+
+        # Calculate overall metrics (assuming all reads)
+        total_mapped = sum(data[k] for k in data if 'mapped' in k)
+        total_unmapped = sum(data[k] for k in data if 'unmapped' in k)
+        all_precision, all_recall, all_f1 = calculate_metrics(total_mapped - incorrect_mito, incorrect_mito, total_unmapped)
+
+        # Print formatted results for mitochondrial reads and all reads
+        print(f'Tool: {tool}')
+        print(f'  [Mitochondrial Reads]\n    Precision: {mito_precision:.5f}\n    Recall: {mito_recall:.5f}\n    F1 Score: {mito_f1:.5f}')
+        print('  [Raw Counts]')
+        for key, value in data.items():
+            print(f'    {key}: {value}')
+        print(f'  [All Reads]\n    Precision: {all_precision:.5f}\n    Recall: {all_recall:.5f}\n    F1 Score: {all_f1:.5f}\n')
