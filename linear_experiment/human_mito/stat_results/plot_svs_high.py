@@ -3,16 +3,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
-def calculate_sensitivity(data):
-    # No additional calculation needed for sensitivity, assuming it's already a column in the data
-    return data
-
 def plot_best_sensitivity(data_path):
     # Load data
     data = pd.read_csv(data_path)
 
-    # Filtering data for 'None' damage level and calculating sensitivity
-    filtered_data = calculate_sensitivity(data[(data['damage_level'] == 'High')].copy())
+    filtered_data = data[(data['damage_level'] == 'High')].copy()
     # Get medians of sensitivity grouped by tool, k, and w
     medians_sensitivity = filtered_data.groupby(['tool', 'k', 'w'])['sensitivity'].median().reset_index()
     # Identify the best (k,w) combination for each tool based on median sensitivity
